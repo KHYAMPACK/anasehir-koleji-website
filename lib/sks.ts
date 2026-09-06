@@ -1,0 +1,33 @@
+export const sksBranches = [
+  "Drama",
+  "Modern Danslar",
+  "Halk Dansları",
+  "Bale",
+  "Satranç",
+  "Bilgisayar",
+  "Voleybol",
+  "Futbol",
+  "Basketbol",
+  "Yüzme",
+  "Okçuluk",
+  "Mental Aritmetik",
+  "Zeka Oyunları",
+  "El Sanatları",
+  "Bilim Atölyesi",
+  "Müzik",
+  "Jimnastik",
+  "Seramik",
+  "Resim",
+  "Tiyatro",
+  "Güzel Konuşma",
+  "Paten",
+  "Masa Tenisi",
+  "Plastik Sanatlar",
+  "Hızlı Okuma",
+] as const;
+
+export const sksAlsoListed = [
+  "Radyo ve televizyon spikerliği ve diksiyon",
+  "Robotik kodlama ve yazılım",
+  "Zeka atölyesi",
+] as const;

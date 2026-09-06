@@ -1,0 +1,165 @@
+@import "tailwindcss";
+
+:root {
+  --canvas: #d7e4f2;
+  --ink: #14233a;
+  --muted: #3d4f6b;
+  --red: #e30613;
+  --red-hover: #c10510;
+  --blue: #00b1eb;
+  --blue-soft: #c5eefb;
+  --blush: #f8e6e9;
+  --line: #b7c7db;
+  --panel: #ffffff;
+  --panel-2: #c9d9ea;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --header: 4.5rem;
+}
+
+@theme inline {
+  --color-canvas: var(--canvas);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-red: var(--red);
+  --color-red-hover: var(--red-hover);
+  --color-blue: var(--blue);
+  --color-blue-soft: var(--blue-soft);
+  --color-blush: var(--blush);
+  --color-line: var(--line);
+  --color-panel: var(--panel);
+  --color-panel-2: var(--panel-2);
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-figtree);
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: clip;
+}
+
+body {
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: var(--font-inter), system-ui, sans-serif;
+  overflow-x: clip;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--red) 22%, white);
+  color: var(--ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 3px;
+}
+
+.grid-paper {
+  background-color: var(--canvas);
+  background-image:
+    linear-gradient(to right, rgba(26, 79, 139, 0.12) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(26, 79, 139, 0.12) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+.grid-vignette {
+  background:
+    radial-gradient(ellipse 70% 55% at 50% 42%, rgba(255, 255, 255, 0.35) 0%, transparent 70%),
+    radial-gradient(ellipse 100% 80% at 50% 50%, transparent 35%, rgba(20, 35, 58, 0.12) 100%);
+}
+
+.display {
+  font-family: var(--font-figtree), system-ui, sans-serif;
+}
+
+.eyebrow {
+  font-family: var(--font-figtree), system-ui, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--blue);
+}
+
+.tone-navy .eyebrow {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.tone-navy {
+  background: var(--ink);
+  color: #e8edf6;
+}
+
+.tone-navy h1,
+.tone-navy h2,
+.tone-navy h3,
+.tone-navy .text-ink {
+  color: #fff;
+}
+
+.tone-navy .text-muted {
+  color: rgba(232, 237, 246, 0.78);
+}
+
+.tone-navy .text-blue {
+  color: #9ec8f0;
+}
+
+.tone-navy a.rounded-full {
+  border-color: rgba(255, 255, 255, 0.4);
+  color: #fff;
+}
+
+/* Light cards sitting on navy keep ink text, not hero white. */
+.tone-navy .tone-paper {
+  color: var(--ink);
+}
+
+.tone-navy .tone-paper .text-ink,
+.tone-navy .tone-paper h1,
+.tone-navy .tone-paper h2,
+.tone-navy .tone-paper h3 {
+  color: var(--ink);
+}
+
+.tone-navy .tone-paper .text-muted {
+  color: var(--muted);
+}
+
+.tone-navy .tone-paper .text-blue {
+  color: var(--blue);
+}
+
+.tone-blush {
+  background: var(--blush);
+  color: var(--ink);
+}
+
+.tone-paper {
+  background: var(--panel);
+}
+
+.tone-ice {
+  background: var(--canvas);
+}
+
+.card-lift {
+  transition: transform 240ms var(--ease), box-shadow 240ms var(--ease);
+}
+
+.card-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 36px rgba(20, 35, 58, 0.12);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .card-lift,
+  .card-lift:hover {
+    transition: none;
+    transform: none;
+  }
+}
