@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     template: `%s · ${site.name}`,
   },
   description:
-    "Anaşehir Okulları — Etimesgut Bağlıca’da kreş, anaokulu, ilkokul, ortaokul ve Anadolu Lisesi. Gelecek Anaşehir’de başlar.",
+    "Anaşehir Koleji — Etimesgut Bağlıca’da kreş, anaokulu, ilkokul ve ortaokul. Gelecek burada başlar.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

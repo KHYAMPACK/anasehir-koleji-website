@@ -13,7 +13,19 @@
   --panel: #ffffff;
   --panel-2: #c9d9ea;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
-  --header: 4.5rem;
+  --header-row1: 4.5rem;
+  --header-row2: 3rem;
+  /* Total sticky header height — row2 (the nav row) only renders at xl+,
+     so this must track that breakpoint for scroll-mt/anchor math to stay
+     correct at every viewport width. Keep the 1280px in sync with
+     Header.tsx's xl:flex / xl:hidden split. */
+  --header: var(--header-row1);
+}
+
+@media (min-width: 1280px) {
+  :root {
+    --header: calc(var(--header-row1) + var(--header-row2));
+  }
 }
 
 @theme inline {
@@ -105,9 +117,23 @@ body {
   color: #9ec8f0;
 }
 
-.tone-navy a.rounded-full {
+/* btn-ghost has no fill of its own, so it needs to borrow white on a dark
+   section. btn-primary is already filled, so it needs no change here.
+   .tone-dark is the same fix for content sitting over a dark photo (the
+   hero) rather than a flat tone-navy panel — no background side effect. */
+.tone-navy .btn-ghost,
+.tone-dark .btn-ghost {
   border-color: rgba(255, 255, 255, 0.4);
   color: #fff;
+}
+
+/* btn-line's subtle dark-tint fill (built for light backgrounds) would go
+   invisible on navy/dark photos, so it flips to a solid white pill there. */
+.tone-navy .btn-line,
+.tone-dark .btn-line {
+  background: #fff;
+  border-color: transparent;
+  color: var(--ink);
 }
 
 /* Light cards sitting on navy keep ink text, not hero white. */

@@ -12,7 +12,7 @@ export const campuses: Campus[] = [
   {
     id: "baglica-koleji",
     name: "Anaşehir Koleji Bağlıca Kampüsü",
-    levels: "Anaokulu · İlkokul · Ortaokul · Anadolu Lisesi",
+    levels: "Anaokulu · İlkokul · Ortaokul",
     address: "Bağlıca Mah. Etimesgut Bul. No:89, 06790 Etimesgut/Ankara",
     phones: [
       { display: "444 69 61", tel: "4446961" },

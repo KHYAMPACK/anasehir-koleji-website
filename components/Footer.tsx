@@ -2,11 +2,12 @@ import Link from "next/link";
 import { Logo } from "./Logo";
 import { site, telHref } from "@/lib/site";
 import { campuses } from "@/lib/campuses";
+import { sections, utilityLinks } from "@/lib/nav";
 
 export function Footer() {
   return (
     <footer className="mt-auto border-t border-line bg-[#10192c] text-[#e8edf6]">
-      <div className="mx-auto grid max-w-[1560px] gap-10 px-4 py-14 sm:px-6 lg:grid-cols-4 lg:px-10">
+      <div className="mx-auto grid max-w-[1560px] gap-10 px-4 py-14 sm:px-6 lg:grid-cols-5 lg:px-10">
         <div>
           <Logo />
           <p className="mt-4 max-w-xs text-sm text-[#a9b4cc]">{site.slogan}</p>
@@ -18,29 +19,36 @@ export function Footer() {
         </div>
 
         <div>
-          <p className="eyebrow text-[#8b96ad]">Bağlantılar</p>
+          <p className="eyebrow text-[#8b96ad]">Bölümler</p>
+          <ul className="mt-4 space-y-2 text-sm">
+            {sections.map((s) => (
+              <li key={s.href}>
+                <Link href={s.href}>{s.name}</Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <p className="eyebrow text-[#8b96ad]">Hızlı Erişim</p>
           <ul className="mt-4 space-y-2 text-sm">
             <li>
-              <Link href="/kurumsal">Kurumsal</Link>
+              <Link href="/yasam#haberler">Haberler</Link>
             </li>
             <li>
-              <Link href="/ortaokul">Ortaokul</Link>
+              <Link href="/yasam#etkinlikler">Etkinlikler</Link>
             </li>
             <li>
-              <Link href="/yabanci-dil">Yabancı Dil</Link>
+              <Link href="/yasam#akademik-takvim">Akademik Takvim</Link>
             </li>
             <li>
-              <Link href="/sks">SKS</Link>
+              <Link href="/yasam#galeri">Fotoğraf/Video</Link>
             </li>
-            <li>
-              <Link href="/radyo">Anaşehir Radyo</Link>
-            </li>
-            <li>
-              <Link href="/sss">Sık sorulanlar</Link>
-            </li>
-            <li>
-              <Link href="/iletisim">İletişim</Link>
-            </li>
+            {utilityLinks.map((item) => (
+              <li key={item.href}>
+                <Link href={item.href}>{item.name}</Link>
+              </li>
+            ))}
           </ul>
         </div>
 
@@ -107,7 +115,7 @@ export function Footer() {
       </div>
       <div className="border-t border-white/10">
         <div className="mx-auto flex max-w-[1560px] flex-wrap items-center justify-between gap-3 px-4 py-4 text-xs text-[#8b96ad] sm:px-6 lg:px-10">
-          <p>© {new Date().getFullYear()} Anaşehir Okulları · Etimesgut / Ankara</p>
+          <p>© {new Date().getFullYear()} Anaşehir Koleji · Etimesgut / Ankara</p>
           <div className="flex gap-4">
             <Link href="/kvkk">KVKK</Link>
             <Link href="/gizlilik">Gizlilik</Link>

@@ -46,7 +46,6 @@ export function LeadForm({ className = "" }: { className?: string }) {
           <option>Anaokulu</option>
           <option>İlkokul</option>
           <option>Ortaokul</option>
-          <option>Anadolu Lisesi</option>
         </select>
       </label>
       <label className="grid min-w-0 gap-1 text-sm text-ink sm:col-span-2">

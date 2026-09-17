@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { PageHero, Section } from "@/components/PageHero";
-import { ProseCards } from "@/components/ProseCards";
+import { ProgramCards } from "@/components/ProgramCards";
 import { RadioPlayer } from "@/components/RadioPlayer";
-import { radioCopy } from "@/lib/copy";
+import { programs } from "@/lib/programs";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = { title: "Anaşehir Radyo" };
@@ -13,13 +13,13 @@ export default function RadyoPage() {
       <PageHero
         eyebrow="Anaşehir Radyo"
         title="2016’dan beri okulun frekansı."
-        lead="Program, diksiyon dersliği, diğer saatlerde müzik."
+        lead={programs.radio.lead}
       />
 
       <Section tone="ice">
         <div className="grid gap-8 lg:grid-cols-2">
           <div>
-            <ProseCards paragraphs={radioCopy} tone="ice" />
+            <ProgramCards points={programs.radio.points} />
             <div className="mt-4 flex flex-wrap gap-3">
               <a
                 href={site.radio.appStore}

@@ -1,22 +1,3 @@
-export const aboutHistory = [
-  {
-    year: "2005",
-    text: "2005 yılında kreş, anaokulu ve etüt olarak hizmet vermeye başlayan Anaşehir Okulları; 2005-2013 yılları arasında Ankara’da Çayyolu, Çankaya, Etimesgut semtlerinde kreş ve anaokulu olarak toplam yedi şube ile hizmet verdi.",
-  },
-  {
-    year: "2011",
-    text: "2011 yılında Ankara Etimesgut İlçesi’nde Ankana Kids ismiyle açılan kreş ve anaokulları ile bölgede ismini duyurdu ve eğitimde öncü kurum oldu. Bu yıllardan sonra Etimesgut’ta açılan birçok anaokulu ve kolejin açılmasına vesile oldu; hatta bu okullardan birçoğu okulumuz çalışanları tarafından açıldı.",
-  },
-  {
-    year: "2013",
-    text: "2013 yılında Etimesgut Bağlıca semtinde kurulan koleji ile kreş, anaokulu, ilkokul, ortaokul ve lise eğitimi vermeye başladı. Anaşehir Koleji Bağlıca, Etimesgut Bağlıca’da açılan ilk kolejdir.",
-  },
-  {
-    year: "2014",
-    text: "2014 yılında tüm şubeler Ankara Etimesgut İlçesi’nde toplandı. Anaşehir Okulları; şu an binden fazla öğrencisi ve yüzden fazla personeliyle, Ankara’nın güzel ilçesi Etimesgut’ta öncü ve örnek gösterilen kurum olarak eğitim alanındaki hizmetine kreş, anaokulu, ilkokul, ortaokul ve lise olarak devam etmektedir.",
-  },
-];
-
 export const aboutPurpose = [
   "Okullarımızın amacı Atatürk ilke ve inkılaplarına bağlı, cumhuriyete inanan, nitelikli ve başarılı bireyler yetişmek için en iyi eğitimi vermektir. Bu amaç doğrultusunda donanımlı, başarılı, azimli, sanatsal-sportif ve kültürel etkinliklerden en az biriyle yakından ilgilenen, özgüveni yüksek, araştıran, sorgulayan, insanlarla rahat iletişim kurabilen, hakkını savunan, cumhuriyete inanan ve maddi-manevi değerlere bağlı bireyler yetiştirmeyi kendine görev edinen bir kurumdur. Kurucular, öğretmenler ve tüm personel bu amaç ve hedef doğrultusunda işini en iyi şekilde yapmaktadır.",
   "Anaşehir Okulları’nda nitelikli, iletişimi güçlü ve başarılı öğrenciler yetiştirmek için öğrencilere okul derslerinin yanında pek çok sanatsal, kültürel ve sportif eğitimler verilmektedir. Öğrencilerimizin araştıran, sorgulayan, meraklı, özgüveni yüksek, akademik anlamda başarılı bireyler olmasının yanında, İngilizceyi en etkili şekilde kullanan, en az bir müzik aleti çalabilen, en az bir sportif faaliyetle ilgilenen sosyal bireyler olarak yetiştirilmesine önem verilmektedir.",
@@ -108,7 +89,7 @@ export const ortaokulDay = {
   steps: [
     { time: "07:30", title: "Erken bırakma", text: "Veliler çocuklarını 07:30’dan itibaren okula bırakabilir." },
     { time: "08:15–15:30", title: "Akademik çalışmalar", text: "Günün akademik dersleri bu aralıkta yapılır." },
-    { time: "15:30–16:15", title: "SKS etkinlik dersi", text: "Spor, kültür ve sanat etkinliklerinden seçilen dal." },
+    { time: "15:30–16:15", title: "Etkinlik dersi", text: "Spor, kültür ve sanat etkinliklerinden seçilen dal." },
     { time: "16:30", title: "Servisler", text: "Servislerimiz 16:30’da hareket eder." },
     { time: "16:30–18:15", title: "İsteğe bağlı etüt", text: "Etüt ücretlidir. Etüde kalan öğrencilerin servis saati 18:20’dir." },
   ],
@@ -142,30 +123,11 @@ export const socialActivities = [
   "Okulumuzda yapılan ve yapılacak ders içi ve dışı tüm çalışmalar K-12 sistemi üzerinden velilerimizin bilgisine sunulmakta, web sayfasında yayınlanmaktadır.",
 ];
 
-export const sksRules = [
-  "Sosyal etkinlik çalışmaları anaokulu düzeyinden başlar. Eğitim ve öğretim dönemi başında çocuklarımıza 25 farklı etkinlik sunulur.",
-  "Öğrencilerimiz ilgi ve yeteneklerini göz önünde bulundurarak 25 farklı branştan 10 tanesini seçer; bu 10 seçimin içinden 5 tanesine yerleştirilir. 10 ve üzeri öğrenci tarafından seçilmiş branşlar açılır. Öğrencilerimiz ilk ay içinde, kontenjanlar uygun olduğu takdirde değişiklikler yapabilir.",
-  "Sosyal etkinlikler derslerin bitmesiyle başlar, 15:30–16:15 saatleri arasında, Ankara’da isim yapmış usta öğreticilerimiz eşliğinde yapılır. Sosyal etkinlik dersleri okulumuzun hediyesidir, herhangi bir ücrete tabi değildir.",
-];
-
 export const radioCopy = [
   "Bağlıca Etimesgut Anaşehir Koleji’nde okullarımıza ait bir okul radyosu bulunmaktadır. Anaşehir Radyo, 2016 yılından beri hizmet vermektedir.",
   "Radyoda çocuklarımız ve öğretmenlerimiz eğitimle ilgili programlar yapmaktadır. Ayrıca Anaşehir Radyo; okulumuzda uygulanan radyo ve televizyon spikerliği ve diksiyon dersi uygulama dersliği olarak da kullanılmaktadır.",
   "Diğer zamanlarda kesintisiz pop müzik ve yabancı müzik yayını yapan okul radyomuzu Apple Store ve Play Store’dan “Anaşehir Radyo” olarak aratıp telefonunuza indirerek dünyanın her yerinden dinleyebilirsiniz.",
 ];
-
-export const liseEnglish = {
-  title: "Anaşehir Anadolu Lisesi’nde İngilizce eğitimi",
-  lead: "Anaşehir Anadolu Lisesi ve Kanada’da bulunan Canadian College ortaklığı ile yapılan İngilizce programı",
-  paras: [
-    "Kanada’da bulunan Canadian College ile yaptığımız anlaşma çerçevesinde; 9. sınıftan 11. sınıfa kadar uygulanan İngilizce programımız sayesinde isteyen öğrencilerimiz liseden mezun olduklarında üniversiteye Canadian College ve St. Lawrence College’da devam edebileceklerdir.",
-    "Uygulanan İngilizce programı ile İngilizce derslerimiz sınıf içinde tabletlerden işlenecek olup herhangi bir kitap materyali kullanılmayacaktır. Öğrencilerimiz dizüstü bilgisayarlarından, iPad’lerinden veya tabletleri ile Canadian College destekli öğrenim programımıza katılım sağlamaktadırlar.",
-    "Canadian College of English Language’teki uzman eğitmenler, yüksek hızlı internet erişimi sayesinde öğrencileri için daha ilginç ve motive edici olan özgün kaynaklardan faydalanırlar. Canadian College Smrt Programı ile İngilizce’nin tüm konularında internet ortamında geniş bir eğitim olanağı sağlanmaktadır.",
-    "Öğrencilerimizin Smrt İngilizce platformu içerisindeki ilerlemeleri; testler, sınavlar ve derslere katılım ölçüsünde değerlendirilecektir. Öğrencilerimiz gerekli çalışmaları yaptıkları takdirde TOEFL’dan en az 79 üzeri, IELTS 6.5 seviyesinde mezuniyet sağlamaları hedeflenmektedir.",
-    "Tüm seviyeleri başarılı şekilde bitiren ve aynı zamanda üniversite okumak için Kanada’yı tercih eden öğrencilerimize okuma süresince çalışma izni verilecek olup, okul bittikten sonra da 3 yıl daha çalışma izni alacaklardır.",
-    "Uyguladığımız bu programla öğrencilerimiz hem üst düzeyde İngilizce eğitimi alacak, hem de liseden mezun olduktan sonra ellerinde ikinci bir seçenek daha olmuş olacaktır.",
-  ],
-};
 
 export const primaryEnglishTr = [
   "Her çocuğun, hızla değişen bu dünyada yüksek farkındalığa sahip, işinin ehli yetişkinler; ebeveyn ve eğitimciler tarafından yönlendirilmesi gerektiğine inanıyoruz. Artık öğrencilerin dünyayla rekabet etmeleri daha da zorlaşıyor. Her birey kendini 21. yüzyılda başarı için gerekli görülen dinleme, konuşma, okuma ve yazma becerilerine ek olarak problem çözme, eleştirel düşünme ve diğer üst düzey beceriler gibi 21. yüzyıl becerileri ile donatmak, değişimin bir parçası olmak ve bu değişime uyum sağlamak zorunda.",
@@ -210,14 +172,14 @@ export const faqs = [
   },
   {
     q: "Ortaokulda bir gün nasıl akar?",
-    a: "Akademik çalışmalar 08:15–15:30, SKS 15:30–16:15, servisler 16:30. İsteğe bağlı ücretli etüt 16:30–18:15’tir; etüt servisi 18:20’de hareket eder. Erken bırakma 07:30’dan itibaren mümkündür.",
+    a: "Akademik çalışmalar 08:15–15:30, etkinlik dersi 15:30–16:15, servisler 16:30. İsteğe bağlı ücretli etüt 16:30–18:15’tir; etüt servisi 18:20’de hareket eder. Erken bırakma 07:30’dan itibaren mümkündür.",
   },
   {
     q: "Etüt zorunlu mu?",
     a: "Hayır. Etüt isteğe bağlı ve ücretlidir. Günlük ödevler etütte tamamlanır; takılan konular öğretmenle çalışılır.",
   },
   {
-    q: "SKS ücretli midir?",
+    q: "Etkinlik dersleri ücretli midir?",
     a: "Hayır. Sosyal etkinlik dersleri okulumuzun hediyesidir. Öğrenciler 25 branştan 10 seçer, 5’ine yerleştirilir. 10 ve üzeri öğrenci seçen branşlar açılır.",
   },
   {
