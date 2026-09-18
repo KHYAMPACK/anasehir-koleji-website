@@ -178,6 +178,20 @@ body {
   box-shadow: 0 12px 36px rgba(20, 35, 58, 0.12);
 }
 
+@keyframes marquee-x {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.marquee-track {
+  animation: marquee-x 42s linear infinite;
+  will-change: transform;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -187,5 +201,9 @@ body {
   .card-lift:hover {
     transition: none;
     transform: none;
+  }
+
+  .marquee-track {
+    animation: none;
   }
 }

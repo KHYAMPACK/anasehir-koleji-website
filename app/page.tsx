@@ -22,6 +22,7 @@ import {
   Waves,
 } from "lucide-react";
 import { HomeHero } from "@/components/HomeHero";
+import { HomeContact } from "@/components/HomeContact";
 import { BtnGhost, BtnLine, BtnPrimary } from "@/components/Buttons";
 import { Section } from "@/components/PageHero";
 import { campuses, mapsSearchUrl } from "@/lib/campuses";
@@ -94,17 +95,19 @@ export default function HomePage() {
     <>
       <HomeHero />
 
-      <Section tone="paper">
-        <div className="grid gap-3 sm:grid-cols-4">
-          {stats.map((s) => (
-            <div key={s.l} className="rounded-[14px] border border-line bg-panel px-5 py-6">
-              <s.icon className="h-6 w-6 text-blue" strokeWidth={1.75} aria-hidden />
-              <p className="display mt-3 text-3xl font-semibold text-ink">{s.n}</p>
-              <p className="mt-1 text-sm text-muted">{s.l}</p>
-            </div>
-          ))}
+      <section className="tone-paper hidden py-5 md:block lg:py-6">
+        <div className="mx-auto max-w-[1180px] px-4 sm:px-6 lg:px-10">
+          <div className="grid grid-cols-4 gap-2.5">
+            {stats.map((s) => (
+              <div key={s.l} className="rounded-[12px] border border-line bg-panel px-4 py-3.5">
+                <s.icon className="h-4 w-4 text-blue" strokeWidth={1.75} aria-hidden />
+                <p className="display mt-2 text-xl font-semibold text-ink lg:text-2xl">{s.n}</p>
+                <p className="mt-0.5 text-xs text-muted">{s.l}</p>
+              </div>
+            ))}
+          </div>
         </div>
-      </Section>
+      </section>
 
       <Section tone="ice">
         <div className="grid items-start gap-10 lg:grid-cols-[minmax(18rem,22rem)_minmax(0,1fr)] lg:gap-10 xl:gap-12">
@@ -211,29 +214,39 @@ export default function HomePage() {
       </Section>
 
       <section className="overflow-hidden border-y border-line">
-        <div className="grid lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1.05fr)_minmax(14rem,0.75fr)]">
-          {/* Akademik Başarı */}
+        <div className="grid lg:grid-cols-[minmax(0,0.7fr)_minmax(11rem,0.5fr)_minmax(0,1.05fr)_minmax(14rem,0.75fr)]">
+          {/* Akademik Başarı — text */}
           <div className="tone-navy relative min-h-[22rem] overflow-hidden">
             <div className="pointer-events-none absolute inset-0 opacity-20 grid-paper" />
-            <div className="relative z-10 flex h-full min-h-[22rem] flex-col justify-between gap-8 px-6 py-8 sm:px-8 lg:flex-row lg:items-end lg:gap-10 lg:px-10 lg:py-10">
-              <div className="flex max-w-[22rem] flex-col">
-                <h2 className="display text-2xl font-semibold tracking-tight text-white sm:text-[1.85rem]">
-                  Akademik Başarı
-                </h2>
-                <p className="mt-2 text-sm text-white/70">{programs.lgs.title}</p>
-                <div className="mt-8 lg:mt-auto lg:pt-10">
-                  <BtnLine href="/akademik-basari#sonuclarimiz" size="lg">
-                    LGS Sonuçlarımız
-                  </BtnLine>
-                </div>
-              </div>
+            <div className="relative z-10 flex h-full min-h-[22rem] flex-col px-6 py-8 sm:px-8 lg:px-9 lg:py-10">
+              <h2 className="display text-2xl font-semibold tracking-tight text-white sm:text-[1.85rem]">
+                Akademik Başarı
+              </h2>
+              <p className="mt-2 text-sm text-white/70">{programs.lgs.title}</p>
 
-              <div className="max-w-[18rem] text-sm leading-relaxed text-white/75">
+              <div className="mt-8 max-w-[18rem] text-sm leading-relaxed text-white/75">
                 <p className="text-xs font-semibold tracking-[0.14em] text-blue uppercase">LGS Sistemi</p>
                 <p className="mt-2 font-semibold text-white">{programs.lgs.points[0].title}</p>
                 <p className="mt-1 text-white/65">{programs.lgs.closing}</p>
               </div>
+
+              <div className="mt-auto pt-8">
+                <BtnLine href="/akademik-basari#sonuclarimiz" size="lg">
+                  LGS Sonuçlarımız
+                </BtnLine>
+              </div>
             </div>
+          </div>
+
+          {/* Akademik Başarı — photo */}
+          <div className="relative min-h-[16rem] lg:min-h-full">
+            <Image
+              src="/hero/hero-2.jpg"
+              alt="Anaşehir Koleji öğrencileri"
+              fill
+              sizes="(max-width: 1024px) 100vw, 22vw"
+              className="object-cover"
+            />
           </div>
 
           {/* Kampüsü Keşfedin */}
@@ -296,7 +309,7 @@ export default function HomePage() {
           ))}
         </div>
         <div className="mt-6">
-          <BtnLine href="/anasehir#yonetim" size="lg">Yönetimi Tanıyın</BtnLine>
+          <BtnLine href="/hakkimizda#yonetim" size="lg">Yönetimi Tanıyın</BtnLine>
         </div>
       </Section>
 
@@ -340,6 +353,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <HomeContact />
     </>
   );
 }

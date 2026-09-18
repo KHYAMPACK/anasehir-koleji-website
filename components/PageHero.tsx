@@ -65,7 +65,9 @@ export function Section({
           <div className="mb-8 max-w-[52rem]">
             {eyebrow && <p className="eyebrow">{eyebrow}</p>}
             {title && (
-              <h2 className="display mt-2 text-2xl font-semibold tracking-tight sm:text-3xl">
+              <h2
+                className={`display text-3xl font-semibold tracking-tight sm:text-4xl ${eyebrow ? "mt-2" : ""}`}
+              >
                 {title}
               </h2>
             )}

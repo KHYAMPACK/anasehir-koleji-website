@@ -39,6 +39,8 @@ export function telHref(raw: string) {
   return `tel:${raw.replace(/\s/g, "")}`;
 }
 
-export function waHref(number = site.whatsapp) {
-  return `https://wa.me/${number}`;
+export function waHref(number = site.whatsapp, text?: string) {
+  const base = `https://wa.me/${number}`;
+  if (!text) return base;
+  return `${base}?text=${encodeURIComponent(text)}`;
 }

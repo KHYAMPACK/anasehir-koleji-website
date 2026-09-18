@@ -10,7 +10,8 @@ const nextConfig: NextConfig = {
     root,
   },
   redirects: async () => [
-    { source: "/kurumsal", destination: "/anasehir", permanent: false },
+    { source: "/anasehir", destination: "/hakkimizda", permanent: false },
+    { source: "/kurumsal", destination: "/hakkimizda", permanent: false },
     { source: "/ortaokul", destination: "/okullarimiz#ortaokul", permanent: false },
     { source: "/yabanci-dil", destination: "/egitim-modeli#yabanci-diller", permanent: false },
     { source: "/sks", destination: "/kampus-yasami", permanent: false },

@@ -1,8 +1,25 @@
 /**
- * Short-copy content for the /anasehir section. Condensed from the
+ * Short-copy content for the /hakkimizda section. Condensed from the
  * longer paragraphs in lib/copy.ts to match the site's rule: no long
  * paragraphs, short and scannable everywhere.
  */
+
+export const aboutIntro = {
+  eyebrow: "Hakkımızda",
+} as const;
+
+export const visionShort =
+  "Atatürk ilke ve devrimleri doğrultusunda; cumhuriyetine bağlı, spor-kültür ve sanatla ilgili, iletişimi güçlü ve örnek bireyler yetiştirmek.";
+
+export const missionShort =
+  "Nitelikli bireyler yetiştiren, örnek gösterilen ve öncelikli tercih edilen öncü bir kurum olmak.";
+
+export const aboutGallery = [
+  { src: "/hero/hero-1.jpg", alt: "Anaşehir Koleji Bağlıca kampüsü" },
+  { src: "/hero/hero-2.jpg", alt: "Anaşehir Koleji öğrencileri" },
+  { src: "/hero/hero-3.jpg", alt: "Anaşehir Koleji kampüs yaşamı" },
+  { src: "/hero/hero-mobile-2.jpg", alt: "Anaşehir Koleji okul binası" },
+] as const;
 
 export const purposePoints = [
   { title: "Nitelikli bireyler", text: "Atatürk ilke ve inkılaplarına bağlı, araştıran, sorgulayan öğrenciler." },
@@ -13,6 +30,18 @@ export const purposePoints = [
   { title: "Geniş spor tesisi", text: "Basketbol, futbol, voleybol, tenis, kapalı spor salonu, yüzme havuzu." },
   { title: "İkinci yabancı dil", text: "İngilizce yanında Almanca eğitimi de veriliyor." },
   { title: "Uzun okul günü", text: "Hafta içi 07:30–19:00, Cumartesi 10:30–17:00 açık." },
+] as const;
+
+/** Extra short labels for the Hikâyemiz pinball on large screens only. */
+export const purposePointsDesktop = [
+  { title: "Yüzme havuzu" },
+  { title: "Almanca" },
+  { title: "Kapalı spor salonu" },
+  { title: "Basketbol" },
+  { title: "Tenis" },
+  { title: "Etüt imkânı" },
+  { title: "Cumartesi açık" },
+  { title: "07:30–19:00" },
 ] as const;
 
 export const historyShort = [

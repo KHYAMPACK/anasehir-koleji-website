@@ -31,14 +31,22 @@ export function Header() {
           <BtnPrimary href="/kayit-iletisim#kampus-turu">Kampüs Turu Planla</BtnPrimary>
         </div>
 
-        <button
-          type="button"
-          className="rounded-full border border-line px-3 py-2 text-sm xl:hidden"
-          aria-expanded={open}
-          onClick={() => setOpen((v) => !v)}
-        >
-          {open ? "Kapat" : "Menü"}
-        </button>
+        <div className="flex items-center gap-3 xl:hidden">
+          <a
+            href={telHref(site.phoneTel)}
+            className="text-sm font-semibold text-blue no-underline"
+          >
+            Ara {site.phoneDisplay}
+          </a>
+          <button
+            type="button"
+            className="rounded-full border border-line px-3 py-2 text-sm"
+            aria-expanded={open}
+            onClick={() => setOpen((v) => !v)}
+          >
+            {open ? "Kapat" : "Menü"}
+          </button>
+        </div>
       </div>
 
       <div className="hidden border-t border-line/70 xl:block">
