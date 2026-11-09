@@ -2,9 +2,12 @@
 
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { BookOpen, HeartHandshake, Play, Smile } from "lucide-react";
 import { BtnLine, BtnPrimary } from "./Buttons";
 import { Wordmark } from "./Logo";
+import { NeedsDataTag } from "./NeedsData";
+import { bursluluk, examDateLabel } from "@/lib/campaign";
 import { site } from "@/lib/site";
 
 const desktopSlides = [
@@ -90,6 +93,16 @@ export function HomeHero() {
       </div>
 
       <div className="tone-dark relative z-10 mx-auto w-full max-w-[1180px] px-4 pb-14 pt-24 sm:px-6 sm:pb-16 lg:px-10">
+        {bursluluk.active && (
+          <Link
+            href={bursluluk.href}
+            className="mb-5 inline-flex flex-wrap items-center gap-2 rounded-full bg-red py-1.5 pr-4 pl-1.5 text-sm font-semibold text-white no-underline shadow-[0_8px_24px_rgba(227,6,19,0.35)]"
+          >
+            <span className="rounded-full bg-white px-2.5 py-0.5 text-xs text-red">Başvurular açık</span>
+            {bursluluk.title}
+            {examDateLabel() ? <span className="text-white/85">· {examDateLabel()}</span> : <NeedsDataTag id="bursluluk-detaylari" />}
+          </Link>
+        )}
         <p className="eyebrow text-white/70">Anaşehir Koleji · 2005’ten beri</p>
         <h1 className="display mt-4 max-w-[20ch] text-[2rem] font-semibold tracking-tight sm:text-5xl lg:text-[3.2rem] lg:leading-[1.1]">
           {site.slogan}
@@ -100,8 +113,17 @@ export function HomeHero() {
         </p>
 
         <div className="mt-8 flex flex-wrap items-center gap-3">
-          <BtnPrimary href="/kayit-iletisim#kampus-turu">Kampüsü Keşfet</BtnPrimary>
-          <BtnLine href="/kayit-iletisim#on-kayit">Kayıt Görüşmesi Planla</BtnLine>
+          {bursluluk.active ? (
+            <>
+              <BtnPrimary href={bursluluk.href}>Bursluluk Sınavına Başvur</BtnPrimary>
+              <BtnLine href="/kayit-iletisim#kampus-turu">Kampüsü Keşfet</BtnLine>
+            </>
+          ) : (
+            <>
+              <BtnPrimary href="/kayit-iletisim#kampus-turu">Kampüsü Keşfet</BtnPrimary>
+              <BtnLine href="/kayit-iletisim#on-kayit">Kayıt Görüşmesi Planla</BtnLine>
+            </>
+          )}
           <span className="ml-1 flex items-center gap-2 text-sm font-semibold text-white/90">
             <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/15 ring-1 ring-white/30">
               <Play className="h-3.5 w-3.5 translate-x-[1px]" fill="currentColor" aria-hidden />

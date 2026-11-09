@@ -138,12 +138,22 @@ export const needsData = {
   "bursluluk-detaylari": {
     label: "Bursluluk sınavı bilgileri",
     ask: "Sınav tarihi, saati, yeri, hangi sınıflar katılabilir, burs oranları ve başvuru son tarihi.",
-    href: "/kayit-iletisim#bursluluk-sinavi",
+    href: "/bursluluk",
   },
   "kvkk-onam-metni": {
     label: "KVKK aydınlatma ve açık rıza metni",
     ask: "Kurumun onaylı KVKK aydınlatma metni ve bursluluk başvurusu için açık rıza (onam) metni.",
-    href: "/kayit-iletisim#bursluluk-sinavi",
+    href: "/bursluluk",
+  },
+  "bursluluk-gorsel": {
+    label: "Bursluluk kampanya görseli",
+    ask: "Bursluluk sınavı için afiş/kampanya görseli (yatay ve dikey).",
+    href: "/bursluluk",
+  },
+  "bursluluk-sss": {
+    label: "Bursluluk sınavı SSS",
+    ask: "Velilerin sık sorduğu sorular ve cevapları (sınav içeriği, sonuç açıklama, burs koşulları).",
+    href: "/bursluluk#sss",
   },
 } as const satisfies Record<string, NeedsDataEntry>;
 

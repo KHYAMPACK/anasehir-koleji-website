@@ -380,7 +380,7 @@ export default function HomePage() {
           </div>
           <div className="flex flex-wrap gap-3">
             <BtnPrimary href="/kayit-iletisim#on-kayit" size="lg">Kayıt Görüşmesi Planla</BtnPrimary>
-            <BtnLine href="/kayit-iletisim#bursluluk-sinavi" size="lg">Bursluluk Sınavı Başvurusu</BtnLine>
+            <BtnLine href="/bursluluk" size="lg">Bursluluk Sınavı Başvurusu</BtnLine>
           </div>
         </div>
       </section>

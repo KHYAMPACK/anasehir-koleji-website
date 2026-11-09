@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import { Figtree, Inter } from "next/font/google";
+import { CampaignBar } from "@/components/campaign/CampaignBar";
+import { CampaignPopup } from "@/components/campaign/CampaignPopup";
+import { MobileCampaignBar } from "@/components/campaign/MobileCampaignBar";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { WhatsAppFab } from "@/components/WhatsAppFab";
@@ -35,12 +38,15 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         >
           İçeriğe atla
         </a>
+        <CampaignBar />
         <Header />
         <main id="icerik" className="flex-1">
           {children}
         </main>
         <Footer />
         <WhatsAppFab />
+        <MobileCampaignBar />
+        <CampaignPopup />
       </body>
     </html>
   );

@@ -7,6 +7,11 @@ import { BtnPrimary } from "./Buttons";
 import { SocialLinks } from "./SocialLinks";
 import { sections } from "@/lib/nav";
 import { site, telHref } from "@/lib/site";
+import { bursluluk } from "@/lib/campaign";
+
+const cta = bursluluk.active
+  ? { href: bursluluk.href, label: "Bursluluk Başvurusu" }
+  : { href: "/kayit-iletisim#kampus-turu", label: "Kampüs Turu Planla" };
 
 export function Header() {
   const [open, setOpen] = useState(false);
@@ -31,7 +36,7 @@ export function Header() {
           >
             Ara {site.phoneDisplay}
           </a>
-          <BtnPrimary href="/kayit-iletisim#kampus-turu">Kampüs Turu Planla</BtnPrimary>
+          <BtnPrimary href={cta.href}>{cta.label}</BtnPrimary>
         </div>
 
         <div className="flex items-center gap-3 xl:hidden">
@@ -145,7 +150,7 @@ export function Header() {
                 Ara {site.phoneDisplay}
               </a>
               <SocialLinks />
-              <BtnPrimary href="/kayit-iletisim#kampus-turu">Kampüs Turu Planla</BtnPrimary>
+              <BtnPrimary href={cta.href}>{cta.label}</BtnPrimary>
             </div>
           </nav>
         </div>

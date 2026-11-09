@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { BtnLine } from "@/components/Buttons";
-import { BurslulukForm } from "@/components/BurslulukForm";
 import { LeadForm } from "@/components/LeadForm";
-import { NeedsData } from "@/components/NeedsData";
 import { PageHero, Section } from "@/components/PageHero";
 import { campuses, mapsEmbedUrl, mapsSearchUrl } from "@/lib/campuses";
 import { kayitSteps } from "@/lib/kayitIletisim";
@@ -50,10 +48,7 @@ export default function KayitIletisimPage() {
       </Section>
 
       <Section id="bursluluk-sinavi" tone="paper" eyebrow="Bursluluk Sınavı" title="Bursluluk sınavı başvurusu.">
-        <div className="grid items-start gap-6 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)]">
-          <NeedsData id="bursluluk-detaylari" />
-          <BurslulukForm />
-        </div>
+        <BtnLine href="/bursluluk">Bursluluk sınavı sayfasına gidin</BtnLine>
       </Section>
 
       <section
