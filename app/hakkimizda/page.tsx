@@ -1,16 +1,12 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { MediaPlaceholder } from "@/components/MediaPlaceholder";
+import { NeedsData } from "@/components/NeedsData";
 import { Section } from "@/components/PageHero";
-import { StoryPinball } from "@/components/StoryPinball";
-import {
-  aboutGallery,
-  aboutIntro,
-  historyShort,
-  purposePoints,
-} from "@/lib/anasehir";
+import { PartnerLogos } from "@/components/PartnerLogos";
+import { aboutGallery, aboutIntro, historyShort } from "@/lib/anasehir";
 import { whenYouEnter } from "@/lib/copy";
-import { administration, founders, generalManager } from "@/lib/people";
+import { institutionalPartners, solutionPartners } from "@/lib/partners";
+import { founders } from "@/lib/people";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = { title: "Hakkımızda" };
@@ -135,8 +131,8 @@ export default function HakkimizdaPage() {
         </div>
       </div>
 
-      <Section id="hikayemiz" tone="paper">
-        <StoryPinball title="Hikâyemiz" items={purposePoints} />
+      <Section id="hikayemiz" tone="paper" title="Hikâyemiz">
+        <NeedsData id="hikayemiz-metin" />
       </Section>
 
       <Section id="2005ten-bugune" tone="paper" title="2005'ten Bugüne">
@@ -162,7 +158,7 @@ export default function HakkimizdaPage() {
                 <h3 className="display mt-1 text-2xl font-semibold">{p.name}</h3>
               </div>
               <div className="grid gap-4 p-5 sm:grid-cols-[7rem_1fr]">
-                <MediaPlaceholder label="Portre" ratio="aspect-square" />
+                <NeedsData id="kurucu-portreleri" label="Portre" ratio="aspect-square" compact />
                 <p className="text-sm leading-relaxed text-muted">{p.shortBio}</p>
               </div>
             </article>
@@ -170,37 +166,26 @@ export default function HakkimizdaPage() {
         </div>
       </Section>
 
+      {/* The client flagged the old management list as wrong — every card is
+          a placeholder until the current list (name, title, photo) arrives. */}
       <Section id="yonetim" tone="ice" title="Yönetim">
-        <div className="grid gap-6 lg:grid-cols-[14rem_1fr]">
-          <MediaPlaceholder label="Portre" ratio="aspect-[3/4]" />
-          <div>
-            <h3 className="display text-2xl font-semibold">{generalManager.name}</h3>
-            <p className="mt-1 text-sm text-blue">{generalManager.title}</p>
-            <p className="mt-4 leading-relaxed text-muted">{generalManager.shortBio}</p>
-          </div>
-        </div>
-        <div className="mt-8 grid gap-4 md:grid-cols-3">
-          {administration.map((p) => (
-            <article key={p.name} className="rounded-[14px] bg-panel p-5 shadow-sm">
-              <p className="eyebrow">{p.title}</p>
-              <h3 className="display mt-2 text-lg font-semibold">{p.name}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-muted">{p.shortBio}</p>
+        <NeedsData id="yonetim-listesi" />
+        <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {Array.from({ length: 4 }, (_, i) => (
+            <article key={i} className="rounded-[14px] bg-panel p-4 shadow-sm">
+              <NeedsData id="yonetim-listesi" label="Portre" ratio="aspect-[3/4]" compact />
+              <p className="mt-3 text-sm font-semibold text-ink">Ad Soyad</p>
+              <p className="text-xs text-muted">Unvan</p>
             </article>
           ))}
         </div>
       </Section>
 
-      <Section tone="navy" title="Bu okula girdiğin zaman sen">
-        <ul className="grid gap-2 sm:grid-cols-2">
-          {whenYouEnter.map((w) => (
-            <li
-              key={w}
-              className="display rounded-[12px] border-l-4 border-red bg-white/8 px-5 py-6 text-xl font-semibold tracking-wide text-white sm:text-2xl"
-            >
-              {w}
-            </li>
-          ))}
-        </ul>
+      <Section id="is-birliklerimiz" tone="paper" title="İş Birliklerimiz">
+        <h3 className="display mb-4 text-xl font-semibold">Çözüm Ortaklarımız</h3>
+        <PartnerLogos partners={solutionPartners} needs="cozum-ortaklari" />
+        <h3 className="display mt-10 mb-4 text-xl font-semibold">Kurumsal İş Birliklerimiz</h3>
+        <PartnerLogos partners={institutionalPartners} needs="kurumsal-is-birlikleri" />
       </Section>
     </>
   );

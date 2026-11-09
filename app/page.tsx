@@ -23,13 +23,17 @@ import {
 } from "lucide-react";
 import { HomeHero } from "@/components/HomeHero";
 import { HomeContact } from "@/components/HomeContact";
+import { NeedsData, NeedsDataTag } from "@/components/NeedsData";
 import { BtnGhost, BtnLine, BtnPrimary } from "@/components/Buttons";
 import { Section } from "@/components/PageHero";
 import { campuses, mapsSearchUrl } from "@/lib/campuses";
 import { schoolLevels } from "@/lib/okullarimiz";
 import { programs } from "@/lib/programs";
 import { site } from "@/lib/site";
-import { founders, generalManager } from "@/lib/people";
+import { founders } from "@/lib/people";
+import { institutionalPartners, solutionPartners } from "@/lib/partners";
+import { PartnerLogos } from "@/components/PartnerLogos";
+import { SocialLinks } from "@/components/SocialLinks";
 import { ortaokulDay } from "@/lib/copy";
 import { activityBranchCount } from "@/lib/kampusYasami";
 
@@ -37,17 +41,17 @@ const stats = [
   { icon: CalendarDays, n: String(site.founded), l: "Kuruluş" },
   { icon: Users, n: site.students, l: "Öğrenci" },
   { icon: UserCheck, n: site.staff, l: "Personel" },
-  { icon: Sparkles, n: String(activityBranchCount), l: "Etkinlik Dalı" },
+  { icon: Sparkles, n: String(activityBranchCount), l: "Etkinlik Dalı", unconfirmed: true },
 ];
 
 const holisticIcons = [Smile, Dumbbell, Palette, FlaskConical];
 
 const dayIcons: Record<string, typeof BookOpen> = {
-  "07:30": DoorOpen,
-  "08:15–15:30": BookOpen,
-  "15:30–16:15": Palette,
-  "16:30": Bus,
-  "16:30–18:15": PencilLine,
+  "Erken bırakma": DoorOpen,
+  "Akademik çalışmalar": BookOpen,
+  "Etkinlik dersi": Palette,
+  Servisler: Bus,
+  "İsteğe bağlı etüt": PencilLine,
 };
 
 const campusHighlights = [
@@ -86,7 +90,7 @@ const okullarCards = [
     name: schoolLevels[3].name,
     tagline: schoolLevels[3].tagline,
     image: "/hero/hero-1.jpg",
-    alt: "Anaşehir Koleji Bağlıca kampüsü",
+    alt: "Anaşehir Koleji kampüsü",
   },
 ];
 
@@ -103,6 +107,7 @@ export default function HomePage() {
                 <s.icon className="h-4 w-4 text-blue" strokeWidth={1.75} aria-hidden />
                 <p className="display mt-2 text-xl font-semibold text-ink lg:text-2xl">{s.n}</p>
                 <p className="mt-0.5 text-xs text-muted">{s.l}</p>
+                {"unconfirmed" in s && <div className="mt-1.5"><NeedsDataTag id="etkinlik-dali-sayisi" /></div>}
               </div>
             ))}
           </div>
@@ -194,13 +199,15 @@ export default function HomePage() {
           <span className="absolute top-6 right-6 left-6 hidden h-0.5 bg-white/15 lg:block" />
           <ol className="grid gap-6 sm:grid-cols-3 lg:grid-cols-5">
             {ortaokulDay.steps.map((s) => {
-              const Icon = dayIcons[s.time] ?? Sparkles;
+              const Icon = dayIcons[s.title] ?? Sparkles;
               return (
-                <li key={s.time} className="relative flex flex-col items-center text-center">
+                <li key={s.title} className="relative flex flex-col items-center text-center">
                   <span className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-red text-white ring-4 ring-ink">
                     <Icon className="h-5 w-5" strokeWidth={1.75} aria-hidden />
                   </span>
-                  <p className="display mt-3 text-sm font-semibold text-white">{s.time}</p>
+                  <p className="display mt-3 text-sm font-semibold text-white">
+                    {s.time ?? (s.needs && <NeedsDataTag id={s.needs} />)}
+                  </p>
                   <p className="mt-1 text-sm font-semibold text-white/90">{s.title}</p>
                   <p className="mt-1 text-xs text-white/55">{s.text}</p>
                 </li>
@@ -279,7 +286,7 @@ export default function HomePage() {
           <div className="relative min-h-[16rem] lg:min-h-full">
             <Image
               src="/hero/hero-1.jpg"
-              alt="Anaşehir Koleji Bağlıca kampüsü"
+              alt="Anaşehir Koleji kampüsü"
               fill
               sizes="(max-width: 1024px) 100vw, 30vw"
               className="object-cover"
@@ -295,11 +302,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      <Section tone="paper" eyebrow="Yönetim" title="Bir okulu bina değil, insanları özel kılar.">
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {[...founders, generalManager].map((p) => (
+      <Section tone="paper" eyebrow="Kurucularımız" title="Bir okulu bina değil, insanları özel kılar.">
+        <div className="grid gap-4 sm:grid-cols-2">
+          {founders.map((p) => (
             <article key={p.name} className="flex gap-4 rounded-[14px] bg-blush p-5">
-              <div className="grid-paper h-16 w-16 shrink-0 rounded-full border border-dashed border-line bg-panel-2" />
+              <NeedsData id="kurucu-portreleri" label="Portre" ratio="aspect-square w-24 shrink-0 !p-2" compact />
               <div className="min-w-0">
                 <h3 className="display text-base font-semibold">{p.name}</h3>
                 <p className="text-xs text-blue">{p.title}</p>
@@ -309,7 +316,31 @@ export default function HomePage() {
           ))}
         </div>
         <div className="mt-6">
-          <BtnLine href="/hakkimizda#yonetim" size="lg">Yönetimi Tanıyın</BtnLine>
+          <BtnLine href="/hakkimizda#kurucularimiz" size="lg">Bizi Tanıyın</BtnLine>
+        </div>
+      </Section>
+
+      <Section id="sosyal-medya" tone="ice" eyebrow="Sosyal Medya" title="Anaşehir'i takip edin.">
+        <div className="mb-6 flex flex-wrap items-center gap-4">
+          <SocialLinks tone="light" />
+          <a href={site.social.instagram} target="_blank" rel="noreferrer" className="text-sm font-semibold text-blue">
+            @anasehirokullari →
+          </a>
+        </div>
+        <NeedsData id="instagram-akisi" />
+        <ul className="mt-3 grid grid-cols-3 gap-3 lg:grid-cols-6">
+          {Array.from({ length: 6 }, (_, i) => (
+            <li key={i}>
+              <NeedsData id="instagram-akisi" label={`Gönderi ${i + 1}`} ratio="aspect-square" compact />
+            </li>
+          ))}
+        </ul>
+      </Section>
+
+      <Section tone="paper" eyebrow="İş Birliklerimiz" title="Çözüm ortaklarımız ve kurumsal iş birliklerimiz.">
+        <PartnerLogos partners={[...solutionPartners, ...institutionalPartners]} needs="cozum-ortaklari" />
+        <div className="mt-6">
+          <BtnLine href="/hakkimizda#is-birliklerimiz" size="lg">Tüm İş Birlikleri</BtnLine>
         </div>
       </Section>
 
@@ -349,7 +380,7 @@ export default function HomePage() {
           </div>
           <div className="flex flex-wrap gap-3">
             <BtnPrimary href="/kayit-iletisim#on-kayit" size="lg">Kayıt Görüşmesi Planla</BtnPrimary>
-            <BtnLine href="/kayit-iletisim#bize-ulasin" size="lg">Bize Ulaşın</BtnLine>
+            <BtnLine href="/kayit-iletisim#bursluluk-sinavi" size="lg">Bursluluk Sınavı Başvurusu</BtnLine>
           </div>
         </div>
       </section>

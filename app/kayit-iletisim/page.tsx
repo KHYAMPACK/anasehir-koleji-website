@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { BtnLine } from "@/components/Buttons";
+import { BurslulukForm } from "@/components/BurslulukForm";
 import { LeadForm } from "@/components/LeadForm";
+import { NeedsData } from "@/components/NeedsData";
 import { PageHero, Section } from "@/components/PageHero";
 import { campuses, mapsEmbedUrl, mapsSearchUrl } from "@/lib/campuses";
 import { kayitSteps } from "@/lib/kayitIletisim";
@@ -43,8 +45,15 @@ export default function KayitIletisimPage() {
         <BtnLine href="#bize-ulasin">Formu doldurun</BtnLine>
       </Section>
 
-      <Section id="kampus-turu" tone="ice" eyebrow="Kampüs Turu" title="Kampüsü yerinde görün." lead="Randevu alın, Bağlıca kampüsünü birlikte gezelim.">
+      <Section id="kampus-turu" tone="ice" eyebrow="Kampüs Turu" title="Kampüsü yerinde görün." lead="Randevu alın, kampüsümüzü birlikte gezelim.">
         <BtnLine href="#bize-ulasin">Randevu isteyin</BtnLine>
+      </Section>
+
+      <Section id="bursluluk-sinavi" tone="paper" eyebrow="Bursluluk Sınavı" title="Bursluluk sınavı başvurusu.">
+        <div className="grid items-start gap-6 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)]">
+          <NeedsData id="bursluluk-detaylari" />
+          <BurslulukForm />
+        </div>
       </Section>
 
       <section
@@ -127,10 +136,10 @@ export default function KayitIletisimPage() {
         </div>
       </Section>
 
-      <Section tone="navy" eyebrow="Harita" title={`Bağlıca Koleji, ${featured.address}`}>
+      <Section tone="navy" eyebrow="Harita" title={`${featured.name}, ${featured.address}`}>
         <div className="overflow-hidden rounded-[14px] ring-1 ring-white/15">
           <iframe
-            title="Anaşehir Koleji Bağlıca harita"
+            title="Anaşehir Koleji harita"
             src={mapsEmbedUrl(featured.mapsQuery)}
             className="h-80 w-full border-0"
             loading="lazy"

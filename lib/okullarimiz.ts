@@ -1,6 +1,6 @@
 export const etutPoints = [
   { title: "İsteğe Bağlı", text: "Zorunlu değil, ücrete tabidir." },
-  { title: "16:30–18:15", text: "Dersler bitince başlar." },
+  { title: "16:50–18:20", text: "Dersler bitince başlar." },
   { title: "Ödev Desteği", text: "Günlük ödev ve eksik konular çalışılır." },
   { title: "Servis İmkânı", text: "Etüde kalan öğrenciye servis var." },
 ] as const;

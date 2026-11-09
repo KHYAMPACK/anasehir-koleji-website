@@ -21,8 +21,6 @@ export const site = {
   },
   portals: {
     k12: "https://giris.k12net.com",
-    vezne: "https://www.param.com.tr",
-    param: "https://www.param.com.tr",
     canadianCollege: "https://canada-english.com/tr/smrt",
     ankaraEgitim: "https://www.ankaraegitimplatformu.com",
   },

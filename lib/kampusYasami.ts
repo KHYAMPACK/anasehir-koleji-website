@@ -49,7 +49,6 @@ export const socialResponsibility = [
   { title: "Kulüp Çalışmaları", text: "Öğretmen rehberliğinde yürütülen topluluklar." },
   { title: "Topluma Hizmet", text: "Sorumluluk bilinci kazandıran etkinlikler." },
   { title: "Kendini Keşfetme", text: "Güven, uyum ve iş birliği becerileri." },
-  { title: "K12'de Paylaşım", text: "Tüm etkinlikler veliyle paylaşılır." },
 ] as const;
 
 export const safetyHealth = [
@@ -57,3 +56,23 @@ export const safetyHealth = [
   { title: "Servis Öğretmeni", text: "Her araçta öğretmen ve iletişim hattı." },
   { title: "Güvenli Giriş-Çıkış", text: "Öğrenci kontrollü teslim alınır ve bırakılır." },
 ] as const;
+
+/**
+ * Campus areas the school asked to show with photos (photos to be shot by
+ * the school). Set `photo` to a /public path when it arrives — until then
+ * the slot renders a "veri bekleniyor" placeholder.
+ */
+export const facilities: { name: string; photo?: string }[] = [
+  { name: "Laboratuvar" },
+  { name: "Spor Salonu" },
+  { name: "Yemekhane" },
+  { name: "Konferans Salonu" },
+  { name: "Yüzme Havuzu" },
+  { name: "Halı Saha" },
+  { name: "Bahçe Alanları" },
+  { name: "Görsel Sanatlar Atölyesi" },
+  { name: "Müzik Sınıfı" },
+  { name: "Lego Sınıfı" },
+  { name: "Anaşehir Radyo" },
+  { name: "Okul Öncesi" },
+];

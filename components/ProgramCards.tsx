@@ -44,13 +44,3 @@ export function ProgramCards({
     </div>
   );
 }
-
-/** Honest placeholder for pages with no verified content yet — never invented facts. */
-export function ComingSoon({ note }: { note?: string }) {
-  return (
-    <div className="rounded-[14px] border border-dashed border-line bg-panel-2/60 p-6 text-sm text-muted">
-      <span className="display block text-ink">İçerik güncellenecek</span>
-      {note ?? "Bu bölümün metni okuldan gelen bilgilerle güncellenecek."}
-    </div>
-  );
-}

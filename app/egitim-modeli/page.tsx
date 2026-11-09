@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { PageHero, Section } from "@/components/PageHero";
-import { ComingSoon, ProgramCards } from "@/components/ProgramCards";
+import { NeedsData } from "@/components/NeedsData";
+import { ProgramCards } from "@/components/ProgramCards";
 import { akademikTakip, pdr } from "@/lib/egitimModeli";
 import { programs } from "@/lib/programs";
 import { sections } from "@/lib/nav";
@@ -32,6 +33,14 @@ export default function EgitimModeliPage() {
         <ProgramCards points={programs.holistic.points} />
       </Section>
 
+      <Section id="egitim-yaklasimi" tone="paper" eyebrow="Eğitim Yaklaşımımız" title="Eğitim yaklaşımımız.">
+        <NeedsData id="egitim-yaklasimi-metin" />
+      </Section>
+
+      <Section id="akademik-sistem" tone="ice" eyebrow="Akademik Sistem" title="Akademik sistemimiz.">
+        <NeedsData id="akademik-sistem-metin" />
+      </Section>
+
       <Section id="akademik-takip" tone="paper" eyebrow="Akademik Takip" title="Süreç odaklı, şeffaf takip." lead={akademikTakip.lead}>
         <ProgramCards points={akademikTakip.points} />
       </Section>
@@ -51,7 +60,7 @@ export default function EgitimModeliPage() {
       </Section>
 
       <Section id="olcme-degerlendirme" tone="paper" eyebrow="Ölçme-Değerlendirme" title="Süreç odaklı ölçme ve değerlendirme.">
-        <ComingSoon />
+        <NeedsData id="olcme-degerlendirme-metin" />
       </Section>
     </>
   );

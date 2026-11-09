@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
+import Image from "next/image";
+import { NeedsData, NeedsDataTag } from "@/components/NeedsData";
 import { BtnLine } from "@/components/Buttons";
 import { PageHero, Section } from "@/components/PageHero";
-import { ComingSoon, ProgramCards } from "@/components/ProgramCards";
+import { ProgramCards } from "@/components/ProgramCards";
 import {
   activityRulesShort,
+  facilities,
   kulupBranches,
   safetyHealth,
   sanatBranches,
@@ -34,7 +37,7 @@ export default function KampusYasamiPage() {
     <>
       <PageHero
         eyebrow="Kampüs Yaşamı"
-        title="25 dal, okulun hediyesi."
+        title="Etkinlik dalları, okulun hediyesi."
         lead="Spor, sanat ve kulüp etkinlikleri — hepsi ücretsiz."
       />
 
@@ -48,7 +51,29 @@ export default function KampusYasamiPage() {
         </div>
       </nav>
 
+      <Section id="kampusumuz" tone="paper" eyebrow="Kampüsümüz" title="Öğrenme alanlarımız.">
+        <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+          {facilities.map((f) => (
+            <li key={f.name}>
+              {f.photo ? (
+                <figure>
+                  <div className="relative aspect-[4/3] overflow-hidden rounded-[14px] bg-panel-2">
+                    <Image src={f.photo} alt={`Anaşehir Koleji ${f.name}`} fill sizes="(max-width: 640px) 50vw, 25vw" className="object-cover" />
+                  </div>
+                  <figcaption className="mt-2 text-sm font-semibold text-ink">{f.name}</figcaption>
+                </figure>
+              ) : (
+                <NeedsData id="kampus-fotograflari" label={`${f.name} — fotoğraf`} ratio="aspect-[4/3]" compact />
+              )}
+            </li>
+          ))}
+        </ul>
+      </Section>
+
       <Section tone="ice">
+        <div className="mb-4">
+          <NeedsDataTag id="etkinlik-dali-sayisi" />
+        </div>
         <ProgramCards points={activityRulesShort} />
       </Section>
 
@@ -80,7 +105,7 @@ export default function KampusYasamiPage() {
       <Section id="guvenlik-saglik" tone="paper" eyebrow="Güvenlik & Sağlık" title="Güvenli servis, kontrollü kampüs." lead="Kurum araçları, servis öğretmeni ve kontrollü giriş-çıkış.">
         <ProgramCards points={safetyHealth} />
         <div className="mt-6">
-          <ComingSoon note="Revir ve sağlık personeli bilgileri okuldan gelen bilgilerle eklenecek." />
+          <NeedsData id="saglik-bilgileri" />
         </div>
       </Section>
     </>

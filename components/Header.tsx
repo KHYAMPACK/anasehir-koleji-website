@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { Logo } from "./Logo";
 import { BtnPrimary } from "./Buttons";
+import { SocialLinks } from "./SocialLinks";
 import { sections } from "@/lib/nav";
 import { site, telHref } from "@/lib/site";
 
@@ -15,7 +16,9 @@ export function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-line/80 bg-panel/90 backdrop-blur-md">
       <div className="mx-auto flex h-[var(--header-row1)] max-w-[1560px] items-center justify-between gap-4 px-4 sm:px-6 lg:px-10 xl:grid xl:grid-cols-[1fr_auto_1fr]">
-        <span aria-hidden className="hidden xl:block" />
+        <div className="hidden xl:block">
+          <SocialLinks showPending={false} />
+        </div>
 
         <div className="xl:justify-self-center">
           <Logo />
@@ -141,6 +144,7 @@ export function Header() {
               <a href={telHref(site.phoneTel)} className="font-semibold text-blue">
                 Ara {site.phoneDisplay}
               </a>
+              <SocialLinks />
               <BtnPrimary href="/kayit-iletisim#kampus-turu">Kampüs Turu Planla</BtnPrimary>
             </div>
           </nav>

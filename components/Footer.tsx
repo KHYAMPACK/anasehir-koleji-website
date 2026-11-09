@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Logo } from "./Logo";
+import { SocialLinks } from "./SocialLinks";
 import { site, telHref } from "@/lib/site";
 import { campuses } from "@/lib/campuses";
 import { sections, utilityLinks } from "@/lib/nav";
@@ -80,16 +81,6 @@ export function Footer() {
               </a>
             </li>
             <li>
-              <a href={site.portals.vezne} target="_blank" rel="noreferrer">
-                Online Vezne
-              </a>
-            </li>
-            <li>
-              <a href={site.portals.param} target="_blank" rel="noreferrer">
-                PARAM
-              </a>
-            </li>
-            <li>
               <a href={site.portals.canadianCollege} target="_blank" rel="noreferrer">
                 Canadian College / Smrt
               </a>
@@ -100,16 +91,8 @@ export function Footer() {
               </a>
             </li>
           </ul>
-          <div className="mt-6 flex gap-4 text-sm">
-            <a href={site.social.instagram} target="_blank" rel="noreferrer">
-              Instagram
-            </a>
-            <a href={site.social.facebook} target="_blank" rel="noreferrer">
-              Facebook
-            </a>
-            <a href={site.social.youtube} target="_blank" rel="noreferrer">
-              YouTube
-            </a>
+          <div className="mt-6">
+            <SocialLinks tone="dark" />
           </div>
         </div>
       </div>

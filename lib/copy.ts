@@ -1,3 +1,5 @@
+import type { NeedsDataId } from "./needsData";
+
 export const aboutPurpose = [
   "Okullarımızın amacı Atatürk ilke ve inkılaplarına bağlı, cumhuriyete inanan, nitelikli ve başarılı bireyler yetişmek için en iyi eğitimi vermektir. Bu amaç doğrultusunda donanımlı, başarılı, azimli, sanatsal-sportif ve kültürel etkinliklerden en az biriyle yakından ilgilenen, özgüveni yüksek, araştıran, sorgulayan, insanlarla rahat iletişim kurabilen, hakkını savunan, cumhuriyete inanan ve maddi-manevi değerlere bağlı bireyler yetiştirmeyi kendine görev edinen bir kurumdur. Kurucular, öğretmenler ve tüm personel bu amaç ve hedef doğrultusunda işini en iyi şekilde yapmaktadır.",
   "Anaşehir Okulları’nda nitelikli, iletişimi güçlü ve başarılı öğrenciler yetiştirmek için öğrencilere okul derslerinin yanında pek çok sanatsal, kültürel ve sportif eğitimler verilmektedir. Öğrencilerimizin araştıran, sorgulayan, meraklı, özgüveni yüksek, akademik anlamda başarılı bireyler olmasının yanında, İngilizceyi en etkili şekilde kullanan, en az bir müzik aleti çalabilen, en az bir sportif faaliyetle ilgilenen sosyal bireyler olarak yetiştirilmesine önem verilmektedir.",
@@ -84,15 +86,23 @@ export const parentInfo = {
     "Anaşehir Velisi, öğrenci başarısını değerlendirirken sürekli yüksek not beklentisi yerine, onun öğrenme sürecindeki gayret ve gelişimini görür, öğrencinin zamanını doğru ve etkili kullanması konusunda yönlendirir. Öğrenciye uygun çalışma ortamı yaratarak, öğrencinin çabalarını destekler, fakat hiçbir şekilde öğrencinin ödevini, çalışmasını onun yerine yapmaz. Öğrencinin okula zamanında ve düzenli gelmesini sağlar, devamsızlık yapmasına engel olur, öğrencinin okula gelemediği günler okul idaresini bilgilendirir, öğrencinin akademik ve sosyal gelişimi açısından sürekli okul idaresi ve rehberlik birimi ile işbirliği içinde olur. Okul duyurularını takip ederek üzerine düşen sorumlulukları yerine getirir. Gerekli toplantılara ve görüşmelere zaman yaratarak katılır. Öğrencinin gelişimi için yapıcı bir tutum sergiler.",
 };
 
+export type DayStep = {
+  /** null = time not confirmed yet; `needs` names the missing data. */
+  time: string | null;
+  needs?: NeedsDataId;
+  title: string;
+  text: string;
+};
+
 export const ortaokulDay = {
-  lead: "Okulumuzda program sabah 08:15–16:30 arasındadır. İşe erken giden velilerimiz 07:30’dan itibaren çocuklarını okulumuza bırakabilmektedir.",
+  lead: "Okulumuzda ders saatleri 08:30–16:40 arasındadır. İşe erken giden velilerimiz 07:30’dan itibaren çocuklarını okulumuza bırakabilmektedir.",
   steps: [
     { time: "07:30", title: "Erken bırakma", text: "Veliler çocuklarını 07:30’dan itibaren okula bırakabilir." },
-    { time: "08:15–15:30", title: "Akademik çalışmalar", text: "Günün akademik dersleri bu aralıkta yapılır." },
-    { time: "15:30–16:15", title: "Etkinlik dersi", text: "Spor, kültür ve sanat etkinliklerinden seçilen dal." },
-    { time: "16:30", title: "Servisler", text: "Servislerimiz 16:30’da hareket eder." },
-    { time: "16:30–18:15", title: "İsteğe bağlı etüt", text: "Etüt ücretlidir. Etüde kalan öğrencilerin servis saati 18:20’dir." },
-  ],
+    { time: "08:30–16:40", title: "Akademik çalışmalar", text: "Günün akademik dersleri bu aralıkta yapılır." },
+    { time: null, needs: "etkinlik-dersi-saati", title: "Etkinlik dersi", text: "Spor, kültür ve sanat etkinliklerinden seçilen dal." },
+    { time: null, needs: "servis-saatleri", title: "Servisler", text: "Okul çıkışı servis kalkışı." },
+    { time: "16:50–18:20", title: "İsteğe bağlı etüt", text: "Etüt isteğe bağlıdır ve ücretlidir." },
+  ] as DayStep[],
   meals:
     "Okulumuzda sabah kahvaltısı, öğle yemeği ve ikindi kahvaltısı olmak üzere üç öğün yemek çıkar. Kahvaltılar isteğe bağlıdır, öğle yemeğinin alınması zorunludur.",
   languages:
@@ -113,7 +123,7 @@ export const ortaokulLanguage = [
 
 export const etutCopy = [
   "Anaşehir Koleji’nde etüt programı; derslerin ve etkinlik derslerinin bitmesinin ardından başlar. Etüt programımız isteğe bağlıdır ve ücrete tabidir. Etüte kalan öğrencilerimiz için servis imkânı vardır.",
-  "Etütler 16:30–18:15 arasında yapılır. Etüt programında günlük ödevler yaptırılır, öğrencilerin takıldıkları, anlamadıkları konular anlatılır. Ödevlerini kendisinin yapması sağlanır. Çalışmalar bireysel ve grup çalışmaları şeklinde yürütülür. Etüte kalan öğrencilerimiz evlerine ödevleri tamamlanmış şekilde döner.",
+  "Etütler 16:50–18:20 arasında yapılır. Etüt programında günlük ödevler yaptırılır, öğrencilerin takıldıkları, anlamadıkları konular anlatılır. Ödevlerini kendisinin yapması sağlanır. Çalışmalar bireysel ve grup çalışmaları şeklinde yürütülür. Etüte kalan öğrencilerimiz evlerine ödevleri tamamlanmış şekilde döner.",
 ];
 
 export const socialActivities = [
@@ -172,7 +182,7 @@ export const faqs = [
   },
   {
     q: "Ortaokulda bir gün nasıl akar?",
-    a: "Akademik çalışmalar 08:15–15:30, etkinlik dersi 15:30–16:15, servisler 16:30. İsteğe bağlı ücretli etüt 16:30–18:15’tir; etüt servisi 18:20’de hareket eder. Erken bırakma 07:30’dan itibaren mümkündür.",
+    a: "Ders saatleri 08:30–16:40’tır. İsteğe bağlı ücretli etüt 16:50–18:20 arasındadır. Erken bırakma 07:30’dan itibaren mümkündür.",
   },
   {
     q: "Etüt zorunlu mu?",
@@ -196,10 +206,10 @@ export const faqs = [
   },
   {
     q: "Kaç kampüs var?",
-    a: "Üç bina: Anaşehir Koleji Bağlıca (Etimesgut Bul. No:89), Bağlıca Anaşehir Anaokulu (Mert Cad. No:16) ve Ankana Kids (Türk Kızılayı Cad. No:17).",
+    a: "Üç bina: Anaşehir Koleji (Etimesgut Bul. No:89), Bağlıca Anaşehir Anaokulu (Mert Cad. No:16) ve Ankana Kids (Türk Kızılayı Cad. No:17).",
   },
   {
     q: "Yüzme havuzu hangi kampüste?",
-    a: "Yüzme havuzu Bağlıca Koleji kampüsündedir. Tüm okullarımızın öğrencileri faydalanır.",
+    a: "Yüzme havuzu Anaşehir Koleji binasındadır. Tüm okullarımızın öğrencileri faydalanır.",
   },
 ];

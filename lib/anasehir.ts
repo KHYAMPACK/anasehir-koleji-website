@@ -15,7 +15,7 @@ export const missionShort =
   "Nitelikli bireyler yetiştiren, örnek gösterilen ve öncelikli tercih edilen öncü bir kurum olmak.";
 
 export const aboutGallery = [
-  { src: "/hero/hero-1.jpg", alt: "Anaşehir Koleji Bağlıca kampüsü" },
+  { src: "/hero/hero-1.jpg", alt: "Anaşehir Koleji kampüsü" },
   { src: "/hero/hero-2.jpg", alt: "Anaşehir Koleji öğrencileri" },
   { src: "/hero/hero-3.jpg", alt: "Anaşehir Koleji kampüs yaşamı" },
   { src: "/hero/hero-mobile-2.jpg", alt: "Anaşehir Koleji okul binası" },

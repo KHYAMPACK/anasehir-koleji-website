@@ -16,12 +16,15 @@ export const sections: NavSection[] = [
       { name: "2005'ten Bugüne", href: "/hakkimizda#2005ten-bugune" },
       { name: "Kurucularımız", href: "/hakkimizda#kurucularimiz" },
       { name: "Yönetim", href: "/hakkimizda#yonetim" },
+      { name: "İş Birliklerimiz", href: "/hakkimizda#is-birliklerimiz" },
     ],
   },
   {
     name: "Eğitim Modeli",
     href: "/egitim-modeli",
     items: [
+      { name: "Eğitim Yaklaşımımız", href: "/egitim-modeli#egitim-yaklasimi" },
+      { name: "Akademik Sistem", href: "/egitim-modeli#akademik-sistem" },
       { name: "Akademik Takip", href: "/egitim-modeli#akademik-takip" },
       { name: "Yabancı Diller", href: "/egitim-modeli#yabanci-diller" },
       { name: "Future Skills", href: "/egitim-modeli#future-skills" },
@@ -53,6 +56,7 @@ export const sections: NavSection[] = [
     name: "Kampüs Yaşamı",
     href: "/kampus-yasami",
     items: [
+      { name: "Kampüsümüz", href: "/kampus-yasami#kampusumuz" },
       { name: "Spor", href: "/kampus-yasami#spor" },
       { name: "Sanat", href: "/kampus-yasami#sanat" },
       { name: "Kulüpler", href: "/kampus-yasami#kulupler" },
@@ -77,6 +81,7 @@ export const sections: NavSection[] = [
       { name: "Kayıt Süreci", href: "/kayit-iletisim#kayit-sureci" },
       { name: "Ücret Bilgilendirme Talebi", href: "/kayit-iletisim#ucret-bilgilendirme" },
       { name: "Kampüs Turu", href: "/kayit-iletisim#kampus-turu" },
+      { name: "Bursluluk Sınavı", href: "/kayit-iletisim#bursluluk-sinavi" },
       { name: "Bize Ulaşın", href: "/kayit-iletisim#bize-ulasin" },
     ],
   },

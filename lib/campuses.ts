@@ -11,7 +11,7 @@ export type Campus = {
 export const campuses: Campus[] = [
   {
     id: "baglica-koleji",
-    name: "Anaşehir Koleji Bağlıca Kampüsü",
+    name: "Anaşehir Koleji",
     levels: "Anaokulu · İlkokul · Ortaokul",
     address: "Bağlıca Mah. Etimesgut Bul. No:89, 06790 Etimesgut/Ankara",
     phones: [

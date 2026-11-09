@@ -8,14 +8,14 @@ import { Wordmark } from "./Logo";
 import { site } from "@/lib/site";
 
 const desktopSlides = [
-  { src: "/hero/hero-1.jpg", alt: "Anaşehir Koleji Bağlıca kampüsü — kuş bakışı" },
+  { src: "/hero/hero-1.jpg", alt: "Anaşehir Koleji kampüsü — kuş bakışı" },
   { src: "/hero/hero-2.jpg", alt: "Anaşehir Koleji öğrencileri kampüste" },
   { src: "/hero/hero-3.jpg", alt: "Anaşehir Koleji öğrencileri" },
 ];
 
 const mobileSlides = [
   { src: "/hero/hero-mobile-1.jpg", alt: "Anaşehir Koleji öğrencileri kampüste" },
-  { src: "/hero/hero-mobile-2.jpg", alt: "Anaşehir Koleji Bağlıca kampüsü — kuş bakışı" },
+  { src: "/hero/hero-mobile-2.jpg", alt: "Anaşehir Koleji kampüsü — kuş bakışı" },
 ];
 
 const values = [

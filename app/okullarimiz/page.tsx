@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { BtnLine } from "@/components/Buttons";
 import { PageHero, Section } from "@/components/PageHero";
-import { ComingSoon, ProgramCards } from "@/components/ProgramCards";
+import { NeedsData, NeedsDataTag } from "@/components/NeedsData";
+import { ProgramCards } from "@/components/ProgramCards";
 import { etutPoints } from "@/lib/okullarimiz";
 import { ortaokulDay } from "@/lib/copy";
 import { programs } from "@/lib/programs";
@@ -31,7 +32,10 @@ export default function OkullarimizPage() {
       </nav>
 
       <Section id="anaokulu" tone="ice" eyebrow="Anaokulu" title="Oyunla başlayan öğrenme." lead="Kreş ve anaokulu kademesi; güvenli, oyun temelli bir ilk adım.">
-        <ComingSoon />
+        <div className="grid gap-4 lg:grid-cols-[1fr_22rem]">
+          <NeedsData id="anaokulu-icerik" />
+          <NeedsData id="kampus-fotograflari" label="Okul öncesi — fotoğraf" ratio="aspect-[4/3]" compact />
+        </div>
       </Section>
 
       <Section id="ilkokul" tone="paper" eyebrow="İlkokul" title={programs.firstGrade.title} lead={programs.firstGrade.lead}>
@@ -46,10 +50,12 @@ export default function OkullarimizPage() {
           <ol className="relative space-y-0 pl-2">
             <span className="absolute top-3 bottom-3 left-[1.15rem] w-0.5 bg-red" />
             {ortaokulDay.steps.map((s) => (
-              <li key={s.time} className="relative flex gap-4 pb-6">
+              <li key={s.title} className="relative flex gap-4 pb-6">
                 <span className="relative z-10 mt-1 h-4 w-4 shrink-0 rounded-full bg-red ring-4 ring-canvas" />
                 <div className="flex-1 rounded-[14px] bg-panel p-4 shadow-sm">
-                  <p className="display text-sm font-semibold text-red">{s.time}</p>
+                  <p className="display text-sm font-semibold text-red">
+                    {s.time ?? (s.needs && <NeedsDataTag id={s.needs} />)}
+                  </p>
                   <h3 className="mt-1 font-semibold">{s.title}</h3>
                   <p className="mt-1 text-sm text-muted">{s.text}</p>
                 </div>

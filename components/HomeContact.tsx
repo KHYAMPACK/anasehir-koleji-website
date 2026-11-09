@@ -9,7 +9,7 @@ export function HomeContact() {
     <section aria-label="İletişim">
       <div className="overflow-hidden border-y border-line bg-panel">
         <iframe
-          title="Anaşehir Koleji Bağlıca harita"
+          title="Anaşehir Koleji harita"
           src={mapsEmbedUrl(featured.mapsQuery)}
           className="h-[min(22rem,50vh)] w-full border-0 sm:h-80"
           loading="lazy"
