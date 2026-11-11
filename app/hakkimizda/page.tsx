@@ -128,8 +128,10 @@ export default function AnasehiriKesfedinPage() {
         </div>
 
         {/* Milestones */}
-        <ol className="relative mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <ol className="relative mt-16 grid gap-x-4 gap-y-10 sm:grid-cols-2 sm:gap-y-9 lg:grid-cols-4">
+          {/* Desktop: horizontal rail. Phone: vertical rail linking the year badges. */}
           <span className="absolute top-0 right-4 left-4 hidden h-0.5 bg-red/30 lg:block" aria-hidden />
+          <span className="absolute top-0 bottom-6 left-[2.35rem] w-0.5 bg-red/25 sm:hidden" aria-hidden />
           {historyShort.map((item) => (
             <li key={item.year} className="relative rounded-[14px] bg-panel p-5 pt-9 shadow-sm">
               <span className="display absolute -top-3 left-5 rounded-full bg-red px-3 py-1 text-sm font-semibold text-white">

@@ -315,11 +315,14 @@ export default function HomePage() {
               <BtnLine href="/hakkimizda" size="lg">Anaşehir&apos;i Keşfedin</BtnLine>
             </div>
           </div>
-          <ol className="grid grid-cols-2 gap-3">
+          <ol className="grid gap-4 sm:grid-cols-2 sm:gap-3">
             {historyShort.map((h) => (
-              <li key={h.year} className="rounded-[14px] bg-blush p-4">
-                <span className="display text-xl font-semibold text-red">{h.year}</span>
-                <p className="mt-1 text-xs leading-relaxed text-muted">{h.text}</p>
+              <li
+                key={h.year}
+                className="flex items-baseline gap-4 rounded-[14px] bg-blush px-5 py-4 sm:block sm:p-4"
+              >
+                <span className="display w-14 shrink-0 text-xl font-semibold text-red sm:w-auto">{h.year}</span>
+                <p className="text-sm leading-relaxed text-muted sm:mt-1 sm:text-xs">{h.text}</p>
               </li>
             ))}
           </ol>
