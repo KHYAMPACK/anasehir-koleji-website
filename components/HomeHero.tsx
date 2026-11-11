@@ -104,13 +104,14 @@ export function HomeHero() {
           </Link>
         )}
         <p className="eyebrow text-white/70">Anaşehir Koleji · 2005’ten beri</p>
-        <h1 className="display mt-4 max-w-[20ch] text-[2rem] font-semibold tracking-tight sm:text-5xl lg:text-[3.2rem] lg:leading-[1.1]">
-          {site.slogan}
+        <h1 className="display mt-4 text-[2rem] leading-[1.12] font-semibold tracking-tight sm:text-5xl lg:text-[3.3rem] lg:leading-[1.08]">
+          {site.heroHeadline.map((line) => (
+            <span key={line} className="block">
+              {line}
+            </span>
+          ))}
         </h1>
-        <p className="mt-5 max-w-[46ch] text-white/80 sm:text-lg">
-          Etimesgut Bağlıca’da kreşten ortaokula; akademik olarak güçlü, kendine güvenen ve
-          araştıran bireyler yetiştiriyoruz.
-        </p>
+        <p className="display mt-4 text-2xl text-blue italic sm:text-3xl">{site.slogan}</p>
 
         <div className="mt-8 flex flex-wrap items-center gap-3">
           {bursluluk.active ? (

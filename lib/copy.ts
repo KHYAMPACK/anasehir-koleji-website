@@ -8,7 +8,7 @@ export const aboutPurpose = [
   "Anaşehir Okulları; ilkokul ve ortaokul bölümlerinde günde 9 saat ders yapılır. Her sınıfın hergün bir etkinlik dersi bulunmaktadır. Etüt almak isteyen öğrenciler derslerin bitiminde; isteğe bağlı ve ücrete tabi etüt alabilmektedirler.",
   "Bağlıca kampüsümüzde basketbol, futbol, voleybol, tenis, futbol, halı saha, kapalı spor salonu ve yüzme havuzu bulunmaktadır. Yüzme havuzumuzdan tüm okullarımızın öğrencileri faydalanmaktadır.",
   "İngilizce eğitiminin yanında ikinci yabancı dil olarak Almanca eğitimi de verilmektedir. Yabancı dil ders eğitimleri Türk ve yabancı öğretmenler tarafından karma olarak verilmektedir.",
-  "Okullarımızın tamamı hafta içi her gün 07:30’da açılır, 19:00’da kapanır. Okullarımızın hafta sonu Cumartesi günleri 10:30–17:00 arasında açıktır.",
+  "Okullarımızın tamamı hafta içi her gün 07:30’da açılır, 18:30’da kapanır. Okullarımızın hafta sonu Cumartesi günleri 10:30–17:00 arasında açıktır.",
 ];
 
 export const ataturkMission =

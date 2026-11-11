@@ -1,6 +1,8 @@
 export const site = {
   name: "Anaşehir Koleji",
   slogan: "Gelecek Burada Başlar!",
+  /** Homepage opening headline (client-supplied). */
+  heroHeadline: ["21 Yıllık Eğitim Deneyimi.", "Geleceğe Güçlü Bir Başlangıç."],
   tagline: "Bağlıca'nın ilk özel okulu",
   email: "info@anasehirkoleji.com",
   web: "www.anasehirkoleji.com",
@@ -9,11 +11,13 @@ export const site = {
   admissionsPhoneDisplay: "0507 408 02 78",
   admissionsPhoneTel: "05074080278",
   whatsapp: "904446961",
-  hoursWeekday: "07:30–19:00",
+  hoursWeekday: "07:30–18:30",
   hoursSaturday: "10:30–17:00",
   founded: 2005,
-  students: "1000+",
-  staff: "100+",
+  /** Cumulative since 2005 ("geçmişten bugüne"), not current enrolment. */
+  students: "2500+",
+  /** "Eğitim paydaşı" — the client's term. */
+  staff: "250+",
   social: {
     youtube: "https://www.youtube.com/channel/UCLblj2b4UFscwpOXObKX6Xw",
     instagram: "https://www.instagram.com/anasehirokullari/",

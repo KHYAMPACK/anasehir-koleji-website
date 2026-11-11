@@ -15,21 +15,6 @@ export type NeedsDataEntry = {
 };
 
 export const needsData = {
-  "hikayemiz-metin": {
-    label: "Hikâyemiz metni",
-    ask: "Okulun kuruluş hikâyesi — kısa, birkaç cümlelik metin.",
-    href: "/hakkimizda#hikayemiz",
-  },
-  "kurucu-portreleri": {
-    label: "Kurucu portreleri",
-    ask: "İlker Çekinmez ve Füsun Çekinmez'in güncel portre fotoğrafları.",
-    href: "/hakkimizda#kurucularimiz",
-  },
-  "yonetim-listesi": {
-    label: "Güncel yönetim listesi",
-    ask: "Yönetimdeki herkesin adı, unvanı, tek cümlelik özgeçmişi ve portre fotoğrafı.",
-    href: "/hakkimizda#yonetim",
-  },
   "cozum-ortaklari": {
     label: "Çözüm ortaklarının logoları",
     ask: "Devam edilen ve yeni çözüm ortaklarının listesi, logoları (PNG/SVG) ve web adresleri.",
@@ -69,11 +54,6 @@ export const needsData = {
     label: "Servis kalkış saatleri",
     ask: "Okul çıkışı ve etüt sonrası servis kalkış saatleri.",
     href: "/okullarimiz#ortaokul",
-  },
-  "etkinlik-dali-sayisi": {
-    label: "Etkinlik dalı sayısı ve listesi",
-    ask: "Güncel dal sayısının (şu an 25 yazıyor) ve dal listesinin onayı.",
-    href: "/kampus-yasami#spor",
   },
   "kampus-fotograflari": {
     label: "Kampüs alanı fotoğrafları",

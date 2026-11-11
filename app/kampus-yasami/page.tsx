@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { NeedsData, NeedsDataTag } from "@/components/NeedsData";
+import { NeedsData } from "@/components/NeedsData";
 import { BtnLine } from "@/components/Buttons";
 import { PageHero, Section } from "@/components/PageHero";
 import { ProgramCards } from "@/components/ProgramCards";
 import {
+  activityBranchCount,
   activityRulesShort,
   facilities,
   kulupBranches,
@@ -37,7 +38,7 @@ export default function KampusYasamiPage() {
     <>
       <PageHero
         eyebrow="Kampüs Yaşamı"
-        title="Etkinlik dalları, okulun hediyesi."
+        title={`${activityBranchCount} dal, okulun hediyesi.`}
         lead="Spor, sanat ve kulüp etkinlikleri — hepsi ücretsiz."
       />
 
@@ -71,9 +72,6 @@ export default function KampusYasamiPage() {
       </Section>
 
       <Section tone="ice">
-        <div className="mb-4">
-          <NeedsDataTag id="etkinlik-dali-sayisi" />
-        </div>
         <ProgramCards points={activityRulesShort} />
       </Section>
 

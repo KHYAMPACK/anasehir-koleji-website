@@ -4,18 +4,15 @@ export type NavSection = { name: string; href: string; items: NavItem[] };
 /**
  * The real information architecture (client-provided sitemap): 7 pages
  * total, one per section. `items` are in-page chapters, not separate
- * routes — their hrefs are anchors (`/hakkimizda#hikayemiz`) that the header
+ * routes — their hrefs are anchors (`/hakkimizda#2005ten-bugune`) that the header
  * mega menu, each page's own chapter nav, and the footer all share.
  */
 export const sections: NavSection[] = [
   {
-    name: "Hakkımızda",
+    name: "Anaşehir'i Keşfedin",
     href: "/hakkimizda",
     items: [
-      { name: "Hikâyemiz", href: "/hakkimizda#hikayemiz" },
       { name: "2005'ten Bugüne", href: "/hakkimizda#2005ten-bugune" },
-      { name: "Kurucularımız", href: "/hakkimizda#kurucularimiz" },
-      { name: "Yönetim", href: "/hakkimizda#yonetim" },
       { name: "İş Birliklerimiz", href: "/hakkimizda#is-birliklerimiz" },
     ],
   },

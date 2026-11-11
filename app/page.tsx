@@ -30,7 +30,7 @@ import { campuses, mapsSearchUrl } from "@/lib/campuses";
 import { schoolLevels } from "@/lib/okullarimiz";
 import { programs } from "@/lib/programs";
 import { site } from "@/lib/site";
-import { founders } from "@/lib/people";
+import { historyShort, journey } from "@/lib/anasehir";
 import { institutionalPartners, solutionPartners } from "@/lib/partners";
 import { PartnerLogos } from "@/components/PartnerLogos";
 import { SocialLinks } from "@/components/SocialLinks";
@@ -39,9 +39,9 @@ import { activityBranchCount } from "@/lib/kampusYasami";
 
 const stats = [
   { icon: CalendarDays, n: String(site.founded), l: "Kuruluş" },
-  { icon: Users, n: site.students, l: "Öğrenci" },
-  { icon: UserCheck, n: site.staff, l: "Personel" },
-  { icon: Sparkles, n: String(activityBranchCount), l: "Etkinlik Dalı", unconfirmed: true },
+  { icon: Users, n: site.students, l: "Öğrenci, geçmişten bugüne" },
+  { icon: UserCheck, n: site.staff, l: "Eğitim Paydaşı" },
+  { icon: Sparkles, n: String(activityBranchCount), l: "Etkinlik Dalı" },
 ];
 
 const holisticIcons = [Smile, Dumbbell, Palette, FlaskConical];
@@ -106,9 +106,7 @@ export default function HomePage() {
               <div key={s.l} className="rounded-[12px] border border-line bg-panel px-4 py-3.5">
                 <s.icon className="h-4 w-4 text-blue" strokeWidth={1.75} aria-hidden />
                 <p className="display mt-2 text-xl font-semibold text-ink lg:text-2xl">{s.n}</p>
-                <p className="mt-0.5 text-xs text-muted">{s.l}</p>
-                {"unconfirmed" in s && <div className="mt-1.5"><NeedsDataTag id="etkinlik-dali-sayisi" /></div>}
-              </div>
+                <p className="mt-0.5 text-xs text-muted">{s.l}</p>              </div>
             ))}
           </div>
         </div>
@@ -302,21 +300,29 @@ export default function HomePage() {
         </div>
       </section>
 
-      <Section tone="paper" eyebrow="Kurucularımız" title="Bir okulu bina değil, insanları özel kılar.">
-        <div className="grid gap-4 sm:grid-cols-2">
-          {founders.map((p) => (
-            <article key={p.name} className="flex gap-4 rounded-[14px] bg-blush p-5">
-              <NeedsData id="kurucu-portreleri" label="Portre" ratio="aspect-square w-24 shrink-0 !p-2" compact />
-              <div className="min-w-0">
-                <h3 className="display text-base font-semibold">{p.name}</h3>
-                <p className="text-xs text-blue">{p.title}</p>
-                <p className="mt-2 text-sm text-muted">{p.shortBio}</p>
-              </div>
-            </article>
-          ))}
-        </div>
-        <div className="mt-6">
-          <BtnLine href="/hakkimizda#kurucularimiz" size="lg">Bizi Tanıyın</BtnLine>
+      <Section tone="paper">
+        <div className="grid items-center gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:gap-14">
+          <div>
+            <p className="eyebrow">2005&apos;ten Bugüne</p>
+            <h2 className="display mt-3 max-w-[22ch] text-2xl font-semibold tracking-tight sm:text-3xl">
+              {journey.title}
+            </h2>
+            <p className="mt-4 max-w-[52ch] text-muted">{journey.intro}</p>
+            <blockquote className="display mt-6 border-l-4 border-red pl-5 text-lg font-semibold text-ink">
+              {journey.pullQuote}
+            </blockquote>
+            <div className="mt-7">
+              <BtnLine href="/hakkimizda" size="lg">Anaşehir&apos;i Keşfedin</BtnLine>
+            </div>
+          </div>
+          <ol className="grid grid-cols-2 gap-3">
+            {historyShort.map((h) => (
+              <li key={h.year} className="rounded-[14px] bg-blush p-4">
+                <span className="display text-xl font-semibold text-red">{h.year}</span>
+                <p className="mt-1 text-xs leading-relaxed text-muted">{h.text}</p>
+              </li>
+            ))}
+          </ol>
         </div>
       </Section>
 
