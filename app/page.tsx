@@ -333,7 +333,7 @@ export default function HomePage() {
         <div className="mb-6 flex flex-wrap items-center gap-4">
           <SocialLinks tone="light" />
           <a href={site.social.instagram} target="_blank" rel="noreferrer" className="text-sm font-semibold text-blue">
-            @anasehirokullari →
+            {site.social.instagramHandle} →
           </a>
         </div>
         <NeedsData id="instagram-akisi" />

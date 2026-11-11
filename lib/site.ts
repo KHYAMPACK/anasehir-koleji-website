@@ -20,8 +20,9 @@ export const site = {
   staff: "250+",
   social: {
     youtube: "https://www.youtube.com/channel/UCLblj2b4UFscwpOXObKX6Xw",
-    instagram: "https://www.instagram.com/anasehirokullari/",
-    facebook: "https://www.facebook.com/anasehirankana",
+    instagram: "https://www.instagram.com/anasehirkoleji/",
+    instagramHandle: "@anasehirkoleji",
+    facebook: "https://www.facebook.com/anasehirankana/",
   },
   portals: {
     k12: "https://giris.k12net.com",

@@ -75,7 +75,7 @@ export function HomeContact() {
                   rel="noreferrer"
                   className="text-ink"
                 >
-                  @anasehirokullari
+                  {site.social.instagramHandle}
                 </a>
               </p>
             </div>
