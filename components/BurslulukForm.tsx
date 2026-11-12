@@ -3,14 +3,17 @@
 import Link from "next/link";
 import { useState } from "react";
 import { bursluluk, deadlineLabel } from "@/lib/campaign";
+import type { Block } from "@/lib/legal";
+import { ReadToAccept } from "./legal/ReadToAccept";
 import { useCampaignPhase } from "@/lib/useCampaignPhase";
 
 /**
  * Bursluluk sınavı başvuru formu — UI only for now. Submitting does NOT
  * send or store anything yet; the backend (where applications go) is still
- * to be decided. The KVKK consent checkbox is required.
+ * to be decided. The "aydınlatma metnini okudum" box is required and can only
+ * be ticked after the text has been read (ReadToAccept).
  */
-export function BurslulukForm() {
+export function BurslulukForm({ noticeBlocks }: { noticeBlocks: Block[] }) {
   const [submitted, setSubmitted] = useState(false);
   const phase = useCampaignPhase();
 
@@ -96,15 +99,13 @@ export function BurslulukForm() {
             E-posta
             <input name="eposta" type="email" autoComplete="email" className={field} />
           </label>
-          <label className="flex min-w-0 items-start gap-2 text-sm text-muted sm:col-span-2">
-            <input required type="checkbox" name="aydinlatmaOkundu" className="mt-1 shrink-0" />
-            <span>
-              <Link href="/kvkk/bursluluk-sinavi" className="text-blue underline">
-                Bursluluk Sınavı Başvuru Aydınlatma Metni
-              </Link>
-              ’ni okudum. *
-            </span>
-          </label>
+          <div className="sm:col-span-2">
+            <ReadToAccept
+              blocks={noticeBlocks}
+              docTitle="Bursluluk Sınavı Başvuru Aydınlatma Metni"
+              docHref="/kvkk/bursluluk-sinavi"
+            />
+          </div>
           <button
             type="submit"
             className="rounded-full bg-red px-5 py-2.5 text-sm font-semibold text-white hover:bg-red-hover sm:col-span-2"

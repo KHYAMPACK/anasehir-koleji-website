@@ -7,6 +7,7 @@ import { Countdown } from "@/components/campaign/Countdown";
 import { NeedsData } from "@/components/NeedsData";
 import { Section } from "@/components/PageHero";
 import { bursluluk, deadlineLabel, examDateLabel } from "@/lib/campaign";
+import { parseLegal, readLegal } from "@/lib/legal";
 import { showDataFlags } from "@/lib/needsData";
 import { site } from "@/lib/site";
 
@@ -134,7 +135,7 @@ export default function BurslulukPage() {
             </ul>
           </aside>
           <div className="min-w-0">
-            <BurslulukForm />
+            <BurslulukForm noticeBlocks={parseLegal(readLegal("bursluluk-sinavi.md"))} />
           </div>
         </div>
       </Section>

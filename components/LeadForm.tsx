@@ -1,10 +1,11 @@
 "use client";
 
-import Link from "next/link";
 import { useState } from "react";
 import { campuses } from "@/lib/campuses";
+import type { Block } from "@/lib/legal";
+import { ReadToAccept } from "./legal/ReadToAccept";
 
-export function LeadForm({ className = "" }: { className?: string }) {
+export function LeadForm({ className = "", noticeBlocks }: { className?: string; noticeBlocks: Block[] }) {
   const [sent, setSent] = useState(false);
 
   function onSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -57,15 +58,13 @@ export function LeadForm({ className = "" }: { className?: string }) {
           ))}
         </select>
       </label>
-      <label className="flex min-w-0 items-start gap-2 text-sm text-muted sm:col-span-2">
-        <input required type="checkbox" className="mt-1 shrink-0" />
-        <span>
-          <Link href="/kvkk/iletisim-ve-kayit-gorusmesi" className="text-blue underline">
-            İletişim ve Kayıt Görüşmesi Aydınlatma Metni
-          </Link>
-          ’ni okudum.
-        </span>
-      </label>
+      <div className="sm:col-span-2">
+        <ReadToAccept
+          blocks={noticeBlocks}
+          docTitle="İletişim ve Kayıt Görüşmesi Aydınlatma Metni"
+          docHref="/kvkk/iletisim-ve-kayit-gorusmesi"
+        />
+      </div>
       <button
         type="submit"
         className="rounded-full bg-red px-5 py-2.5 text-sm font-semibold text-white hover:bg-red-hover sm:col-span-2"

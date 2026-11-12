@@ -5,6 +5,7 @@ import { BtnLine, BtnPrimary } from "@/components/Buttons";
 import { LeadForm } from "@/components/LeadForm";
 import { Section } from "@/components/PageHero";
 import { campuses, mapsSearchUrl } from "@/lib/campuses";
+import { parseLegal, readLegal } from "@/lib/legal";
 import { MapEmbed } from "@/components/legal/MapEmbed";
 import { bursluluk, deadlineLabel, examDateLabel } from "@/lib/campaign";
 import {
@@ -144,7 +145,7 @@ export default function KayitIletisimPage() {
               Kayıt görüşmesi, ücret bilgilendirme ve kampüs turu talepleri için formu doldurun.
             </p>
           </div>
-          <LeadForm className="min-w-0 lg:col-start-2 lg:row-span-2" />
+          <LeadForm className="min-w-0 lg:col-start-2 lg:row-span-2" noticeBlocks={parseLegal(readLegal("iletisim-ve-kayit-gorusmesi.md"))} />
           <div>
             <dl className="grid gap-3 text-sm sm:grid-cols-2">
               <div className="rounded-[14px] bg-white/8 p-4 ring-1 ring-white/12">

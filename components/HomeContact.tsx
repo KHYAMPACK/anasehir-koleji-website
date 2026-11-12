@@ -1,4 +1,5 @@
 import { campuses, mapsSearchUrl } from "@/lib/campuses";
+import { parseLegal, readLegal } from "@/lib/legal";
 import { MapEmbed } from "./legal/MapEmbed";
 import { site, telHref, waHref } from "@/lib/site";
 import { WhatsAppLeadForm } from "./WhatsAppLeadForm";
@@ -76,7 +77,7 @@ export function HomeContact() {
             </div>
           </div>
 
-          <WhatsAppLeadForm />
+          <WhatsAppLeadForm noticeBlocks={parseLegal(readLegal("iletisim-ve-kayit-gorusmesi.md"))} />
         </div>
       </div>
     </section>

@@ -1,13 +1,14 @@
 "use client";
 
-import Link from "next/link";
 import { useState } from "react";
 import { waHref } from "@/lib/site";
+import type { Block } from "@/lib/legal";
+import { ReadToAccept } from "./legal/ReadToAccept";
 
 const field =
   "w-full min-w-0 rounded-xl border border-line bg-canvas px-3 py-2.5 text-ink placeholder:text-muted/70";
 
-export function WhatsAppLeadForm({ className = "" }: { className?: string }) {
+export function WhatsAppLeadForm({ className = "", noticeBlocks }: { className?: string; noticeBlocks: Block[] }) {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
@@ -75,19 +76,21 @@ export function WhatsAppLeadForm({ className = "" }: { className?: string }) {
         </label>
       </div>
 
+      <div className="mt-4">
+        <ReadToAccept
+          blocks={noticeBlocks}
+          docTitle="İletişim ve Kayıt Görüşmesi Aydınlatma Metni"
+          docHref="/kvkk/iletisim-ve-kayit-gorusmesi"
+        />
+      </div>
+
       <button
         type="submit"
         className="mt-5 w-full rounded-full bg-red px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-red-hover"
       >
         WhatsApp ile gönder
       </button>
-      <p className="mt-3 text-xs leading-relaxed text-muted">
-        Göndererek{" "}
-        <Link href="/kvkk/iletisim-ve-kayit-gorusmesi" className="text-blue underline">
-          İletişim ve Kayıt Görüşmesi Aydınlatma Metni
-        </Link>
-        ’ni okuduğunuzu ve WhatsApp’a yönlendirileceğinizi kabul edersiniz.
-      </p>
+      <p className="mt-3 text-xs leading-relaxed text-muted">Gönderince WhatsApp’a yönlendirilirsiniz.</p>
     </form>
   );
 }
