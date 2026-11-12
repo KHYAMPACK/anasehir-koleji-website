@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { BookOpen, Blocks, Bot, Globe, Laptop, type LucideIcon } from "lucide-react";
+import { showDataFlags } from "@/lib/needsData";
 import { partnerHref, type Partner, type PartnerGroup } from "@/lib/partners";
 
 const groupIcons: Record<PartnerGroup["icon"], LucideIcon> = {
@@ -36,12 +37,12 @@ export function PartnerTile({ partner, size = "md" }: { partner: Partner; size?:
         </>
       ) : (
         <>
-          <span
+          {showDataFlags && (<span
             title="Resmî logo bekleniyor"
             className="absolute top-2 right-2 rounded-full bg-[#ffd400] px-1.5 py-0.5 text-[0.55rem] font-bold tracking-[0.06em] text-[#14233a] uppercase"
           >
             Logo bekleniyor
-          </span>
+          </span>)}
           <span
             className={`display text-center leading-snug font-semibold text-ink ${size === "lg" ? "text-lg" : "text-[0.92rem]"}`}
           >
@@ -60,6 +61,7 @@ export function PartnerTile({ partner, size = "md" }: { partner: Partner; size?:
   );
 
   const surface = partner.dark ? "border-ink bg-ink" : "border-line/70 bg-panel";
+  const tileStyle = partner.tileBg ? { backgroundColor: partner.tileBg, borderColor: partner.tileBg } : undefined;
   const cls = `group relative flex ${h} flex-col items-center justify-center rounded-[14px] border ${surface} px-4 pt-5 pb-3 shadow-sm transition-[border-color,box-shadow,transform] duration-200`;
 
   return href ? (
@@ -69,11 +71,12 @@ export function PartnerTile({ partner, size = "md" }: { partner: Partner; size?:
       rel="noreferrer"
       aria-label={`${partner.name} — ${partner.domain}`}
       className={`${cls} no-underline hover:-translate-y-0.5 hover:border-blue hover:shadow-md`}
+      style={tileStyle}
     >
       {body}
     </a>
   ) : (
-    <div className={cls}>{body}</div>
+    <div className={cls} style={tileStyle}>{body}</div>
   );
 }
 

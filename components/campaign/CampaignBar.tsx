@@ -4,12 +4,14 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { bursluluk, examDateLabel } from "@/lib/campaign";
 import { useDismissed } from "@/lib/useDismissed";
+import { useCampaignPhase } from "@/lib/useCampaignPhase";
 
 /** Slim red strip above the header on every page. Closable; stays closed. */
 export function CampaignBar() {
   const pathname = usePathname();
   const [dismissed, dismiss] = useDismissed("bursluluk-bar");
-  if (!bursluluk.active || dismissed || pathname === bursluluk.href) return null;
+  const phase = useCampaignPhase();
+  if (phase !== "open" || dismissed || pathname === bursluluk.href) return null;
 
   const date = examDateLabel();
   return (

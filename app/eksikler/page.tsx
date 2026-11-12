@@ -16,7 +16,7 @@ export default function EksiklerPage() {
       <PageHero
         eyebrow="Okul için kontrol listesi"
         title="Sitede beklenen içerikler."
-        lead={`Sarı "Veri bekleniyor" etiketli ${entries.length} alan. Her satırdaki bağlantı, içeriğin sitede görüneceği yere gider.`}
+        lead={`Sitede henüz eksik olan ${entries.length} içerik. Bu bölümler içerik gelene kadar sitede gizli tutuluyor; bağlantılar ilgili sayfaya gider.`}
       />
       <Section tone="ice">
         <ol className="grid gap-3">
@@ -28,7 +28,7 @@ export default function EksiklerPage() {
                 <p className="mt-1 text-sm text-muted">{e.ask}</p>
               </div>
               <Link href={e.href} className="text-sm font-semibold text-blue">
-                Sitede gör →
+                İlgili sayfa →
               </Link>
             </li>
           ))}

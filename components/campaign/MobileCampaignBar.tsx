@@ -3,11 +3,13 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { bursluluk } from "@/lib/campaign";
+import { useCampaignPhase } from "@/lib/useCampaignPhase";
 
 /** Phone-only CTA pinned to the bottom of the screen during the campaign. */
 export function MobileCampaignBar() {
   const pathname = usePathname();
-  if (!bursluluk.active || pathname === bursluluk.href) return null;
+  const phase = useCampaignPhase();
+  if (phase !== "open" || pathname === bursluluk.href) return null;
 
   return (
     <>

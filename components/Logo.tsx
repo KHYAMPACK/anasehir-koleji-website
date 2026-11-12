@@ -64,7 +64,7 @@ export function Logo({ compact = false }: { compact?: boolean }) {
             alt="Anaşehir Koleji"
             width={1384}
             height={416}
-            className="hidden h-10 w-auto sm:block lg:h-11"
+            className="hidden h-10 w-auto sm:block lg:h-11 xl:h-10 2xl:h-11"
             priority
           />
         </>

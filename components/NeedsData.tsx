@@ -1,4 +1,4 @@
-import { needsData, type NeedsDataId } from "@/lib/needsData";
+import { needsData, showDataFlags, type NeedsDataId } from "@/lib/needsData";
 
 /**
  * Loud, client-facing "we need this from you" markers. Deliberately
@@ -35,6 +35,7 @@ export function NeedsData({
   compact?: boolean;
   className?: string;
 }) {
+  if (!showDataFlags) return null;
   const entry = needsData[id];
   return (
     <div
@@ -52,6 +53,7 @@ export function NeedsData({
 
 /** Inline badge next to a value we are not sure about (a time, a count). */
 export function NeedsDataTag({ id }: { id: NeedsDataId }) {
+  if (!showDataFlags) return null;
   return (
     <span data-needs-data={id} title={needsData[id].ask} className="inline-block align-middle">
       <Tag small />

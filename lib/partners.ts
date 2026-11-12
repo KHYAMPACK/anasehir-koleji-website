@@ -14,6 +14,8 @@ export type Partner = {
   domain?: string;
   /** Logo is white-only → render the tile on a dark background. */
   dark?: boolean;
+  /** Tile background matching a logo that ships on its own colour (implies light text). */
+  tileBg?: string;
 };
 
 export type PartnerGroup = {
@@ -30,8 +32,8 @@ export function partnerHref(p: Partner) {
  * Çözüm ortakları — names and categories from the client's reference visual
  * (AI-made, so names still need the client's confirmation). Web addresses
  * and logos were looked up on each brand's own official site (Nov 2026).
- * Still missing: LEGO Education logo (inline SVG only), WeDo Robotics (no
- * reliable match — may mean LEGO WeDo).
+ * LEGO Education and WeDo Robotics logos came from the client (WhatsApp, Nov 2026);
+ * WeDo has no confirmed web address yet.
  */
 export const solutionPartnerGroups: PartnerGroup[] = [
   {
@@ -52,12 +54,12 @@ export const solutionPartnerGroups: PartnerGroup[] = [
   {
     title: "STEM ve Robotik Eğitim",
     icon: "bot",
-    partners: [{ name: "WeDo Robotics" }],
+    partners: [{ name: "WeDo Robotics", logo: "/partners/wedo-robotics.png", dark: true, tileBg: "#0741ad" }],
   },
   {
     title: "Tasarım ve Yaratıcılık",
     icon: "blocks",
-    partners: [{ name: "LEGO Education", domain: "education.lego.com/tr-tr" }],
+    partners: [{ name: "LEGO Education", logo: "/partners/lego-education.png", domain: "education.lego.com/tr-tr" }],
   },
 ];
 
@@ -68,12 +70,12 @@ export const solutionPartnerGroups: PartnerGroup[] = [
  */
 export const institutionalPartners: Partner[] = [
   { name: "Türkiye Büyük Millet Meclisi (TBMM)", domain: "tbmm.gov.tr", logo: "/partners/tbmm.png" },
-  { name: "T.C. Aile ve Sosyal Hizmetler Bakanlığı", domain: "aile.gov.tr" },
-  { name: "T.C. İçişleri Bakanlığı", domain: "icisleri.gov.tr" },
-  { name: "T.C. Millî Savunma Bakanlığı", domain: "msb.gov.tr" },
+  { name: "T.C. Aile ve Sosyal Hizmetler Bakanlığı", domain: "aile.gov.tr", logo: "/partners/aile-bakanligi.jpg" },
+  { name: "T.C. İçişleri Bakanlığı", domain: "icisleri.gov.tr", logo: "/partners/icisleri-bakanligi.jpg" },
+  { name: "T.C. Millî Savunma Bakanlığı", domain: "msb.gov.tr", logo: "/partners/msb.jpg" },
   { name: "Hâkimler ve Savcılar Kurulu (HSK)", domain: "hsk.gov.tr", logo: "/partners/hsk.png" },
   { name: "Millî İstihbarat Teşkilatı (MİT)", domain: "mit.gov.tr", logo: "/partners/mit.png" },
-  { name: "Jandarma Genel Komutanlığı", domain: "jandarma.gov.tr" },
+  { name: "Jandarma Genel Komutanlığı", domain: "jandarma.gov.tr", logo: "/partners/jandarma.jpg" },
   { name: "T.C. Etimesgut Kaymakamlığı", domain: "etimesgut.gov.tr", logo: "/partners/etimesgut-kaymakamligi.png" },
   { name: "Sincan Belediyesi", domain: "sincan.bel.tr", logo: "/partners/sincan-belediyesi.svg" },
   { name: "Ankara İl Emniyet Müdürlüğü", domain: "ankara.pol.tr", logo: "/partners/ankara-emniyet.png" },
@@ -82,7 +84,7 @@ export const institutionalPartners: Partner[] = [
   { name: "ASELSAN", domain: "aselsan.com", logo: "/partners/aselsan.gif" },
   { name: "Karel Elektronik", domain: "karel.com.tr", logo: "/partners/karel.svg" },
   { name: "Ankara Sanayi Odası 1. Organize Sanayi Bölgesi", domain: "aosb.org.tr", logo: "/partners/aosb.svg" },
-  { name: "Türk Kızılay", domain: "kizilay.org.tr" },
+  { name: "Türk Kızılay", domain: "kizilay.org.tr", logo: "/partners/kizilay.jpg" },
   { name: "Ankara Aile Hekimliği Derneği (ANKAHED)", domain: "ankahed.org.tr", logo: "/partners/ankahed.png" },
   { name: "A Life Hastanesi", domain: "alifehospital.com.tr", logo: "/partners/alife.svg" },
 ];

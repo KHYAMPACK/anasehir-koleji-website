@@ -1,7 +1,9 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
-import { NeedsData } from "./NeedsData";
+import { bursluluk, deadlineLabel } from "@/lib/campaign";
+import { useCampaignPhase } from "@/lib/useCampaignPhase";
 
 /**
  * Bursluluk sınavı başvuru formu — UI only for now. Submitting does NOT
@@ -10,24 +12,37 @@ import { NeedsData } from "./NeedsData";
  */
 export function BurslulukForm() {
   const [submitted, setSubmitted] = useState(false);
+  const phase = useCampaignPhase();
+
+  if (phase !== "open") {
+    return (
+      <div className="rounded-[16px] bg-panel p-6 text-center shadow-sm sm:p-8">
+        <p className="display text-xl font-semibold text-ink">{bursluluk.pageTitle} başvuruları sona erdi.</p>
+        <p className="mt-2 text-sm text-muted">Son başvuru tarihi: {deadlineLabel()}</p>
+      </div>
+    );
+  }
 
   const field =
     "w-full min-w-0 rounded-xl border border-line bg-canvas px-3 py-2.5 text-ink";
 
   return (
     <div className="tone-paper grid min-w-0 gap-4 rounded-[16px] bg-panel p-5 text-ink shadow-sm sm:p-6">
-      {/* KVKK banner — required by the client on any data-collecting screen. */}
+      {/* Client-supplied short notice (verbatim). It is NOT a consent request. */}
       <div className="rounded-[12px] border-l-4 border-red bg-blush p-4">
-        <p className="display text-sm font-semibold text-ink">KVKK Aydınlatma ve Açık Rıza</p>
+        <p className="display text-sm font-semibold text-ink">Kişisel Verileriniz Hakkında Bilgilendirme</p>
         <p className="mt-1 text-sm text-muted">
-          Bu formda paylaştığınız kişisel veriler yalnızca bursluluk sınavı başvurusu kapsamında
-          işlenecektir. Başvurmadan önce{" "}
-          <a href="/kvkk" className="text-blue underline">
-            KVKK Aydınlatma Metni
-          </a>
-          ’ni okuyunuz.
+          Anaşehir Koleji Bursluluk Sınavı başvurunuz kapsamında öğrenci ve veli bilgileri, başvurunun alınması,
+          sınavın düzenlenmesi ve sonuçların bildirilmesi amacıyla işlenmektedir.
         </p>
-        <NeedsData id="kvkk-onam-metni" className="mt-3" compact />
+        <p className="mt-2 text-sm text-muted">
+          Kişisel verilerin işlenmesine ilişkin ayrıntılı bilgiye{" "}
+          <Link href="/kvkk/bursluluk-sinavi" className="font-semibold text-blue underline">
+            Bursluluk Sınavı Başvuru Aydınlatma Metni
+          </Link>{" "}
+          üzerinden ulaşabilirsiniz.
+        </p>
+        <p className="mt-2 text-xs text-muted italic">Bu bilgilendirme bir açık rıza talebi değildir.</p>
       </div>
 
       {submitted ? (
@@ -57,8 +72,17 @@ export function BurslulukForm() {
             <input required name="sinif" className={field} />
           </label>
           <label className="grid min-w-0 gap-1 text-sm sm:col-span-2">
-            Şu an okuduğu okul *
-            <input required name="okul" className={field} />
+            Sınav seansı *
+            <select required name="seans" defaultValue="" className={field}>
+              <option value="" disabled>
+                Seans seçin
+              </option>
+              {bursluluk.sessions.map((s) => (
+                <option key={s.label} value={s.time}>
+                  {s.label} — {s.time}
+                </option>
+              ))}
+            </select>
           </label>
           <label className="grid min-w-0 gap-1 text-sm">
             Veli ad soyad *
@@ -73,13 +97,12 @@ export function BurslulukForm() {
             <input name="eposta" type="email" autoComplete="email" className={field} />
           </label>
           <label className="flex min-w-0 items-start gap-2 text-sm text-muted sm:col-span-2">
-            <input required type="checkbox" name="kvkkOnam" className="mt-1 shrink-0" />
+            <input required type="checkbox" name="aydinlatmaOkundu" className="mt-1 shrink-0" />
             <span>
-              <a href="/kvkk" className="text-blue underline">
-                KVKK Aydınlatma Metni
-              </a>
-              ’ni okudum; kişisel verilerimin bursluluk sınavı başvurusu kapsamında işlenmesine
-              açık rıza veriyorum. *
+              <Link href="/kvkk/bursluluk-sinavi" className="text-blue underline">
+                Bursluluk Sınavı Başvuru Aydınlatma Metni
+              </Link>
+              ’ni okudum. *
             </span>
           </label>
           <button

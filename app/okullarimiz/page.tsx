@@ -3,7 +3,9 @@ import { BtnLine } from "@/components/Buttons";
 import { PageHero, Section } from "@/components/PageHero";
 import { NeedsData, NeedsDataTag } from "@/components/NeedsData";
 import { ProgramCards } from "@/components/ProgramCards";
-import { etutPoints } from "@/lib/okullarimiz";
+import { etutPoints, levelCards, okullarIntro } from "@/lib/okullarimiz";
+import { SchoolLevels } from "@/components/SchoolLevels";
+import { ContactCta } from "@/components/ContactCta";
 import { ortaokulDay } from "@/lib/copy";
 import { programs } from "@/lib/programs";
 import { sections } from "@/lib/nav";
@@ -15,11 +17,7 @@ const chapters = sections.find((s) => s.name === "Okullarımız")!.items;
 export default function OkullarimizPage() {
   return (
     <>
-      <PageHero
-        eyebrow="Okullarımız"
-        title="Anaokulundan ortaokula, aynı çizgi."
-        lead="Her kademede aynı yakın ilgi, aynı güvenli ortam."
-      />
+      <PageHero eyebrow={okullarIntro.eyebrow} title={okullarIntro.title} lead={okullarIntro.lead} />
 
       <nav className="bg-ink/95" aria-label="Okullarımız bölümleri">
         <div className="mx-auto flex max-w-[1180px] flex-wrap gap-x-5 gap-y-2 px-4 py-3 text-sm text-white/70 sm:px-6 lg:px-10">
@@ -31,7 +29,11 @@ export default function OkullarimizPage() {
         </div>
       </nav>
 
-      <Section id="anaokulu" tone="ice" eyebrow="Anaokulu" title="Oyunla başlayan öğrenme." lead="Kreş ve anaokulu kademesi; güvenli, oyun temelli bir ilk adım.">
+      <Section tone="blush">
+        <SchoolLevels />
+      </Section>
+
+      <Section id="anaokulu" tone="ice" eyebrow="Anaokulu" title={levelCards[0].motto} lead={levelCards[0].text}>
         <div className="grid gap-4 lg:grid-cols-[1fr_22rem]">
           <NeedsData id="anaokulu-icerik" />
           <NeedsData id="kampus-fotograflari" label="Okul öncesi — fotoğraf" ratio="aspect-[4/3]" compact />
@@ -74,9 +76,11 @@ export default function OkullarimizPage() {
         </div>
       </Section>
 
-      <Section id="etut-merkezi" tone="paper" eyebrow="Anaşehir Etüt Merkezi" title="Okul biter, gelişim devam eder." lead="Derslerin bitiminden sonra isteğe bağlı, ücretli etüt programı.">
+      <Section id="etut-merkezi" tone="paper" title="Anaşehir Etüt Merkezi" lead="Derslerin bitiminden sonra isteğe bağlı, ücretli etüt programı.">
         <ProgramCards points={etutPoints} />
       </Section>
+
+      <ContactCta image="/hero/hero-3.jpg" />
     </>
   );
 }

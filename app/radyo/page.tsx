@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { redirect } from "next/navigation";
 import { PageHero, Section } from "@/components/PageHero";
 import { ProgramCards } from "@/components/ProgramCards";
 import { RadioPlayer } from "@/components/RadioPlayer";
@@ -8,11 +9,12 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = { title: "Anaşehir Radyo" };
 
 export default function RadyoPage() {
+  if (!site.radioActive) redirect("/kampus-yasami#sanat");
   return (
     <>
       <PageHero
-        eyebrow="Anaşehir Radyo"
-        title="2016’dan beri okulun frekansı."
+        eyebrow="Anaşehir Koleji"
+        title="Anaşehir Radyo"
         lead={programs.radio.lead}
       />
 

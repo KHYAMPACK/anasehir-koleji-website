@@ -1,3 +1,4 @@
+import { showDataFlags } from "@/lib/needsData";
 import { site } from "@/lib/site";
 import { NeedsDataTag } from "./NeedsData";
 
@@ -50,7 +51,7 @@ export function SocialLinks({
           </a>
         </li>
       ))}
-      {showPending && (
+      {showPending && showDataFlags && (
         <li className="flex items-center gap-1.5">
           <span
             className={`flex h-9 w-9 items-center justify-center rounded-full border-2 border-dashed border-[#e0b800] text-sm font-bold ${tone === "dark" ? "text-white" : "text-ink"}`}
@@ -64,3 +65,6 @@ export function SocialLinks({
     </ul>
   );
 }
+
+/** Brand glyph paths, shared with SocialShowcase. */
+export const socialIcons = icons;

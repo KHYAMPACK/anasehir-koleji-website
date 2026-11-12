@@ -1,13 +1,16 @@
+"use client";
+
 import { site, waHref } from "@/lib/site";
-import { bursluluk } from "@/lib/campaign";
+import { useCampaignPhase } from "@/lib/useCampaignPhase";
 
 export function WhatsAppFab() {
+  const raised = useCampaignPhase() === "open";
   return (
     <a
       href={waHref()}
       target="_blank"
       rel="noreferrer"
-      className={`fixed ${bursluluk.active ? "bottom-20 sm:bottom-5" : "bottom-5"} right-5 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-red text-white shadow-[0_10px_28px_rgba(200,16,46,0.4)] no-underline`}
+      className={`fixed ${raised ? "bottom-20 sm:bottom-5" : "bottom-5"} right-5 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-red text-white shadow-[0_10px_28px_rgba(200,16,46,0.4)] no-underline`}
       aria-label={`WhatsApp ile yazın · ${site.phoneDisplay}`}
     >
       <svg viewBox="0 0 24 24" className="h-7 w-7" fill="currentColor" aria-hidden>

@@ -24,11 +24,17 @@ export const site = {
     instagramHandle: "@anasehirkoleji",
     facebook: "https://www.facebook.com/anasehirankana/",
   },
-  portals: {
-    k12: "https://giris.k12net.com",
-    canadianCollege: "https://canada-english.com/tr/smrt",
-    ankaraEgitim: "https://ankaraegitimplatformu.org",
-  },
+  /** Footer "Portallar" list — client-defined, in this order. */
+  portals: [
+    { name: "SebitVcloud Giriş", href: "https://www.sebitvcloud.com/tr/index.jsp" },
+    { name: "Ekid+ Giriş", href: "https://www.ekidplus.com/" },
+    { name: "Oxford Giriş", href: "https://englishhub.oup.com/" },
+    { name: "Royal House London Giriş", href: "https://play-read.com/login" },
+    { name: "Ankara Eğitim Platformu", href: "https://ankaraegitimplatformu.org" },
+  ],
+  /** Anaşehir Radyo is paused (client, Nov 2026): /radyo redirects and every
+   * link to it is hidden while this is false. */
+  radioActive: false,
   radio: {
     stream: "http://164.132.93.130:9904/;",
     appStore:

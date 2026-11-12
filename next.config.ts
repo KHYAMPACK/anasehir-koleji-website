@@ -15,6 +15,8 @@ const nextConfig: NextConfig = {
     { source: "/ortaokul", destination: "/okullarimiz#ortaokul", permanent: false },
     { source: "/yabanci-dil", destination: "/egitim-modeli#yabanci-diller", permanent: false },
     { source: "/sks", destination: "/kampus-yasami", permanent: false },
+    // Anaşehir'de Yaşam was merged into Kampüs Yaşamı (client request, Nov 2026).
+    { source: "/yasam", destination: "/kampus-yasami#anasehirde-yasam", permanent: false },
     { source: "/iletisim", destination: "/kayit-iletisim#bize-ulasin", permanent: false },
   ],
 };

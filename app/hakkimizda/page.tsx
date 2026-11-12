@@ -4,6 +4,7 @@ import { Section } from "@/components/PageHero";
 import { BadgeCheck, Handshake } from "lucide-react";
 import { NeedsData } from "@/components/NeedsData";
 import { PartnerGrid, SolutionPartners } from "@/components/PartnerLogos";
+import { ContactCta } from "@/components/ContactCta";
 import {
   aboutGallery,
   educationApproach,
@@ -217,22 +218,7 @@ export default function AnasehiriKesfedinPage() {
         </div>
       </Section>
 
-      {/* ── Closing ──────────────────────────────────────────── */}
-      <section className="tone-navy relative overflow-hidden py-[clamp(3.5rem,7vw,6rem)] text-center">
-        <div className="pointer-events-none absolute inset-0 opacity-20 grid-paper" />
-        <div className="relative mx-auto max-w-[1180px] px-4 sm:px-6 lg:px-10">
-          <p className="display text-3xl font-semibold tracking-tight text-white sm:text-5xl">{site.name}</p>
-          <ul className="mt-5 flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
-            {values.map((v, i) => (
-              <li key={v} className="flex items-center gap-4 text-base text-white/80 italic sm:text-lg">
-                {i > 0 && <span className="h-1.5 w-1.5 rounded-full bg-red" aria-hidden />}
-                {v}
-              </li>
-            ))}
-          </ul>
-          <p className="display mt-8 text-2xl text-blue italic sm:text-3xl">{site.slogan}</p>
-        </div>
-      </section>
+      <ContactCta image="/hero/hero-1.jpg" />
     </>
   );
 }

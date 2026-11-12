@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import { waHref } from "@/lib/site";
 
@@ -82,9 +83,9 @@ export function WhatsAppLeadForm({ className = "" }: { className?: string }) {
       </button>
       <p className="mt-3 text-xs leading-relaxed text-muted">
         Göndererek{" "}
-        <a href="/kvkk" className="text-blue underline">
-          KVKK Aydınlatma Metni
-        </a>
+        <Link href="/kvkk/iletisim-ve-kayit-gorusmesi" className="text-blue underline">
+          İletişim ve Kayıt Görüşmesi Aydınlatma Metni
+        </Link>
         ’ni okuduğunuzu ve WhatsApp’a yönlendirileceğinizi kabul edersiniz.
       </p>
     </form>

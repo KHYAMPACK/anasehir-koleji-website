@@ -4,6 +4,7 @@ import { CampaignBar } from "@/components/campaign/CampaignBar";
 import { CampaignPopup } from "@/components/campaign/CampaignPopup";
 import { MobileCampaignBar } from "@/components/campaign/MobileCampaignBar";
 import { Footer } from "@/components/Footer";
+import { CookieBanner } from "@/components/legal/CookieBanner";
 import { Header } from "@/components/Header";
 import { WhatsAppFab } from "@/components/WhatsAppFab";
 import { site } from "@/lib/site";
@@ -47,6 +48,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <WhatsAppFab />
         <MobileCampaignBar />
         <CampaignPopup />
+        <CookieBanner />
       </body>
     </html>
   );

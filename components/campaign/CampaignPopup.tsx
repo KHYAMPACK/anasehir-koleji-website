@@ -5,6 +5,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { bursluluk, examDateLabel } from "@/lib/campaign";
 import { useDismissed } from "@/lib/useDismissed";
+import { useCampaignPhase } from "@/lib/useCampaignPhase";
+import { useConsent } from "@/lib/consent";
 import { NeedsDataTag } from "../NeedsData";
 
 const DELAY_MS = 4000;
@@ -20,7 +22,9 @@ export function CampaignPopup() {
   const [due, setDue] = useState(false);
   const closeRef = useRef<HTMLButtonElement>(null);
 
-  const enabled = bursluluk.active && bursluluk.showPopup && pathname !== bursluluk.href;
+  const phase = useCampaignPhase();
+  const consentDecided = useConsent() != null;
+  const enabled = phase === "open" && consentDecided && bursluluk.showPopup && pathname !== bursluluk.href;
   const open = enabled && due && !dismissed;
 
   useEffect(() => {

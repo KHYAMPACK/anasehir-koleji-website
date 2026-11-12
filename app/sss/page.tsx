@@ -9,8 +9,7 @@ export default function SssPage() {
     <>
       <PageHero
         eyebrow="SSS"
-        title="Sormadan gitmeyin."
-        lead="Saat, etüt, etkinlik, yemek, servis, K12, kampüs — sizin verdiğiniz bilgilerden."
+        title="Sık Sorulan Sorular"
       />
       <Section tone="ice">
         <div className="grid gap-3">

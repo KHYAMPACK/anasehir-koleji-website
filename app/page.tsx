@@ -1,40 +1,27 @@
-import Link from "next/link";
-import Image from "next/image";
 import {
-  ArrowRight,
-  BookOpen,
-  Bus,
-  Building2,
   CalendarDays,
-  Dumbbell,
-  DoorOpen,
-  FlaskConical,
-  LandPlot,
-  MapPin,
-  Palette,
-  PencilLine,
-  Play,
-  Smile,
   Sparkles,
-  Target,
   UserCheck,
   Users,
-  Waves,
 } from "lucide-react";
+import { Agm360Wheel } from "@/components/Agm360Wheel";
 import { HomeHero } from "@/components/HomeHero";
+import { DevelopmentCycle } from "@/components/akademik/DevelopmentCycle";
+import { akademikYaklasim } from "@/lib/akademikBasari";
+import { CampusLifeTeaser } from "@/components/CampusLifeTeaser";
+import { agm360 } from "@/lib/agm360";
 import { HomeContact } from "@/components/HomeContact";
-import { NeedsData, NeedsDataTag } from "@/components/NeedsData";
-import { BtnGhost, BtnLine, BtnPrimary } from "@/components/Buttons";
+import { NeedsData } from "@/components/NeedsData";
+import { BtnLine, BtnPrimary } from "@/components/Buttons";
 import { Section } from "@/components/PageHero";
 import { campuses, mapsSearchUrl } from "@/lib/campuses";
-import { schoolLevels } from "@/lib/okullarimiz";
-import { programs } from "@/lib/programs";
+import { okullarIntro } from "@/lib/okullarimiz";
+import { SchoolLevels } from "@/components/SchoolLevels";
 import { site } from "@/lib/site";
 import { historyShort, journey } from "@/lib/anasehir";
 import { institutionalPartners, memberships, solutionPartnerGroups } from "@/lib/partners";
 import { PartnerGrid } from "@/components/PartnerLogos";
-import { SocialLinks } from "@/components/SocialLinks";
-import { ortaokulDay } from "@/lib/copy";
+import { SocialShowcase } from "@/components/SocialShowcase";
 import { activityBranchCount } from "@/lib/kampusYasami";
 
 const stats = [
@@ -42,56 +29,6 @@ const stats = [
   { icon: Users, n: site.students, l: "Öğrenci, geçmişten bugüne" },
   { icon: UserCheck, n: site.staff, l: "Eğitim Paydaşı" },
   { icon: Sparkles, n: String(activityBranchCount), l: "Etkinlik Dalı" },
-];
-
-const holisticIcons = [Smile, Dumbbell, Palette, FlaskConical];
-
-const dayIcons: Record<string, typeof BookOpen> = {
-  "Erken bırakma": DoorOpen,
-  "Akademik çalışmalar": BookOpen,
-  "Etkinlik dersi": Palette,
-  Servisler: Bus,
-  "İsteğe bağlı etüt": PencilLine,
-};
-
-const campusHighlights = [
-  { icon: Building2, label: "Üç bina", sub: "Hepsi Etimesgut'ta" },
-  { icon: LandPlot, label: "Açık spor", sub: "Saha ve kortlar" },
-  { icon: Waves, label: "Yüzme havuzu", sub: "Tüm kademeler" },
-  { icon: Dumbbell, label: "Kapalı salon", sub: "Spor salonu" },
-  { icon: MapPin, label: "Bağlıca", sub: "Merkezi kampüs" },
-  { icon: Target, label: "Çoklu branş", sub: "Basket · Futbol · Tenis" },
-];
-
-const okullarCards = [
-  {
-    href: "/okullarimiz#ilkokul",
-    name: schoolLevels[1].name,
-    tagline: schoolLevels[1].tagline,
-    image: "/hero/hero-3.jpg",
-    alt: "Anaşehir Koleji ilkokul öğrencileri",
-  },
-  {
-    href: "/okullarimiz#ortaokul",
-    name: schoolLevels[2].name,
-    tagline: schoolLevels[2].tagline,
-    image: "/hero/hero-2.jpg",
-    alt: "Anaşehir Koleji ortaokul öğrencileri",
-  },
-  {
-    href: "/akademik-basari#lgs-sistemi",
-    name: "LGS Yolculuğu",
-    tagline: programs.lgs.title,
-    image: "/hero/hero-mobile-1.jpg",
-    alt: "Anaşehir Koleji LGS hazırlığı",
-  },
-  {
-    href: "/okullarimiz#etut-merkezi",
-    name: schoolLevels[3].name,
-    tagline: schoolLevels[3].tagline,
-    image: "/hero/hero-1.jpg",
-    alt: "Anaşehir Koleji kampüsü",
-  },
 ];
 
 export default function HomePage() {
@@ -112,193 +49,72 @@ export default function HomePage() {
         </div>
       </section>
 
-      <Section tone="ice">
-        <div className="grid items-start gap-10 lg:grid-cols-[minmax(18rem,22rem)_minmax(0,1fr)] lg:gap-10 xl:gap-12">
+      <Section id="egitim-modeli" tone="ice">
+        <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-12">
           <div className="min-w-0">
-            <h2 className="display text-[1.85rem] font-semibold leading-[1.12] tracking-tight text-ink sm:text-[2.15rem]">
-              Anaşehir
-              <br />
-              Eğitim Modeli
+            <p className="eyebrow flex items-center gap-3">
+              <span className="h-5 w-1 rounded-full bg-red" aria-hidden />
+              Eğitim Modelimiz
+            </p>
+            <h2 className="display mt-4 text-5xl font-extrabold tracking-tight italic sm:text-6xl">
+              <span className="text-[#0b2d5e]">AGM</span> <span className="text-red">360°</span>
             </h2>
-            <p className="mt-4 text-[0.95rem] leading-relaxed text-muted">{programs.holistic.lead}</p>
-            <div className="mt-5">
-              <BtnLine href="/egitim-modeli" size="lg">Eğitim Modelimizi Keşfedin</BtnLine>
+            <p className="display mt-2 text-sm font-bold tracking-[0.18em] text-ink uppercase">
+              {agm360.fullName}
+            </p>
+            <p className="display mt-6 text-2xl leading-snug font-semibold text-ink italic sm:text-[1.75rem]">
+              {agm360.tagline[0]}
+              <br />
+              {agm360.tagline[1]}
+            </p>
+            <NeedsData id="agm360-aciklama" compact className="mt-6" />
+            <div className="mt-7">
+              <BtnLine href="/egitim-modeli" size="lg">Modelin Tüm Detaylarını İncele</BtnLine>
             </div>
           </div>
 
-          <ul className="grid grid-cols-2 gap-x-6 gap-y-8 lg:grid-cols-4 lg:gap-0">
-            {programs.holistic.points.map((p, i) => {
-              const Icon = holisticIcons[i];
-              return (
-                <li
-                  key={p.title}
-                  className={`min-w-0 ${
-                    i === 0
-                      ? "lg:pr-5 xl:pr-6"
-                      : "lg:border-l lg:border-line lg:px-5 xl:px-6"
-                  }`}
-                >
-                  <Icon className="h-7 w-7 text-blue" strokeWidth={1.6} aria-hidden />
-                  <h3 className="display mt-4 text-[0.95rem] font-semibold leading-snug text-ink lg:min-h-[2.6em]">
-                    {p.title}
-                  </h3>
-                  <p className="mt-2 text-[0.8rem] leading-relaxed text-muted">{p.text}</p>
-                </li>
-              );
-            })}
-          </ul>
+          <Agm360Wheel />
         </div>
       </Section>
 
       <Section tone="blush">
-        <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-          <h2 className="display text-2xl font-semibold tracking-tight sm:text-3xl">
-            Okullarımız & Etüt Merkezi
-          </h2>
+        <div className="mb-10 flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between lg:gap-12">
+          <div className="max-w-[60ch]">
+            <p className="eyebrow flex items-center gap-3">
+              <span className="h-5 w-1 rounded-full bg-red" aria-hidden />
+              {okullarIntro.eyebrow}
+            </p>
+            <h2 className="display mt-4 text-3xl font-semibold tracking-tight sm:text-4xl lg:text-[2.75rem] lg:leading-[1.1]">
+              {okullarIntro.title}
+            </h2>
+            <p className="mt-4 text-[1.02rem] leading-[1.6] text-muted">{okullarIntro.lead}</p>
+          </div>
           <BtnLine href="/okullarimiz" size="lg">
             Tüm Programları Gör
           </BtnLine>
         </div>
-
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {okullarCards.map((k) => (
-            <Link
-              key={k.href}
-              href={k.href}
-              className="card-lift group flex flex-col overflow-hidden rounded-[14px] bg-panel shadow-sm"
-            >
-              <div className="relative aspect-[4/3] overflow-hidden bg-panel-2">
-                <Image
-                  src={k.image}
-                  alt={k.alt}
-                  fill
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                  className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
-                />
-              </div>
-              <div className="relative flex flex-1 flex-col p-5 pr-16 pb-6">
-                <h3 className="display text-lg font-semibold">{k.name}</h3>
-                <p className="mt-1.5 text-sm text-muted">{k.tagline}</p>
-                <span
-                  className="absolute right-5 bottom-5 flex h-10 w-10 items-center justify-center rounded-full border-2 border-ink text-ink transition-colors duration-200 group-hover:border-blue group-hover:text-blue"
-                  aria-hidden
-                >
-                  <ArrowRight className="h-4 w-4" strokeWidth={2} />
-                </span>
-              </div>
-            </Link>
-          ))}
-        </div>
+        <SchoolLevels />
       </Section>
 
-      <Section tone="navy" eyebrow="Anaşehir'de Bir Gün" title="Akademik ve sosyal, dengeli bir gün.">
-        <p className="max-w-[62ch] text-white/70">{ortaokulDay.lead}</p>
-        <div className="relative mt-10">
-          <span className="absolute top-6 right-6 left-6 hidden h-0.5 bg-white/15 lg:block" />
-          <ol className="grid gap-6 sm:grid-cols-3 lg:grid-cols-5">
-            {ortaokulDay.steps.map((s) => {
-              const Icon = dayIcons[s.title] ?? Sparkles;
-              return (
-                <li key={s.title} className="relative flex flex-col items-center text-center">
-                  <span className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-red text-white ring-4 ring-ink">
-                    <Icon className="h-5 w-5" strokeWidth={1.75} aria-hidden />
-                  </span>
-                  <p className="display mt-3 text-sm font-semibold text-white">
-                    {s.time ?? (s.needs && <NeedsDataTag id={s.needs} />)}
-                  </p>
-                  <p className="mt-1 text-sm font-semibold text-white/90">{s.title}</p>
-                  <p className="mt-1 text-xs text-white/55">{s.text}</p>
-                </li>
-              );
-            })}
-          </ol>
-        </div>
-        <div className="mt-8 text-center">
-          <BtnLine href="/okullarimiz#ortaokul" size="lg">Günlük Akışı Keşfedin</BtnLine>
-        </div>
-      </Section>
+      <CampusLifeTeaser />
 
-      <section className="overflow-hidden border-y border-line">
-        <div className="grid lg:grid-cols-[minmax(0,0.7fr)_minmax(11rem,0.5fr)_minmax(0,1.05fr)_minmax(14rem,0.75fr)]">
-          {/* Akademik Başarı — text */}
-          <div className="tone-navy relative min-h-[22rem] overflow-hidden">
-            <div className="pointer-events-none absolute inset-0 opacity-20 grid-paper" />
-            <div className="relative z-10 flex h-full min-h-[22rem] flex-col px-6 py-8 sm:px-8 lg:px-9 lg:py-10">
-              <h2 className="display text-2xl font-semibold tracking-tight text-white sm:text-[1.85rem]">
-                Akademik Başarı
-              </h2>
-              <p className="mt-2 text-sm text-white/70">{programs.lgs.title}</p>
-
-              <div className="mt-8 max-w-[18rem] text-sm leading-relaxed text-white/75">
-                <p className="text-xs font-semibold tracking-[0.14em] text-blue uppercase">LGS Sistemi</p>
-                <p className="mt-2 font-semibold text-white">{programs.lgs.points[0].title}</p>
-                <p className="mt-1 text-white/65">{programs.lgs.closing}</p>
-              </div>
-
-              <div className="mt-auto pt-8">
-                <BtnLine href="/akademik-basari#sonuclarimiz" size="lg">
-                  LGS Sonuçlarımız
-                </BtnLine>
-              </div>
-            </div>
-          </div>
-
-          {/* Akademik Başarı — photo */}
-          <div className="relative min-h-[16rem] lg:min-h-full">
-            <Image
-              src="/hero/hero-2.jpg"
-              alt="Anaşehir Koleji öğrencileri"
-              fill
-              sizes="(max-width: 1024px) 100vw, 22vw"
-              className="object-cover"
-            />
-          </div>
-
-          {/* Kampüsü Keşfedin */}
-          <div className="flex min-h-[22rem] flex-col bg-panel px-6 py-8 sm:px-8 lg:px-9 lg:py-10">
-            <h2 className="display text-2xl font-semibold tracking-tight text-ink sm:text-[1.85rem]">
-              Kampüsü Keşfedin
-            </h2>
-            <p className="mt-2 max-w-[38ch] text-sm text-muted">
-              Etimesgut Bağlıca’da modern, güvenli ve ilham veren bir öğrenme ortamı.
+      {/* Akademik Başarı — the development cycle from /akademik-basari */}
+      <Section tone="paper">
+        <div className="mb-10 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between lg:gap-12">
+          <div className="max-w-[62ch]">
+            <p className="eyebrow flex items-center gap-3">
+              <span className="h-5 w-1 rounded-full bg-red" aria-hidden />
+              Akademik Gelişim Döngüsü
             </p>
-
-            <ul className="mt-8 grid grid-cols-3 gap-x-2 gap-y-5 sm:grid-cols-6 sm:gap-x-1 lg:mt-10">
-              {campusHighlights.map((f) => (
-                <li key={f.label} className="flex min-w-0 flex-col items-center text-center">
-                  <f.icon className="h-6 w-6 text-blue" strokeWidth={1.5} aria-hidden />
-                  <p className="mt-2 text-[0.68rem] font-semibold leading-snug text-ink">{f.label}</p>
-                  <p className="mt-0.5 text-[0.62rem] leading-snug text-muted">{f.sub}</p>
-                </li>
-              ))}
-            </ul>
-
-            <div className="mt-auto pt-8">
-              <BtnGhost href="/kayit-iletisim#kampus-turu" size="lg">
-                Kampüs Turu Planla
-              </BtnGhost>
-            </div>
+            <h2 className="display mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">Akademik Başarı</h2>
+            <p className="mt-4 text-[1.02rem] leading-[1.6] text-muted">{akademikYaklasim.lead}</p>
           </div>
-
-          {/* Campus photo */}
-          <div className="relative min-h-[16rem] lg:min-h-full">
-            <Image
-              src="/hero/hero-1.jpg"
-              alt="Anaşehir Koleji kampüsü"
-              fill
-              sizes="(max-width: 1024px) 100vw, 30vw"
-              className="object-cover"
-            />
-            <Link
-              href="/kayit-iletisim#kampus-turu"
-              className="absolute right-5 bottom-5 flex h-14 w-14 items-center justify-center rounded-full bg-panel text-ink shadow-[0_10px_28px_rgba(20,35,58,0.22)] transition-transform duration-200 hover:scale-105"
-              aria-label="Kampüs turu planla"
-            >
-              <Play className="h-5 w-5 fill-current" aria-hidden />
-            </Link>
-          </div>
+          <BtnLine href="/akademik-basari" size="lg">
+            Akademik Başarı
+          </BtnLine>
         </div>
-      </section>
+        <DevelopmentCycle />
+      </Section>
 
       <Section tone="paper">
         <div className="grid items-center gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:gap-14">
@@ -329,21 +145,9 @@ export default function HomePage() {
         </div>
       </Section>
 
-      <Section id="sosyal-medya" tone="ice" eyebrow="Sosyal Medya" title="Anaşehir'i takip edin.">
-        <div className="mb-6 flex flex-wrap items-center gap-4">
-          <SocialLinks tone="light" />
-          <a href={site.social.instagram} target="_blank" rel="noreferrer" className="text-sm font-semibold text-blue">
-            {site.social.instagramHandle} →
-          </a>
-        </div>
-        <NeedsData id="instagram-akisi" />
-        <ul className="mt-3 grid grid-cols-3 gap-3 lg:grid-cols-6">
-          {Array.from({ length: 6 }, (_, i) => (
-            <li key={i}>
-              <NeedsData id="instagram-akisi" label={`Gönderi ${i + 1}`} ratio="aspect-square" compact />
-            </li>
-          ))}
-        </ul>
+      <Section id="sosyal-medya" tone="ice">
+        <SocialShowcase />
+        <NeedsData id="instagram-akisi" className="mt-8" />
       </Section>
 
       <Section tone="paper" eyebrow="İş Birliklerimiz" title="Çözüm Ortaklarımız ve İş Birliklerimiz">
@@ -385,10 +189,6 @@ export default function HomePage() {
         <div className="relative mx-auto flex max-w-[1180px] flex-col items-start justify-between gap-6 px-4 sm:px-6 md:flex-row md:items-center lg:px-10">
           <div>
             <p className="display text-2xl italic text-blue sm:text-3xl">{site.slogan}</p>
-            <p className="mt-3 max-w-[52ch] text-white/70">
-              Anaşehir ailesinin bir parçası olun. Kayıt süreci, kampüs turu ve tüm sorularınız için
-              bizimle iletişime geçin.
-            </p>
           </div>
           <div className="flex flex-wrap gap-3">
             <BtnPrimary href="/kayit-iletisim#on-kayit" size="lg">Kayıt Görüşmesi Planla</BtnPrimary>

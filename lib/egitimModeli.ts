@@ -1,10 +1,9 @@
+import { akademikSistem } from "./akademikBasari";
+
 export const akademikTakip = {
   lead: "Ders süreçlerinde düzenli ölçme, değerlendirme ve geri bildirimle takip.",
-  points: [
-    { title: "Düzenli Ölçme", text: "Deneme ve kazanım değerlendirmeleri." },
-    { title: "K12NET Takibi", text: "Veli her an notu, ödevi görebilir." },
-    { title: "Geri Bildirim", text: "Öğretmenden düzenli gelişim raporu." },
-  ],
+  /** Same four items as the Akademik Başarı page (client brief 05). */
+  points: akademikSistem,
 } as const;
 
 export const pdr = {

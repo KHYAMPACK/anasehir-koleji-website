@@ -76,3 +76,48 @@ export const facilities: { name: string; photo?: string }[] = [
   { name: "Anaşehir Radyo" },
   { name: "Okul Öncesi" },
 ];
+
+/**
+ * Kampüs ve Okul Yaşamı — client designer handoff 06, "yayına hazır" copy.
+ * Verbatim; don't rewrite.
+ */
+export const kampusCopy = {
+  eyebrow: "ANAŞEHİR’DE YAŞAM",
+  title: ["Öğrenmenin Ötesinde.", "Yaşamın İçinde."],
+  intro:
+    "Anaşehir Koleji’nde okul yaşamını akademik derslerle sınırlamıyoruz. Spor, sanat, kulüp çalışmaları ve sosyal etkinliklerle öğrencilerimizin ilgi alanlarını keşfetmesini, kendilerini ifade etmesini ve birlikte üretmesini destekliyoruz.",
+  spor: {
+    label: "Spor ve Hareket",
+    title: "Hareketle Güçlenen Bireyler.",
+    text: "Yaşa uygun spor ve hareket etkinlikleriyle öğrencilerimizin fiziksel gelişimini, takım ruhunu ve sağlıklı yaşam alışkanlıklarını destekliyoruz.",
+  },
+  sanat: {
+    label: "Sanat ve Yaratıcılık",
+    title: "Hayal Et. İfade Et. Üret.",
+    text: "Görsel sanatlar, müzik ve yaratıcı çalışmalarla öğrencilerimizin estetik bakış açısını ve kendilerini ifade etme becerilerini geliştiriyoruz.",
+  },
+  kulupler: {
+    label: "Kulüpler ve Sosyal Yaşam",
+    title: "İlgi Alanlarını Keşfet.",
+    text: "Kulüp ve sosyal etkinliklerde öğrencilerimizin meraklarını takip etmelerine, sorumluluk almalarına ve iş birliği içinde gelişmelerine alan açıyoruz.",
+  },
+  kampus: {
+    label: "Kampüs Deneyimi",
+    title: "Öğrenmeye Alan Açan Bir Kampüs.",
+    text: "Sınıflardan ortak yaşam alanlarına uzanan okul ortamımızda öğrencilerimizin kendilerini güvende hissederek öğrenmesini ve sosyalleşmesini önemsiyoruz.",
+  },
+  gunluk: {
+    label: "Günlük Yaşam",
+    title: "Dengeli Bir Okul Günü.",
+    text: "Akademik çalışmalar, hareket, dinlenme ve sosyal etkinlikleri bir arada düşünerek öğrencilerimize yaşlarına uygun, planlı bir okul deneyimi sunuyoruz.",
+  },
+  buttons: { kampus: "Kampüsümüzü Keşfedin", yasam: "Okul Yaşamını İnceleyin" },
+  closing: "Okul, Yalnızca Öğrenilen Değil; Yaşanılan Bir Yerdir.",
+  /** Short card captions from the handoff's page-1 layout. */
+  cards: [
+    { title: "Spor", caption: "Hareket ve takım ruhu", href: "#spor", color: "var(--red)" },
+    { title: "Sanat", caption: "İfade ve yaratıcılık", href: "#sanat", color: "var(--blue)" },
+    { title: "Kulüpler", caption: "Merak ve keşif", href: "#kulupler", color: "#c9a24a" },
+    { title: "Günlük Akış", caption: "Dengeli okul günü", href: "#gunluk-akis", color: "var(--ink)" },
+  ],
+} as const;

@@ -3,11 +3,12 @@
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { BookOpen, HeartHandshake, Play, Smile } from "lucide-react";
+import { ArrowRight, BookOpen, CalendarDays, HeartHandshake, Play, Smile } from "lucide-react";
 import { BtnLine, BtnPrimary } from "./Buttons";
 import { Wordmark } from "./Logo";
 import { NeedsDataTag } from "./NeedsData";
 import { bursluluk, examDateLabel } from "@/lib/campaign";
+import { useCampaignPhase } from "@/lib/useCampaignPhase";
 import { site } from "@/lib/site";
 
 const desktopSlides = [
@@ -44,6 +45,7 @@ function getIsMobileServer() {
 }
 
 export function HomeHero() {
+  const campaignOpen = useCampaignPhase() === "open";
   // Subscribes to the viewport breakpoint directly — the sanctioned way to
   // read external/browser state without the SSR-mismatch or
   // setState-in-effect pitfalls a matchMedia + useEffect combo runs into.
@@ -93,14 +95,31 @@ export function HomeHero() {
       </div>
 
       <div className="tone-dark relative z-10 mx-auto w-full max-w-[1180px] px-4 pb-14 pt-24 sm:px-6 sm:pb-16 lg:px-10">
-        {bursluluk.active && (
+        {campaignOpen && (
           <Link
             href={bursluluk.href}
-            className="mb-5 inline-flex flex-wrap items-center gap-2 rounded-full bg-red py-1.5 pr-4 pl-1.5 text-sm font-semibold text-white no-underline shadow-[0_8px_24px_rgba(227,6,19,0.35)]"
+            className="group mb-6 inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/10 py-2 pr-3 pl-4 text-sm text-white no-underline shadow-[0_8px_30px_rgba(8,16,32,0.35)] backdrop-blur-md transition-colors duration-300 hover:border-white/35 hover:bg-white/15"
           >
-            <span className="rounded-full bg-white px-2.5 py-0.5 text-xs text-red">Başvurular açık</span>
-            {bursluluk.title}
-            {examDateLabel() ? <span className="text-white/85">· {examDateLabel()}</span> : <NeedsDataTag id="bursluluk-detaylari" />}
+            {/* live dot */}
+            <span className="relative flex h-2.5 w-2.5 shrink-0" aria-hidden>
+              <span className="absolute inset-0 rounded-full bg-red motion-safe:animate-ping" />
+              <span className="relative h-2.5 w-2.5 rounded-full bg-red" />
+            </span>
+            <span className="font-semibold">{bursluluk.title}</span>
+            {examDateLabel() ? (
+              <>
+                <span className="h-4 w-px bg-white/25" aria-hidden />
+                <span className="inline-flex items-center gap-1.5 text-white/80">
+                  <CalendarDays className="h-4 w-4" strokeWidth={1.8} aria-hidden />
+                  {examDateLabel()}
+                </span>
+              </>
+            ) : (
+              <NeedsDataTag id="bursluluk-detaylari" />
+            )}
+            <span className="flex h-6 w-6 items-center justify-center rounded-full bg-red text-white transition-transform duration-300 group-hover:translate-x-0.5">
+              <ArrowRight className="h-3.5 w-3.5" strokeWidth={2.4} aria-hidden />
+            </span>
           </Link>
         )}
         <p className="eyebrow text-white/70">Anaşehir Koleji · 2005’ten beri</p>
@@ -114,7 +133,7 @@ export function HomeHero() {
         <p className="display mt-4 text-2xl text-blue italic sm:text-3xl">{site.slogan}</p>
 
         <div className="mt-8 flex flex-wrap items-center gap-3">
-          {bursluluk.active ? (
+          {campaignOpen ? (
             <>
               <BtnPrimary href={bursluluk.href}>Bursluluk Sınavına Başvur</BtnPrimary>
               <BtnLine href="/kayit-iletisim#kampus-turu">Kampüsü Keşfet</BtnLine>

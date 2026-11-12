@@ -1,4 +1,5 @@
-import { campuses, mapsEmbedUrl, mapsSearchUrl } from "@/lib/campuses";
+import { campuses, mapsSearchUrl } from "@/lib/campuses";
+import { MapEmbed } from "./legal/MapEmbed";
 import { site, telHref, waHref } from "@/lib/site";
 import { WhatsAppLeadForm } from "./WhatsAppLeadForm";
 
@@ -8,13 +9,7 @@ export function HomeContact() {
   return (
     <section aria-label="İletişim">
       <div className="overflow-hidden border-y border-line bg-panel">
-        <iframe
-          title="Anaşehir Koleji harita"
-          src={mapsEmbedUrl(featured.mapsQuery)}
-          className="h-[min(22rem,50vh)] w-full border-0 sm:h-80"
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-        />
+        <MapEmbed query={featured.mapsQuery} title="Anaşehir Koleji harita" className="h-[min(22rem,50vh)] sm:h-80" />
       </div>
 
       <div className="tone-ice py-[clamp(2.6rem,5vw,4rem)]">

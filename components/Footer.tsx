@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Logo } from "./Logo";
 import { SocialLinks } from "./SocialLinks";
+import { CookiePreferencesLink } from "./legal/CookieBanner";
 import { site, telHref } from "@/lib/site";
 import { campuses } from "@/lib/campuses";
 import { sections, utilityLinks } from "@/lib/nav";
@@ -33,20 +34,8 @@ export function Footer() {
         <div>
           <p className="eyebrow text-[#8b96ad]">Hızlı Erişim</p>
           <ul className="mt-4 space-y-2 text-sm">
-            <li>
-              <Link href="/yasam#haberler">Haberler</Link>
-            </li>
-            <li>
-              <Link href="/yasam#etkinlikler">Etkinlikler</Link>
-            </li>
-            <li>
-              <Link href="/yasam#akademik-takvim">Akademik Takvim</Link>
-            </li>
-            <li>
-              <Link href="/yasam#galeri">Fotoğraf/Video</Link>
-            </li>
             {utilityLinks.map((item) => (
-              <li key={item.href}>
+              <li key={item.name}>
                 <Link href={item.href}>{item.name}</Link>
               </li>
             ))}
@@ -75,21 +64,13 @@ export function Footer() {
         <div>
           <p className="eyebrow text-[#8b96ad]">Portallar</p>
           <ul className="mt-4 space-y-2 text-sm">
-            <li>
-              <a href={site.portals.k12} target="_blank" rel="noreferrer">
-                K12NET Giriş
-              </a>
-            </li>
-            <li>
-              <a href={site.portals.canadianCollege} target="_blank" rel="noreferrer">
-                Canadian College / Smrt
-              </a>
-            </li>
-            <li>
-              <a href={site.portals.ankaraEgitim} target="_blank" rel="noreferrer">
-                Ankara Eğitim Platformu
-              </a>
-            </li>
+            {site.portals.map((p) => (
+              <li key={p.href}>
+                <a href={p.href} target="_blank" rel="noreferrer">
+                  {p.name}
+                </a>
+              </li>
+            ))}
           </ul>
           <div className="mt-6">
             <SocialLinks tone="dark" />
@@ -102,6 +83,7 @@ export function Footer() {
           <div className="flex gap-4">
             <Link href="/kvkk">KVKK</Link>
             <Link href="/gizlilik">Gizlilik</Link>
+            <CookiePreferencesLink />
             <Link href="/sss">SSS</Link>
           </div>
         </div>

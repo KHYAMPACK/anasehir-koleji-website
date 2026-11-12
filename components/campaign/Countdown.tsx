@@ -2,6 +2,8 @@
 
 import { useSyncExternalStore } from "react";
 import { bursluluk } from "@/lib/campaign";
+import { useCampaignPhase } from "@/lib/useCampaignPhase";
+import { showDataFlags } from "@/lib/needsData";
 import { NeedsDataTag } from "../NeedsData";
 
 function subscribe(cb: () => void) {
@@ -18,13 +20,16 @@ const units = [
 
 /** Live countdown to the exam. Server renders dashes; no date → placeholder tag. */
 export function Countdown() {
+  const phase = useCampaignPhase();
   const now = useSyncExternalStore(
     subscribe,
     () => Math.floor(Date.now() / 1000),
     () => null,
   );
 
+  if (phase === "over") return null;
   if (!bursluluk.examDate) {
+    if (!showDataFlags) return null;
     return (
       <div className="flex flex-wrap items-center gap-3">
         <span className="text-sm text-white/70">Sınava kalan süre</span>

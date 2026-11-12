@@ -13,19 +13,10 @@
   --panel: #ffffff;
   --panel-2: #c9d9ea;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
-  --header-row1: 4.5rem;
-  --header-row2: 3rem;
-  /* Total sticky header height — row2 (the nav row) only renders at xl+,
-     so this must track that breakpoint for scroll-mt/anchor math to stay
-     correct at every viewport width. Keep the 1280px in sync with
-     Header.tsx's xl:flex / xl:hidden split. */
-  --header: var(--header-row1);
-}
-
-@media (min-width: 1280px) {
-  :root {
-    --header: calc(var(--header-row1) + var(--header-row2));
-  }
+  /* Sticky header height — one row at every width (logo · nav · CTA on
+     desktop, logo · Menü on smaller screens). Every chapter anchor's
+     scroll-mt uses this, so keep it equal to Header.tsx's row height. */
+  --header: 4.75rem;
 }
 
 @theme inline {
@@ -205,5 +196,36 @@ body {
 
   .marquee-track {
     animation: none;
+  }
+}
+
+/* Instagram placeholder tiles — a light sweep so empty slots read as "loading". */
+@keyframes ig-shimmer {
+  from {
+    background-position: 150% 0;
+  }
+  to {
+    background-position: -50% 0;
+  }
+}
+
+/* Print / "Yazdır · PDF" for KVKK documents: only the page content, in black
+   on white (header, footer, floating buttons, banners and dialogs dropped). */
+@media print {
+  body > :not(main) {
+    display: none !important;
+  }
+  body,
+  .tone-navy,
+  .tone-ice,
+  .tone-paper {
+    background: #fff !important;
+  }
+  .tone-navy,
+  .tone-navy * {
+    color: #000 !important;
+  }
+  .grid-paper {
+    display: none !important;
   }
 }

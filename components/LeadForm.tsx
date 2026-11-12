@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import { campuses } from "@/lib/campuses";
 
@@ -59,10 +60,10 @@ export function LeadForm({ className = "" }: { className?: string }) {
       <label className="flex min-w-0 items-start gap-2 text-sm text-muted sm:col-span-2">
         <input required type="checkbox" className="mt-1 shrink-0" />
         <span>
-          <a href="/kvkk" className="text-blue underline">
-            KVKK Aydınlatma Metni
-          </a>
-          ’ni okudum, iletişim kurulmasına açık rıza veriyorum.
+          <Link href="/kvkk/iletisim-ve-kayit-gorusmesi" className="text-blue underline">
+            İletişim ve Kayıt Görüşmesi Aydınlatma Metni
+          </Link>
+          ’ni okudum.
         </span>
       </label>
       <button
