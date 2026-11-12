@@ -16,13 +16,18 @@ export type NeedsDataEntry = {
 
 export const needsData = {
   "cozum-ortaklari": {
-    label: "Çözüm ortaklarının logoları",
-    ask: "Devam edilen ve yeni çözüm ortaklarının listesi, logoları (PNG/SVG) ve web adresleri.",
+    label: "Çözüm ortakları: eksik logolar ve onay",
+    ask: "İsim ve kategori onayı (görsel yapay zekâyla üretildiği için). WeDo Robotics hangi firma — yoksa LEGO WeDo mu? LEGO Education logosu. SEBIT, K12net, Eradil ve Royal House London için daha büyük/SVG logo.",
     href: "/hakkimizda#is-birliklerimiz",
   },
   "kurumsal-is-birlikleri": {
-    label: "Kurumsal iş birliği yapılan kurumlar",
-    ask: "Sözleşmeli tüm resmi ve özel kurumların adları, logoları ve web site adresleri.",
+    label: "Kurumsal iş birliği: eksik logolar",
+    ask: "Resmî sitelerine yurt dışından erişilemeyen 5 kurumun logosu: Aile ve Sosyal Hizmetler Bakanlığı, İçişleri Bakanlığı, Millî Savunma Bakanlığı, Jandarma Genel Komutanlığı, Türk Kızılay (SVG veya yüksek çözünürlüklü PNG). Etimesgut Kaymakamlığı ve ASELSAN için daha büyük logo.",
+    href: "/hakkimizda#is-birliklerimiz",
+  },
+  "uyelik-logolari": {
+    label: "Üyelik logoları",
+    ask: "Ankara Eğitim Platformu logosunun daha büyük/SVG hâli (sitedeki 140px).",
     href: "/hakkimizda#is-birliklerimiz",
   },
   "egitim-yaklasimi-metin": {

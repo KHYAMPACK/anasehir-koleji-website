@@ -27,7 +27,7 @@ export const site = {
   portals: {
     k12: "https://giris.k12net.com",
     canadianCollege: "https://canada-english.com/tr/smrt",
-    ankaraEgitim: "https://www.ankaraegitimplatformu.com",
+    ankaraEgitim: "https://ankaraegitimplatformu.org",
   },
   radio: {
     stream: "http://164.132.93.130:9904/;",

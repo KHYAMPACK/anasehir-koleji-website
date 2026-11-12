@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { Section } from "@/components/PageHero";
-import { PartnerLogos } from "@/components/PartnerLogos";
+import { BadgeCheck, Handshake } from "lucide-react";
+import { NeedsData } from "@/components/NeedsData";
+import { PartnerGrid, SolutionPartners } from "@/components/PartnerLogos";
 import {
   aboutGallery,
   educationApproach,
@@ -11,7 +13,7 @@ import {
   values,
   vision,
 } from "@/lib/anasehir";
-import { institutionalPartners, solutionPartners } from "@/lib/partners";
+import { institutionalPartners, memberships, solutionPartnerGroups } from "@/lib/partners";
 import { sections } from "@/lib/nav";
 import { site } from "@/lib/site";
 
@@ -181,11 +183,38 @@ export default function AnasehiriKesfedinPage() {
       </Section>
 
       {/* ── İş Birliklerimiz ─────────────────────────────────── */}
-      <Section id="is-birliklerimiz" tone="paper" title="İş Birliklerimiz">
-        <h3 className="display mb-4 text-xl font-semibold">Çözüm Ortaklarımız</h3>
-        <PartnerLogos partners={solutionPartners} needs="cozum-ortaklari" />
-        <h3 className="display mt-10 mb-4 text-xl font-semibold">Kurumsal İş Birliklerimiz</h3>
-        <PartnerLogos partners={institutionalPartners} needs="kurumsal-is-birlikleri" />
+      <Section id="is-birliklerimiz" tone="paper" eyebrow="İş Birliklerimiz" title="Çözüm Ortaklarımız ve İş Birliklerimiz">
+        {/* 1 · Çözüm ortakları, grouped by category */}
+        <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
+          <h3 className="display text-2xl font-semibold">Çözüm Ortaklarımız</h3>
+          <NeedsData id="cozum-ortaklari" compact className="!flex-row !items-center !gap-3 !p-2.5 !pr-4" />
+        </div>
+        <SolutionPartners groups={solutionPartnerGroups} />
+
+        {/* 2 · Kurumsal iş birlikleri, client's order preserved */}
+        <div className="mt-16 mb-6 flex flex-wrap items-center justify-between gap-3 border-t border-line pt-12">
+          <div>
+            <h3 className="display flex items-center gap-2.5 text-2xl font-semibold">
+              <Handshake className="h-6 w-6 text-red" strokeWidth={1.75} aria-hidden />
+              Kurumsal İş Birliklerimiz
+            </h3>
+            <p className="mt-1 text-sm text-muted">{institutionalPartners.length} kurum</p>
+          </div>
+          <NeedsData id="kurumsal-is-birlikleri" compact className="!flex-row !items-center !gap-3 !p-2.5 !pr-4" />
+        </div>
+        <PartnerGrid partners={institutionalPartners} />
+
+        {/* 3 · Üyelikler — kept apart from iş birlikleri (client rule) */}
+        <div className="mt-16 rounded-[18px] bg-blush p-6 sm:p-8">
+          <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
+            <h3 className="display flex items-center gap-2.5 text-2xl font-semibold">
+              <BadgeCheck className="h-6 w-6 text-red" strokeWidth={1.75} aria-hidden />
+              Üyesi Olduğumuz Kuruluşlar
+            </h3>
+            <NeedsData id="uyelik-logolari" compact className="!flex-row !items-center !gap-3 !p-2.5 !pr-4" />
+          </div>
+          <PartnerGrid partners={memberships} size="lg" />
+        </div>
       </Section>
 
       {/* ── Closing ──────────────────────────────────────────── */}

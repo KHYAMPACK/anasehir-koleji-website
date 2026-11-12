@@ -31,8 +31,8 @@ import { schoolLevels } from "@/lib/okullarimiz";
 import { programs } from "@/lib/programs";
 import { site } from "@/lib/site";
 import { historyShort, journey } from "@/lib/anasehir";
-import { institutionalPartners, solutionPartners } from "@/lib/partners";
-import { PartnerLogos } from "@/components/PartnerLogos";
+import { institutionalPartners, memberships, solutionPartnerGroups } from "@/lib/partners";
+import { PartnerGrid } from "@/components/PartnerLogos";
 import { SocialLinks } from "@/components/SocialLinks";
 import { ortaokulDay } from "@/lib/copy";
 import { activityBranchCount } from "@/lib/kampusYasami";
@@ -346,8 +346,11 @@ export default function HomePage() {
         </ul>
       </Section>
 
-      <Section tone="paper" eyebrow="İş Birliklerimiz" title="Çözüm ortaklarımız ve kurumsal iş birliklerimiz.">
-        <PartnerLogos partners={[...solutionPartners, ...institutionalPartners]} needs="cozum-ortaklari" />
+      <Section tone="paper" eyebrow="İş Birliklerimiz" title="Çözüm Ortaklarımız ve İş Birliklerimiz">
+        <PartnerGrid partners={solutionPartnerGroups.flatMap((g) => g.partners).slice(0, 6)} />
+        <p className="mt-4 text-sm text-muted">
+          + {institutionalPartners.length} kurumsal iş birliği · {memberships.length} üyelik
+        </p>
         <div className="mt-6">
           <BtnLine href="/hakkimizda#is-birliklerimiz" size="lg">Tüm İş Birlikleri</BtnLine>
         </div>
