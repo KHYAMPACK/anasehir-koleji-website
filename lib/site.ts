@@ -10,7 +10,8 @@ export const site = {
   phoneTel: "4446961",
   admissionsPhoneDisplay: "0507 408 02 78",
   admissionsPhoneTel: "05074080278",
-  whatsapp: "904446961",
+  /** WhatsApp line (international format, no +) — the admissions mobile. */
+  whatsapp: "905074080278",
   hoursWeekday: "07:30–18:30",
   hoursSaturday: "10:30–17:00",
   founded: 2005,
