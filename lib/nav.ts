@@ -25,12 +25,12 @@ const allSections: NavSection[] = [
     href: "/egitim-modeli",
     items: [
       { name: "AGM 360°", href: "/egitim-modeli#agm-360" },
-      { name: "8 Gelişim Alanı", href: "/egitim-modeli#gelisim-alanlari" },
       { name: "Akademik Güç ve Takip", href: "/egitim-modeli#akademik-takip" },
+      { name: "Ölçme ve Değerlendirme", href: "/egitim-modeli#olcme-degerlendirme" },
       { name: "Future Skills & Küresel Yetkinlik", href: "/egitim-modeli#future-skills" },
       { name: "Sosyal-Duygusal Gelişim ve PDR", href: "/egitim-modeli#pdr-ogrenci-gelisimi" },
-      { name: "Sürdürülebilir Yaşam Bilinci", href: "/egitim-modeli#surdurulebilir-yasam", pending: true },
-      { name: "AGM Uygulamada", href: "/egitim-modeli#agm-uygulamada", pending: true },
+      { name: "Sürdürülebilir Yaşam Bilinci", href: "/egitim-modeli#surdurulebilir-yasam" },
+      { name: "AGM Uygulamada", href: "/egitim-modeli#agm-uygulamada" },
       { name: "SSS", href: "/egitim-modeli#sss", pending: true },
     ],
   },
@@ -41,7 +41,8 @@ const allSections: NavSection[] = [
       { name: "Anaokulu", href: "/okullarimiz#anaokulu" },
       { name: "İlkokul", href: "/okullarimiz#ilkokul" },
       { name: "Ortaokul", href: "/okullarimiz#ortaokul" },
-      { name: "Etüt Merkezi", href: "/okullarimiz#etut-merkezi" },
+      { name: "Günlük Akış ve Servis", href: "/okullarimiz#gunluk-akis" },
+      { name: "Akşam Etütleri", href: "/okullarimiz#etut-merkezi" },
     ],
   },
   {
@@ -62,6 +63,7 @@ const allSections: NavSection[] = [
     items: [
       { name: "Anaşehir'de Yaşam", href: "/kampus-yasami#anasehirde-yasam" },
       { name: "Kampüsümüz", href: "/kampus-yasami#kampus" },
+      { name: "Branş Dersleri", href: "/kampus-yasami#brans-dersleri" },
       { name: "Spor", href: "/kampus-yasami#spor" },
       { name: "Sanat", href: "/kampus-yasami#sanat" },
       { name: "Kulüpler", href: "/kampus-yasami#kulupler" },

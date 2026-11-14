@@ -1,49 +1,22 @@
 /**
- * The 25 activity branches split across Spor / Sanat / Kulüpler — a
- * first-pass categorization (see plan notes), easy to re-sort later.
+ * Uygulamalı Branş Dersleri — client revision (Nov 2026, /eksikler item 11):
+ * the old "Etkinlik Dersi / Kulüp Dersi" model, its activity hour, the
+ * "25 branş arasından tercih" and "kulüp yerleştirmesi" wording are gone.
+ * These four are part of the weekly timetable; no separate hour is shown.
+ * Copy is the client's, verbatim.
  */
-export const sporBranches = [
-  "Voleybol",
-  "Futbol",
-  "Basketbol",
-  "Yüzme",
-  "Okçuluk",
-  "Jimnastik",
-  "Paten",
-  "Masa Tenisi",
-] as const;
+export const branchLessons = {
+  title: "Uygulamalı Branş Dersleri",
+  text: "Öğrencilerimizin sosyal, sanatsal ve fiziksel gelişimlerini destekleyen branşlarımızı ayrı bir kulüp uygulaması olarak değil, haftalık ders programına entegre edilmiş dersler olarak sunuyoruz.",
+  items: ["Dans", "Spor", "Görsel Sanatlar", "Drama"],
+} as const;
 
-export const sanatBranches = [
-  "Drama",
-  "Modern Danslar",
-  "Halk Dansları",
-  "Bale",
-  "Müzik",
-  "Seramik",
-  "Resim",
-  "Tiyatro",
-  "Plastik Sanatlar",
-] as const;
-
-export const kulupBranches = [
-  "Satranç",
-  "Bilgisayar",
-  "Mental Aritmetik",
-  "Zeka Oyunları",
-  "El Sanatları",
-  "Bilim Atölyesi",
-  "Güzel Konuşma",
-  "Hızlı Okuma",
-] as const;
-
-/** Kept in sync with the three branch lists above — never hardcode this number. */
-export const activityBranchCount = sporBranches.length + sanatBranches.length + kulupBranches.length;
-
-export const activityRulesShort = [
-  { title: "25 Dal", text: "Anaokulundan itibaren geniş bir seçenek." },
-  { title: "10 Seç, 5'ine Yerleş", text: "İlgiye göre seçim, kontenjana göre yerleşim." },
-  { title: "Ücretsiz", text: "Etkinlik dersleri okulun hediyesidir." },
-] as const;
+/** Akşam Etütleri / Ödev Saati — client copy, verbatim. */
+export const eveningStudy = {
+  title: "Akşam Etütleri / Ödev Saati",
+  time: "16.50–18.20",
+  text: "Okul sonrası isteğe bağlı ve ücretli olarak sunulan etüt programımızda öğrencilerimizin günlük ödevlerini tamamlamaları, ders tekrarları yapmaları ve eksik kazanımlarını pekiştirmeleri desteklenmektedir.",
+} as const;
 
 export const socialResponsibility = [
   { title: "Kulüp Çalışmaları", text: "Öğretmen rehberliğinde yürütülen topluluklar." },

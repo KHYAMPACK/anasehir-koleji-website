@@ -3,9 +3,9 @@ import type { NeedsDataId } from "./needsData";
 export const aboutPurpose = [
   "Okullarımızın amacı Atatürk ilke ve inkılaplarına bağlı, cumhuriyete inanan, nitelikli ve başarılı bireyler yetişmek için en iyi eğitimi vermektir. Bu amaç doğrultusunda donanımlı, başarılı, azimli, sanatsal-sportif ve kültürel etkinliklerden en az biriyle yakından ilgilenen, özgüveni yüksek, araştıran, sorgulayan, insanlarla rahat iletişim kurabilen, hakkını savunan, cumhuriyete inanan ve maddi-manevi değerlere bağlı bireyler yetiştirmeyi kendine görev edinen bir kurumdur. Kurucular, öğretmenler ve tüm personel bu amaç ve hedef doğrultusunda işini en iyi şekilde yapmaktadır.",
   "Anaşehir Okulları’nda nitelikli, iletişimi güçlü ve başarılı öğrenciler yetiştirmek için öğrencilere okul derslerinin yanında pek çok sanatsal, kültürel ve sportif eğitimler verilmektedir. Öğrencilerimizin araştıran, sorgulayan, meraklı, özgüveni yüksek, akademik anlamda başarılı bireyler olmasının yanında, İngilizceyi en etkili şekilde kullanan, en az bir müzik aleti çalabilen, en az bir sportif faaliyetle ilgilenen sosyal bireyler olarak yetiştirilmesine önem verilmektedir.",
-  "Akademik başarının yanı sıra verilen spor, sanat ve kültürel aktiviteler öğrencilerin kişisel, sosyal ve duyuşsal gelişimlerini desteklemektedir. Çocukların çok yönlü gelişimi için 25 farklı dalda etkinlikler yapılmaktadır.",
+  "Akademik başarının yanı sıra verilen spor, sanat ve kültürel aktiviteler öğrencilerin kişisel, sosyal ve duyuşsal gelişimlerini desteklemektedir.",
   "Anaşehir Okulları öğretmenleri, idari personeli ve diğer çalışanları öğrencilere güleryüzlü, samimi ve içten davranmaktadır. Tüm öğretmenlerimiz; alanında uzman, öğrencilerle vakit geçirmeyi seven, anlayışlı ve güleryüzlü kişilerden seçilmektedir. Öğretmenlerimize ve diğer çalışanlarımıza periyodik olarak, belirlenen konularda uzman eğitimciler tarafından hizmet içi eğitimler verilmektedir.",
-  "Anaşehir Okulları; ilkokul ve ortaokul bölümlerinde günde 9 saat ders yapılır. Her sınıfın hergün bir etkinlik dersi bulunmaktadır. Etüt almak isteyen öğrenciler derslerin bitiminde; isteğe bağlı ve ücrete tabi etüt alabilmektedirler.",
+  "Anaşehir Okulları; ilkokul ve ortaokul bölümlerinde günde 9 saat ders yapılır. Etüt almak isteyen öğrenciler derslerin bitiminde; isteğe bağlı ve ücrete tabi etüt alabilmektedirler.",
   "Bağlıca kampüsümüzde basketbol, futbol, voleybol, tenis, futbol, halı saha, kapalı spor salonu ve yüzme havuzu bulunmaktadır. Yüzme havuzumuzdan tüm okullarımızın öğrencileri faydalanmaktadır.",
   "İngilizce eğitiminin yanında ikinci yabancı dil olarak Almanca eğitimi de verilmektedir. Yabancı dil ders eğitimleri Türk ve yabancı öğretmenler tarafından karma olarak verilmektedir.",
   "Okullarımızın tamamı hafta içi her gün 07:30’da açılır, 18:30’da kapanır. Okullarımızın hafta sonu Cumartesi günleri 10:30–17:00 arasında açıktır.",
@@ -97,11 +97,10 @@ export type DayStep = {
 export const ortaokulDay = {
   lead: "Okulumuzda ders saatleri 08:30–16:40 arasındadır. İşe erken giden velilerimiz 07:30’dan itibaren çocuklarını okulumuza bırakabilmektedir.",
   steps: [
-    { time: "07:30", title: "Erken bırakma", text: "Veliler çocuklarını 07:30’dan itibaren okula bırakabilir." },
-    { time: "08:30–16:40", title: "Akademik çalışmalar", text: "Günün akademik dersleri bu aralıkta yapılır." },
-    { time: null, needs: "etkinlik-dersi-saati", title: "Etkinlik dersi", text: "Spor, kültür ve sanat etkinliklerinden seçilen dal." },
-    { time: null, needs: "servis-saatleri", title: "Servisler", text: "Okul çıkışı servis kalkışı." },
-    { time: "16:50–18:20", title: "İsteğe bağlı etüt", text: "Etüt isteğe bağlıdır ve ücretlidir." },
+    // Client revision (Nov 2026): two blocks only; branch lessons sit inside
+    // the weekly timetable, so there is no separate activity hour.
+    { time: "08.30–16.40", title: "Eğitim ve Öğretim", text: "Uygulamalı branş dersleri haftalık programın parçasıdır." },
+    { time: "16.50–18.20", title: "Akşam Etütleri / Ödev Saati", text: "İsteğe bağlı ve ücretli." },
   ] as DayStep[],
   meals:
     "Okulumuzda sabah kahvaltısı, öğle yemeği ve ikindi kahvaltısı olmak üzere üç öğün yemek çıkar. Kahvaltılar isteğe bağlıdır, öğle yemeğinin alınması zorunludur.",
@@ -122,8 +121,8 @@ export const ortaokulLanguage = [
 ];
 
 export const etutCopy = [
-  "Anaşehir Koleji’nde etüt programı; derslerin ve etkinlik derslerinin bitmesinin ardından başlar. Etüt programımız isteğe bağlıdır ve ücrete tabidir. Etüte kalan öğrencilerimiz için servis imkânı vardır.",
-  "Etütler 16:50–18:20 arasında yapılır. Etüt programında günlük ödevler yaptırılır, öğrencilerin takıldıkları, anlamadıkları konular anlatılır. Ödevlerini kendisinin yapması sağlanır. Çalışmalar bireysel ve grup çalışmaları şeklinde yürütülür. Etüte kalan öğrencilerimiz evlerine ödevleri tamamlanmış şekilde döner.",
+  "Anaşehir Koleji’nde etüt programı; derslerin bitmesinin ardından başlar. Etüt programımız isteğe bağlıdır ve ücrete tabidir. Etüte kalan öğrencilerimiz için servis imkânı vardır.",
+  "Etütler 16.50–18.20 arasında yapılır. Etüt programında günlük ödevler yaptırılır, öğrencilerin takıldıkları, anlamadıkları konular anlatılır. Ödevlerini kendisinin yapması sağlanır. Çalışmalar bireysel ve grup çalışmaları şeklinde yürütülür. Etüte kalan öğrencilerimiz evlerine ödevleri tamamlanmış şekilde döner.",
 ];
 
 export const socialActivities = [
@@ -175,41 +174,4 @@ export const mockQuotes = [
   },
 ];
 
-export const faqs = [
-  {
-    q: "Okul saatleri nedir?",
-    a: "Okullarımız hafta içi her gün 07:30’da açılır, 19:00’da kapanır. Cumartesi 10:30–17:00 arasındadır.",
-  },
-  {
-    q: "Ortaokulda bir gün nasıl akar?",
-    a: "Ders saatleri 08:30–16:40’tır. İsteğe bağlı ücretli etüt 16:50–18:20 arasındadır. Erken bırakma 07:30’dan itibaren mümkündür.",
-  },
-  {
-    q: "Etüt zorunlu mu?",
-    a: "Hayır. Etüt isteğe bağlı ve ücretlidir. Günlük ödevler etütte tamamlanır; takılan konular öğretmenle çalışılır.",
-  },
-  {
-    q: "Etkinlik dersleri ücretli midir?",
-    a: "Hayır. Sosyal etkinlik dersleri okulumuzun hediyesidir. Öğrenciler 25 branştan 10 seçer, 5’ine yerleştirilir. 10 ve üzeri öğrenci seçen branşlar açılır.",
-  },
-  {
-    q: "Yemek nasıl işler?",
-    a: "Sabah kahvaltısı, öğle yemeği ve ikindi kahvaltısı çıkar. Kahvaltılar isteğe bağlıdır; öğle yemeği zorunludur.",
-  },
-  {
-    q: "Servis güvenli mi?",
-    a: "Kuruma ait araçlarla servis verilir. Her araçta servis öğretmeni ve telefon bulunur; araçlar FiloTürk ile takip edilir. Koordinatör: Emre Gümüşkan.",
-  },
-  {
-    q: "K12NET ile neler görürüm?",
-    a: "Devamsızlık, ders programı, notlar, ödevler, etüt, sınav analizleri, davranış değerlendirmesi, duyurular ve etkinlikler. Dönem başında kullanıcı adı ve şifre verilir.",
-  },
-  {
-    q: "Kaç kampüs var?",
-    a: "Üç bina: Anaşehir Koleji (Etimesgut Bul. No:89), Bağlıca Anaşehir Anaokulu (Mert Cad. No:16) ve Ankana Kids (Türk Kızılayı Cad. No:17).",
-  },
-  {
-    q: "Yüzme havuzu hangi kampüste?",
-    a: "Yüzme havuzu Anaşehir Koleji binasındadır. Tüm okullarımızın öğrencileri faydalanır.",
-  },
-];
+/* FAQs now live in content/sss.md (client text, Nov 2026) — see lib/sss.ts. */

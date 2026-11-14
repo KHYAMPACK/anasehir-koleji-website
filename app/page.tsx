@@ -1,9 +1,3 @@
-import {
-  CalendarDays,
-  Sparkles,
-  UserCheck,
-  Users,
-} from "lucide-react";
 import { Agm360Wheel } from "@/components/Agm360Wheel";
 import { HomeHero } from "@/components/HomeHero";
 import { DevelopmentCycle } from "@/components/akademik/DevelopmentCycle";
@@ -11,6 +5,7 @@ import { akademikYaklasim } from "@/lib/akademikBasari";
 import { CampusLifeTeaser } from "@/components/CampusLifeTeaser";
 import { agm360 } from "@/lib/agm360";
 import { HomeContact } from "@/components/HomeContact";
+import { SssTeaser } from "@/components/sss/SssTeaser";
 import { NeedsData } from "@/components/NeedsData";
 import { BtnLine, BtnPrimary } from "@/components/Buttons";
 import { Section } from "@/components/PageHero";
@@ -22,32 +17,14 @@ import { historyShort, journey } from "@/lib/anasehir";
 import { institutionalPartners, memberships, solutionPartnerGroups } from "@/lib/partners";
 import { PartnerGrid } from "@/components/PartnerLogos";
 import { SocialShowcase } from "@/components/SocialShowcase";
-import { activityBranchCount } from "@/lib/kampusYasami";
-
-const stats = [
-  { icon: CalendarDays, n: String(site.founded), l: "Kuruluş" },
-  { icon: Users, n: site.students, l: "Öğrenci, geçmişten bugüne" },
-  { icon: UserCheck, n: site.staff, l: "Eğitim Paydaşı" },
-  { icon: Sparkles, n: String(activityBranchCount), l: "Etkinlik Dalı" },
-];
 
 export default function HomePage() {
   return (
     <>
       <HomeHero />
 
-      <section className="tone-paper hidden py-5 md:block lg:py-6">
-        <div className="mx-auto max-w-[1180px] px-4 sm:px-6 lg:px-10">
-          <div className="grid grid-cols-4 gap-2.5">
-            {stats.map((s) => (
-              <div key={s.l} className="rounded-[12px] border border-line bg-panel px-4 py-3.5">
-                <s.icon className="h-4 w-4 text-blue" strokeWidth={1.75} aria-hidden />
-                <p className="display mt-2 text-xl font-semibold text-ink lg:text-2xl">{s.n}</p>
-                <p className="mt-0.5 text-xs text-muted">{s.l}</p>              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <SssTeaser />
+
 
       <Section id="egitim-modeli" tone="ice">
         <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-12">
@@ -67,7 +44,7 @@ export default function HomePage() {
               <br />
               {agm360.tagline[1]}
             </p>
-            <NeedsData id="agm360-aciklama" compact className="mt-6" />
+            <p className="mt-6 max-w-[56ch] text-[1.02rem] leading-[1.65] text-muted">{agm360.description}</p>
             <div className="mt-7">
               <BtnLine href="/egitim-modeli" size="lg">Modelin Tüm Detaylarını İncele</BtnLine>
             </div>

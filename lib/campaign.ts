@@ -26,6 +26,8 @@ export const bursluluk = {
   deadline: "2027-01-15T23:59:59+03:00",
   /** After this the campaign is over everywhere. */
   examEnd: "2027-01-16T23:59:59+03:00",
+  /** Grades that can sit the exam (client banner, Nov 2026). */
+  grades: [4, 5, 6, 7],
   sessions: [
     { label: "1. Seans", time: "10.00" },
     { label: "2. Seans", time: "14.00" },
@@ -37,7 +39,7 @@ export const bursluluk = {
     { label: "2. Seans", value: "14.00" },
     { label: "Son başvuru", value: "15 Ocak 2027" },
     { label: "Sınav yeri", value: null },
-    { label: "Katılabilecek sınıflar", value: null },
+    { label: "Katılabilecek sınıflar", value: "4, 5, 6 ve 7. sınıflar" },
     { label: "Burs oranları", value: null },
   ] as { label: string; value: string | null }[],
 };

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { Section } from "@/components/PageHero";
-import { BadgeCheck, Handshake } from "lucide-react";
+import { ArrowUpRight, BadgeCheck, Handshake } from "lucide-react";
 import { NeedsData } from "@/components/NeedsData";
 import { PartnerGrid, SolutionPartners } from "@/components/PartnerLogos";
 import { ContactCta } from "@/components/ContactCta";
@@ -14,7 +14,7 @@ import {
   values,
   vision,
 } from "@/lib/anasehir";
-import { institutionalPartners, memberships, solutionPartnerGroups } from "@/lib/partners";
+import { institutionalPartners, memberships, partnerHref, solutionPartnerGroups } from "@/lib/partners";
 import { sections } from "@/lib/nav";
 import { site } from "@/lib/site";
 
@@ -205,16 +205,38 @@ export default function AnasehiriKesfedinPage() {
         </div>
         <PartnerGrid partners={institutionalPartners} />
 
-        {/* 3 · Üyelikler — kept apart from iş birlikleri (client rule) */}
-        <div className="mt-16 rounded-[18px] bg-blush p-6 sm:p-8">
-          <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
-            <h3 className="display flex items-center gap-2.5 text-2xl font-semibold">
-              <BadgeCheck className="h-6 w-6 text-red" strokeWidth={1.75} aria-hidden />
-              Üyesi Olduğumuz Kuruluşlar
-            </h3>
-            <NeedsData id="uyelik-logolari" compact className="!flex-row !items-center !gap-3 !p-2.5 !pr-4" />
-          </div>
-          <PartnerGrid partners={memberships} size="lg" />
+        {/* 3 · Üyelikler — kept apart from iş birlikleri (client rule).
+            One wide horizontal card per membership (only TÖZOK today). */}
+        <div className="mt-16 grid items-center gap-6 rounded-[18px] bg-blush p-6 sm:p-8 lg:grid-cols-[minmax(0,0.75fr)_minmax(0,1.25fr)] lg:gap-10">
+          <h3 className="display flex items-center gap-2.5 text-2xl font-semibold">
+            <BadgeCheck className="h-6 w-6 shrink-0 text-red" strokeWidth={1.75} aria-hidden />
+            Üyesi Olduğumuz Kuruluşlar
+          </h3>
+          <ul className="grid gap-3">
+            {memberships.map((m) => (
+              <li key={m.name}>
+                <a
+                  href={partnerHref(m)}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="group flex items-center gap-5 rounded-[16px] bg-panel p-4 no-underline shadow-sm ring-1 ring-line/50 transition-[transform,box-shadow] duration-300 hover:-translate-y-0.5 hover:shadow-md sm:p-5"
+                >
+                  {m.logo && (
+                    <span className="relative h-20 w-20 shrink-0 overflow-hidden rounded-[12px] sm:h-24 sm:w-24">
+                      <Image src={m.logo} alt="" fill sizes="96px" className="object-cover" />
+                    </span>
+                  )}
+                  <span className="min-w-0 flex-1">
+                    <span className="display block text-lg leading-snug font-semibold text-ink sm:text-xl">{m.name}</span>
+                    <span className="mt-1 block text-sm text-muted transition-colors group-hover:text-blue">{m.domain}</span>
+                  </span>
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-2 border-ink text-ink transition-[border-color,color,transform] duration-200 group-hover:translate-x-0.5 group-hover:border-blue group-hover:text-blue">
+                    <ArrowUpRight className="h-4 w-4" strokeWidth={2} aria-hidden />
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
       </Section>
 

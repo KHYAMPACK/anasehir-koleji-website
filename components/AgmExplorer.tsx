@@ -26,10 +26,41 @@ export function AgmExplorer({ intro }: { intro: React.ReactNode }) {
     <>
       <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-12">
         <div className="min-w-0">{intro}</div>
-        <Agm360Wheel request={request} onActiveChange={onActiveChange} showList={false} />
+        <div className="min-w-0">
+          <Agm360Wheel request={request} onActiveChange={onActiveChange} showList={false} />
+          {/* Selected area's description (client copy), cross-fading with the wheel */}
+          <div className="relative mx-auto mt-6 min-h-[7.5rem] max-w-[560px] sm:min-h-[6.5rem]" aria-live="polite">
+            {agmAreas.map((a, i) => {
+              const Icon = agmIcons[a.icon];
+              const on = i === active;
+              return (
+                <div
+                  key={a.slug}
+                  aria-hidden={!on}
+                  className={`absolute inset-0 flex items-start gap-4 rounded-[16px] bg-panel p-5 shadow-sm transition-[opacity,transform] duration-500 ${
+                    on ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-2 opacity-0"
+                  }`}
+                  style={{ borderLeft: `4px solid ${a.from}` }}
+                >
+                  <span
+                    className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-white"
+                    style={{ background: `linear-gradient(135deg, ${a.from}, ${a.to})` }}
+                  >
+                    <Icon className="h-5 w-5" strokeWidth={1.7} aria-hidden />
+                  </span>
+                  <div className="min-w-0">
+                    <p className="display font-semibold text-ink">{a.title}</p>
+                    <p className="mt-1 text-sm leading-relaxed text-muted">{a.text}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
       </div>
 
-      <div id="gelisim-alanlari" className="scroll-mt-[calc(var(--header)+0.75rem)] pt-16">
+      {/* Desktop has the wheel + description panel, so the cards are phone/tablet only */}
+      <div id="gelisim-alanlari" className="scroll-mt-[calc(var(--header)+0.75rem)] pt-16 lg:hidden">
         <h2 className="display text-3xl font-semibold tracking-tight sm:text-4xl">
           AGM 360°&apos;ın <span className="text-red">{agmAreas.length}</span> Gelişim Alanı
         </h2>

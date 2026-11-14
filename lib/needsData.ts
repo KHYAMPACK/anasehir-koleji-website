@@ -34,55 +34,20 @@ export const needsData = {
     ask: "Etimesgut Kaymakamlığı ve ASELSAN için daha büyük logo; WhatsApp ile gelen 5 kurum logosunun (Aile, İçişleri, MSB, Jandarma, Kızılay) varsa yüksek çözünürlüklü/SVG hâli.",
     href: "/hakkimizda#is-birliklerimiz",
   },
-  "uyelik-logolari": {
-    label: "Üyelik logoları",
-    ask: "Ankara Eğitim Platformu logosunun daha büyük/SVG hâli (sitedeki 140px).",
-    href: "/hakkimizda#is-birliklerimiz",
-  },
-  "agm360-aciklama": {
-    label: "AGM 360° model açıklaması",
-    ask: "AGM 360° modelini anlatan kısa paragraf ve 8 gelişim alanının her biri için tek cümlelik açıklama.",
-    href: "/#egitim-modeli",
-  },
-  "surdurulebilir-yasam-metin": {
-    label: "Sürdürülebilir Yaşam Bilinci içeriği",
-    ask: "Okulda sürdürülebilirlik/çevre bilinci için yapılan uygulamalar — kısa metin ve örnekler.",
-    href: "/egitim-modeli#agm-360",
-  },
   "agm-uygulamada": {
-    label: "AGM Uygulamada: proje ve görseller",
-    ask: "AGM 360° kapsamında yapılmış gerçek okul projeleri — başlık, kısa açıklama ve fotoğraf.",
-    href: "/egitim-modeli#agm-360",
+    label: "AGM Uygulamada: 4 fotoğraf",
+    ask: "Metinler geldi; fotoğraflar bekleniyor: (1) Bilim ve Bahar Şenliği proje sunumu/öğrenci etkinliği, (2) SEBİT SDU Türkiye geneli tam puan başarısı veya akademik başarı töreni (izinli), (3) spor etkinliği veya yarışma başarısı, (4) INGED İngilizce Drama Yarışması veya okul sahne etkinliği.",
+    href: "/egitim-modeli#agm-uygulamada",
   },
   "egitim-modeli-sss": {
     label: "Eğitim Modeli SSS cevapları",
     ask: "'AGM 360° nedir?', 'Future Skills hangi alanları kapsar?', 'PDR desteği nasıl sunulur?' sorularının cevapları.",
     href: "/egitim-modeli#agm-360",
   },
-  "olcme-degerlendirme-metin": {
-    label: "Ölçme-değerlendirme içeriği",
-    ask: "Sınav, deneme ve değerlendirme sisteminin açıklaması.",
-    href: "/egitim-modeli#akademik-takip",
-  },
   "kademe-fotograflari": {
     label: "Kademe fotoğrafları",
     ask: "Anaokulu, İlkokul ve Ortaokul için her kademeye özgü gerçek fotoğraf (yatay, 16:10 veya 4:3). Şu an genel kampüs fotoğrafları kullanılıyor.",
     href: "/okullarimiz",
-  },
-  "anaokulu-icerik": {
-    label: "Anaokulu içeriği",
-    ask: "Anaokulu programı, yaş grupları ve öne çıkan uygulamalar.",
-    href: "/okullarimiz#anaokulu",
-  },
-  "etkinlik-dersi-saati": {
-    label: "Etkinlik dersi saati",
-    ask: "Etkinlik dersinin yeni gün akışındaki saat aralığı.",
-    href: "/okullarimiz#ortaokul",
-  },
-  "servis-saatleri": {
-    label: "Servis kalkış saatleri",
-    ask: "Okul çıkışı ve etüt sonrası servis kalkış saatleri.",
-    href: "/okullarimiz#ortaokul",
   },
   "kampus-fotograflari": {
     label: "Kampüs alanı fotoğrafları",
@@ -168,11 +133,6 @@ export const needsData = {
     label: "KVKK belgelerinin PDF dosyaları",
     ask: "İmzalı/onaylı PDF'ler varsa gönderin; şu an PDF bağlantısı sayfanın yazdırılabilir hâlini açıyor.",
     href: "/kvkk",
-  },
-  "sss-icerik": {
-    label: "Sık sorulan sorular",
-    ask: "Güncel soru-cevap listesi (sayfada şu an eski siteden gelen cevaplar var).",
-    href: "/sss",
   },
   "bursluluk-gorsel": {
     label: "Bursluluk kampanya görseli",

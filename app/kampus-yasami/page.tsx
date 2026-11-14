@@ -5,7 +5,6 @@ import {
   ArrowUpRight,
   BookOpen,
   Bus,
-  DoorOpen,
   HeartHandshake,
   Palette,
   PencilLine,
@@ -18,20 +17,19 @@ import {
   Waves,
   type LucideIcon,
 } from "lucide-react";
+import { BranchLessons } from "@/components/BranchLessons";
 import { BtnLine, BtnPrimary } from "@/components/Buttons";
 import { InstagramFeed } from "@/components/InstagramFeed";
 import { NeedsData } from "@/components/NeedsData";
 import { Section } from "@/components/PageHero";
 import { ortaokulDay } from "@/lib/copy";
 import {
-  activityRulesShort,
+  branchLessons,
+  eveningStudy,
   facilities,
   kampusCopy as k,
-  kulupBranches,
   safetyHealth,
-  sanatBranches,
   socialResponsibility,
-  sporBranches,
 } from "@/lib/kampusYasami";
 import { sections } from "@/lib/nav";
 import { showDataFlags } from "@/lib/needsData";
@@ -51,11 +49,8 @@ const mosaic: { title: string; href: string; icon: LucideIcon; from: string; to:
 ];
 
 const dayIcons: Record<string, LucideIcon> = {
-  "Erken bırakma": DoorOpen,
-  "Akademik çalışmalar": BookOpen,
-  "Etkinlik dersi": Palette,
-  Servisler: Bus,
-  "İsteğe bağlı etüt": PencilLine,
+  "Eğitim ve Öğretim": BookOpen,
+  "Akşam Etütleri / Ödev Saati": PencilLine,
 };
 
 const safetyIcons = [Bus, UserCheck, ShieldCheck];
@@ -202,20 +197,18 @@ export default function KampusYasamiPage() {
         )}
       </Section>
 
-      {/* ── Spor: navy, swimming highlight + branch cloud ────── */}
+      {/* ── Uygulamalı Branş Dersleri (client revision, Nov 2026) ── */}
+      <Section id="brans-dersleri" tone="ice" title={branchLessons.title}>
+        <BranchLessons />
+      </Section>
+
+      {/* ── Spor: navy, swimming highlight ───────────────────── */}
       <section id="spor" className="tone-navy relative scroll-mt-[calc(var(--header)+3rem)] overflow-hidden py-[clamp(3rem,6vw,5rem)]">
         <div className="pointer-events-none absolute inset-0 opacity-20 grid-paper" />
         <div className="pointer-events-none absolute -bottom-40 -left-40 h-[26rem] w-[26rem] rounded-full bg-red/25 blur-3xl" aria-hidden />
         <div className="relative mx-auto grid max-w-[1180px] items-start gap-10 px-4 sm:px-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-14 lg:px-10">
           <div>
             <Heading dark label={k.spor.label} title={k.spor.title} text={k.spor.text} />
-            <ul className="mt-8 flex flex-wrap gap-2">
-              {sporBranches.map((b) => (
-                <li key={b} className="rounded-full bg-white/10 px-4 py-2 text-sm font-semibold text-white ring-1 ring-white/15">
-                  {b}
-                </li>
-              ))}
-            </ul>
           </div>
           <article className="rounded-[22px] bg-white/[0.07] p-7 ring-1 ring-white/12 sm:p-9">
             <span className="flex h-12 w-12 items-center justify-center rounded-full bg-blue text-white">
@@ -239,17 +232,6 @@ export default function KampusYasamiPage() {
         <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:gap-14">
           <div>
             <Heading label={k.sanat.label} title={k.sanat.title} text={k.sanat.text} />
-            <ul className="mt-8 grid grid-cols-2 gap-2.5 sm:grid-cols-3">
-              {sanatBranches.map((b, i) => (
-                <li
-                  key={b}
-                  className="rounded-[14px] px-4 py-3.5 text-sm font-bold text-white shadow-sm"
-                  style={{ background: ["#1fb0c4", "#e5232d", "#8f55d6", "#f7892a", "#2453ad"][i % 5] }}
-                >
-                  {b}
-                </li>
-              ))}
-            </ul>
           </div>
           <div className="rounded-[22px] bg-panel p-7 shadow-sm sm:p-9">
             <span className="flex h-12 w-12 items-center justify-center rounded-full bg-red text-white">
@@ -274,27 +256,11 @@ export default function KampusYasamiPage() {
         </div>
       </Section>
 
-      {/* ── Kulüpler: rules strip + club grid + sosyal sorumluluk ─ */}
+      {/* ── Kulüpler + sosyal sorumluluk ─────────────────────── */}
       <Section id="kulupler" tone="ice">
         <div className="max-w-3xl">
           <Heading label={k.kulupler.label} title={k.kulupler.title} text={k.kulupler.text} />
         </div>
-        <ul className="mt-10 grid gap-3 sm:grid-cols-3">
-          {activityRulesShort.map((r) => (
-            <li key={r.title} className="flex items-center gap-3 rounded-[16px] bg-ink px-5 py-4 text-white">
-              <Sparkles className="h-5 w-5 shrink-0 text-blue" strokeWidth={1.8} aria-hidden />
-              <span className="display text-lg font-bold">{r.title}</span>
-            </li>
-          ))}
-        </ul>
-        <ul className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
-          {kulupBranches.map((b) => (
-            <li key={b} className="flex items-center gap-3 rounded-[14px] bg-panel px-4 py-3.5 shadow-sm">
-              <Puzzle className="h-4 w-4 shrink-0 text-[#8f55d6]" strokeWidth={2} aria-hidden />
-              <span className="text-sm font-semibold text-ink">{b}</span>
-            </li>
-          ))}
-        </ul>
         <div id="sosyal-sorumluluk" className="mt-10 scroll-mt-[calc(var(--header)+4rem)] rounded-[22px] bg-panel p-6 shadow-sm sm:p-8">
           <p className="display flex items-center gap-2.5 text-xl font-bold text-ink">
             <HeartHandshake className="h-6 w-6 text-red" strokeWidth={1.7} aria-hidden />
@@ -315,8 +281,8 @@ export default function KampusYasamiPage() {
         <div className="max-w-3xl">
           <Heading label={k.gunluk.label} title={k.gunluk.title} text={k.gunluk.text} />
         </div>
-        <ol className="relative mx-auto mt-12 grid max-w-4xl gap-6 sm:grid-cols-3">
-          <span className="absolute top-7 right-[16%] left-[16%] hidden h-0.5 bg-red/25 sm:block" aria-hidden />
+        <ol className="relative mx-auto mt-12 grid max-w-2xl gap-6 sm:grid-cols-2">
+          <span className="absolute top-7 right-[25%] left-[25%] hidden h-0.5 bg-red/25 sm:block" aria-hidden />
           {ortaokulDay.steps
             .filter((s) => s.time)
             .map((s) => {
@@ -332,6 +298,13 @@ export default function KampusYasamiPage() {
               );
             })}
         </ol>
+        <div className="mx-auto mt-12 max-w-3xl rounded-[22px] bg-canvas/60 p-6 ring-1 ring-line/60 sm:p-8">
+          <p className="display flex flex-wrap items-baseline gap-x-3 text-xl font-bold text-ink">
+            {eveningStudy.title}
+            <span className="text-base font-semibold text-red">{eveningStudy.time}</span>
+          </p>
+          <p className="mt-3 text-muted">{eveningStudy.text}</p>
+        </div>
       </Section>
 
       {/* ── Closing ──────────────────────────────────────────── */}

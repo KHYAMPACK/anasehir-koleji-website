@@ -92,5 +92,4 @@ export const institutionalPartners: Partner[] = [
 /** Üyesi olduğumuz kuruluşlar — its own section, separate from the above. */
 export const memberships: Partner[] = [
   { name: "Türkiye Özel Okullar Derneği (TÖZOK)", domain: "tozok.org.tr", logo: "/partners/tozok.jpg" },
-  { name: "Ankara Eğitim Platformu (AEP)", domain: "ankaraegitimplatformu.org", logo: "/partners/aep.png" },
 ];

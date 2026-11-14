@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { HeartHandshake, MessagesSquare, TrendingUp, UsersRound } from "lucide-react";
+import { ArrowUpRight, Bike, ChartNoAxesCombined, Drama, Droplets, FlaskConical, Globe, HeartHandshake, Leaf, Trophy, MessagesSquare, Recycle, Repeat2, TreePine, TrendingUp, UsersRound } from "lucide-react";
 import Image from "next/image";
 import { BtnLine, BtnPrimary } from "@/components/Buttons";
 import { AgmExplorer } from "@/components/AgmExplorer";
@@ -11,6 +11,33 @@ import { akademikTakip, pdr } from "@/lib/egitimModeli";
 import { sections } from "@/lib/nav";
 import { showDataFlags } from "@/lib/needsData";
 import { programs } from "@/lib/programs";
+import { surdurulebilir } from "@/lib/surdurulebilir";
+import { agmUygulamada } from "@/lib/agmUygulamada";
+import {
+  olcmeApproachTitle,
+  olcmeIntro,
+  olcmeLevels,
+  olcmeLevelsTitle,
+  olcmeSteps,
+  olcmeStepsTitle,
+  olcmeVeli,
+} from "@/lib/olcmeDegerlendirme";
+import { ApproachTabs } from "@/components/olcme/ApproachTabs";
+import { LevelTabs } from "@/components/olcme/LevelTabs";
+import { site } from "@/lib/site";
+
+/** Icons for the Sürdürülebilir Yaşam areas (replacing the brief's emojis). */
+const sustainIcons = {
+  tree: TreePine,
+  recycle: Recycle,
+  droplets: Droplets,
+  repeat: Repeat2,
+  hands: HeartHandshake,
+  globe: Globe,
+} as const;
+
+/** Icons for the AGM Uygulamada cards. */
+const uygulamaIcons = { flask: FlaskConical, trophy: Trophy, bike: Bike, drama: Drama } as const;
 
 export const metadata: Metadata = { title: "Eğitim Modeli" };
 
@@ -77,7 +104,7 @@ export default function EgitimModeliPage() {
       </section>
 
       <nav className="sticky top-[var(--header)] z-30 bg-ink/95 backdrop-blur" aria-label="Eğitim Modeli bölümleri">
-        <div className="mx-auto flex max-w-[1180px] gap-x-5 overflow-x-auto px-4 py-3 text-sm whitespace-nowrap text-white/70 sm:px-6 lg:px-10">
+        <div className="mx-auto flex max-w-[1180px] gap-x-5 overflow-x-auto [scrollbar-width:none] px-4 [&::-webkit-scrollbar]:hidden py-3 text-sm whitespace-nowrap text-white/70 sm:px-6 lg:px-10">
           {chapters.map((c) => (
             <a key={c.href} href={`#${c.href.split("#")[1]}`} className="hover:text-white">
               {c.name}
@@ -104,7 +131,7 @@ export default function EgitimModeliPage() {
                 <br />
                 {agm360.tagline[1]}
               </p>
-              <NeedsData id="agm360-aciklama" compact className="mt-6" />
+              <p className="mt-6 max-w-[56ch] text-[1.02rem] leading-[1.65] text-muted">{agm360.description}</p>
             </>
           }
         />
@@ -132,13 +159,97 @@ export default function EgitimModeliPage() {
             ))}
           </ol>
         </div>
-        {showDataFlags && (
-          <div id="olcme-degerlendirme" className="mt-10 scroll-mt-[calc(var(--header)+4rem)]">
-            <h3 className="display mb-3 text-xl font-semibold">Ölçme-Değerlendirme</h3>
-            <NeedsData id="olcme-degerlendirme-metin" />
-          </div>
-        )}
       </Section>
+
+      {/* 04b · Ölçme ve Değerlendirme Sistemi — client copy (lib/olcmeDegerlendirme.ts) */}
+      <section
+        id="olcme-degerlendirme"
+        className="tone-ice relative scroll-mt-[calc(var(--header)+3rem)] overflow-clip py-[clamp(3rem,6vw,5rem)]"
+      >
+        <div className="pointer-events-none absolute -top-40 -right-40 h-[28rem] w-[28rem] rounded-full bg-red/10 blur-3xl" aria-hidden />
+        <div className="relative mx-auto max-w-[1180px] px-4 sm:px-6 lg:px-10">
+          <div className="grid items-start gap-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:gap-14">
+            <div>
+              <AreaChip slug="akademik-derinlik" />
+              <h2 className="display mt-5 text-4xl font-semibold tracking-tight sm:text-5xl">{olcmeIntro.title}</h2>
+              <p className="display mt-5 text-xl leading-snug font-medium text-ink">{olcmeIntro.lead}</p>
+              <div className="mt-4 space-y-3 text-[1.02rem] leading-[1.65] text-muted">
+                {olcmeIntro.paragraphs.map((p) => (
+                  <p key={p}>{p}</p>
+                ))}
+              </div>
+            </div>
+            <div className="tone-navy relative overflow-hidden rounded-[20px] bg-ink p-7 shadow-[0_24px_60px_-30px_rgba(11,32,69,0.7)] lg:mt-16">
+              <div className="pointer-events-none absolute inset-0 opacity-15 grid-paper" />
+              <span className="relative flex h-12 w-12 items-center justify-center rounded-full bg-red text-white">
+                <ChartNoAxesCombined className="h-6 w-6" strokeWidth={1.7} aria-hidden />
+              </span>
+              <p className="display relative mt-5 text-xl leading-snug font-semibold text-white">{olcmeIntro.highlight}</p>
+              <div className="relative mt-6 flex flex-wrap gap-2">
+                {olcmeLevels
+                  .filter((l) => l.rhythm)
+                  .map((l) => (
+                    <span key={l.grades} className="rounded-full bg-white/10 px-3 py-1 text-xs font-semibold text-white ring-1 ring-white/15">
+                      {l.grades}: {l.rhythm}
+                    </span>
+                  ))}
+              </div>
+            </div>
+          </div>
+
+          <h3 className="display mt-16 text-2xl font-semibold tracking-tight sm:text-3xl">{olcmeApproachTitle}</h3>
+          <div className="mt-6">
+            <ApproachTabs />
+          </div>
+
+          <h3
+            id="olcme-kademeler"
+            className="display mt-16 scroll-mt-[calc(var(--header)+4rem)] text-2xl font-semibold tracking-tight sm:text-3xl"
+          >
+            {olcmeLevelsTitle}
+          </h3>
+          <div className="mt-6">
+            <LevelTabs />
+          </div>
+
+          <h3 className="display mt-16 text-2xl font-semibold tracking-tight sm:text-3xl">{olcmeStepsTitle}</h3>
+          <ol className="relative mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-5 lg:gap-3">
+            <span className="absolute top-7 right-[10%] left-[10%] hidden h-0.5 bg-gradient-to-r from-blue via-red to-blue lg:block" aria-hidden />
+            {olcmeSteps.map((st, i) => (
+              <li key={st.title} className="relative flex flex-col items-start rounded-[16px] bg-panel p-5 shadow-sm lg:items-center lg:bg-transparent lg:p-0 lg:text-center lg:shadow-none">
+                <span className="display relative z-10 flex h-14 w-14 items-center justify-center rounded-full bg-ink text-lg font-semibold text-white ring-4 ring-canvas">
+                  {i + 1}
+                </span>
+                <span className="display mt-4 text-lg font-semibold tracking-tight text-ink uppercase">{st.title}</span>
+                <span className="mt-1.5 text-sm leading-relaxed text-muted lg:px-2">{st.text}</span>
+              </li>
+            ))}
+          </ol>
+
+          <div className="tone-navy relative mt-16 grid items-center gap-6 overflow-hidden rounded-[22px] bg-ink p-7 sm:p-10 lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-12">
+            <div className="pointer-events-none absolute inset-0 opacity-15 grid-paper" />
+            <div className="pointer-events-none absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-blue/25 blur-3xl" aria-hidden />
+            <div className="relative">
+              <h3 className="display text-2xl font-semibold tracking-tight text-white sm:text-3xl">{olcmeVeli.title}</h3>
+              <div className="mt-4 max-w-[64ch] space-y-3 text-white/75">
+                {olcmeVeli.paragraphs.map((p) => (
+                  <p key={p}>{p}</p>
+                ))}
+              </div>
+            </div>
+            <a
+              href={site.portals.find((p) => p.name.startsWith("SebitVcloud"))?.href}
+              target="_blank"
+              rel="noreferrer"
+              className="relative inline-flex items-center gap-2 justify-self-start rounded-full bg-white px-6 py-3.5 text-[0.95rem] font-semibold no-underline shadow-lg transition-transform duration-200 hover:-translate-y-0.5"
+              style={{ color: "#14233a" }}
+            >
+              SebitVcloud Giriş
+              <ArrowUpRight className="h-4 w-4 text-red" strokeWidth={2.2} aria-hidden />
+            </a>
+          </div>
+        </div>
+      </section>
 
       {/* 05 · Future Skills & Küresel Yetkinlik — dark band, two program columns as chip clouds */}
       <section id="future-skills" className="tone-navy relative scroll-mt-[calc(var(--header)+3rem)] overflow-hidden py-[clamp(3rem,6vw,5rem)]">
@@ -236,26 +347,116 @@ export default function EgitimModeliPage() {
         </div>
       </Section>
 
-      {/* 07 · Sürdürülebilir Yaşam Bilinci — no content yet */}
-      {showDataFlags && (
-        <Section id="surdurulebilir-yasam" tone="ice">
-          <AreaChip slug="surdurulebilir-yasam-bilinci" />
-          <h2 className="display mt-5 text-4xl font-semibold tracking-tight">Sürdürülebilir Yaşam Bilinci</h2>
-          <NeedsData id="surdurulebilir-yasam-metin" className="mt-6" />
-        </Section>
-      )}
-
-      {/* 08 · AGM Uygulamada — no photos yet */}
-      {showDataFlags && (
-        <Section id="agm-uygulamada" tone="paper" title="AGM Uygulamada">
-          <NeedsData id="agm-uygulamada" />
-          <div className="mt-3 grid gap-3 sm:grid-cols-3">
-            {Array.from({ length: 3 }, (_, i) => (
-              <NeedsData key={i} id="agm-uygulamada" label={`Proje / uygulama ${i + 1}`} ratio="aspect-[4/3]" compact />
-            ))}
+      {/* 07 · Sürdürülebilir Yaşam Bilinci — client copy (lib/surdurulebilir.ts) */}
+      <section
+        id="surdurulebilir-yasam"
+        className="tone-ice relative scroll-mt-[calc(var(--header)+3rem)] overflow-hidden py-[clamp(3rem,6vw,5rem)]"
+      >
+        <Leaf
+          className="pointer-events-none absolute -top-10 -right-16 h-[22rem] w-[22rem] -rotate-12 text-[#3d8a21] opacity-[0.06]"
+          strokeWidth={1}
+          aria-hidden
+        />
+        <div className="pointer-events-none absolute -bottom-40 -left-32 h-96 w-96 rounded-full bg-[#76bb43]/15 blur-3xl" aria-hidden />
+        <div className="relative mx-auto max-w-[1180px] px-4 sm:px-6 lg:px-10">
+          <div className="max-w-[62ch]">
+            <AreaChip slug="surdurulebilir-yasam-bilinci" />
+            <h2 className="display mt-5 text-4xl font-semibold tracking-tight sm:text-5xl">Sürdürülebilir Yaşam Bilinci</h2>
+            <div className="mt-5 space-y-3 text-[1.05rem] leading-[1.65] text-muted">
+              {surdurulebilir.intro.map((p) => (
+                <p key={p}>{p}</p>
+              ))}
+            </div>
           </div>
-        </Section>
-      )}
+
+          <h3 className="display mt-12 text-2xl font-semibold tracking-tight">{surdurulebilir.areasTitle}</h3>
+          <ol className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {surdurulebilir.areas.map((a, i) => {
+              const Icon = sustainIcons[a.icon];
+              return (
+                <li
+                  key={a.title}
+                  className="group relative flex flex-col rounded-[18px] bg-panel p-6 shadow-sm ring-1 ring-line/40 transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-[0_18px_40px_-22px_rgba(61,138,33,0.55)]"
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[#76bb43]/15 text-[#3d8a21] transition-colors duration-300 group-hover:bg-gradient-to-br group-hover:from-[#76bb43] group-hover:to-[#3d8a21] group-hover:text-white">
+                      <Icon className="h-6 w-6" strokeWidth={1.7} aria-hidden />
+                    </span>
+                    <span className="display text-2xl font-semibold text-[#3d8a21]/25">{String(i + 1).padStart(2, "0")}</span>
+                  </div>
+                  <h4 className="display mt-5 text-lg leading-snug font-semibold tracking-tight text-ink">{a.title}</h4>
+                  <p className="mt-2 text-sm leading-relaxed text-muted">{a.text}</p>
+                  <span className="absolute inset-x-6 bottom-0 h-1 origin-left scale-x-0 rounded-full bg-[#76bb43] transition-transform duration-300 group-hover:scale-x-100" aria-hidden />
+                </li>
+              );
+            })}
+          </ol>
+        </div>
+      </section>
+
+      {/* 08 · AGM Uygulamada — client copy (lib/agmUygulamada.ts) */}
+      <Section id="agm-uygulamada" tone="paper">
+        <div className="max-w-[62ch]">
+          <p className="eyebrow flex items-center gap-3">
+            <span className="h-5 w-1 rounded-full bg-red" aria-hidden />
+            AGM 360°
+          </p>
+          <h2 className="display mt-4 text-4xl font-semibold tracking-tight sm:text-5xl">{agmUygulamada.title}</h2>
+          <p className="mt-5 text-[1.05rem] leading-[1.65] text-muted">{agmUygulamada.intro}</p>
+        </div>
+
+        <ul className="mt-12 grid gap-5 md:grid-cols-2">
+          {agmUygulamada.items.map((it, i) => {
+            const Icon = uygulamaIcons[it.icon];
+            return (
+              <li
+                key={it.title}
+                className="group flex flex-col overflow-hidden rounded-[20px] bg-panel shadow-sm ring-1 ring-line/50 transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-[0_22px_50px_-28px_rgba(20,35,58,0.5)]"
+              >
+                {/* Photo when supplied; otherwise a coloured icon header */}
+                <div className="relative aspect-[16/7] overflow-hidden">
+                  {it.photo ? (
+                    <Image
+                      src={it.photo}
+                      alt={it.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                    />
+                  ) : (
+                    <div
+                      className="absolute inset-0 flex items-center justify-center"
+                      style={{ background: `linear-gradient(135deg, ${it.from}, ${it.to})` }}
+                    >
+                      <div className="pointer-events-none absolute inset-0 opacity-20 grid-paper" />
+                      <Icon
+                        className="pointer-events-none absolute -right-6 -bottom-8 h-44 w-44 text-white opacity-10 transition-transform duration-700 group-hover:scale-110 group-hover:-rotate-6"
+                        strokeWidth={1}
+                        aria-hidden
+                      />
+                      <span className="relative flex h-16 w-16 items-center justify-center rounded-full bg-white/15 text-white ring-1 ring-white/30 backdrop-blur-sm">
+                        <Icon className="h-8 w-8" strokeWidth={1.6} aria-hidden />
+                      </span>
+                    </div>
+                  )}
+                  <span className="display absolute top-4 left-4 rounded-full bg-white/90 px-3 py-1 text-xs font-bold text-ink">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                </div>
+                <div className="flex flex-1 flex-col p-6 sm:p-7">
+                  <h3 className="display text-xl font-semibold tracking-tight text-ink sm:text-[1.4rem]">{it.title}</h3>
+                  <p className="mt-2.5 text-[0.98rem] leading-relaxed text-muted">{it.text}</p>
+                  <span
+                    className="mt-auto block h-1 w-12 rounded-full pt-0 transition-[width] duration-300 group-hover:w-20"
+                    style={{ background: it.from, marginTop: "1.5rem" }}
+                    aria-hidden
+                  />
+                </div>
+              </li>
+            );
+          })}
+        </ul>
+      </Section>
 
       {/* 09 · SSS — answers not supplied yet */}
       {showDataFlags && (

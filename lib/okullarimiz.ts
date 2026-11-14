@@ -1,6 +1,6 @@
 export const etutPoints = [
   { title: "İsteğe Bağlı", text: "Zorunlu değil, ücrete tabidir." },
-  { title: "16:50–18:20", text: "Dersler bitince başlar." },
+  { title: "16.50–18.20", text: "Dersler bitince başlar." },
   { title: "Ödev Desteği", text: "Günlük ödev ve eksik konular çalışılır." },
   { title: "Servis İmkânı", text: "Etüde kalan öğrenciye servis var." },
 ] as const;
@@ -55,7 +55,7 @@ export const levelCards = [
     motto: "Merak. Keşif. Oyun.",
     text: "Çocuklarımızın doğal merakını, oyun temelli öğrenme deneyimleriyle destekliyoruz. Güven duygusunu, sosyal becerileri ve keşfetme isteğini birlikte geliştiriyoruz.",
     cta: "Anaokulunu Keşfedin",
-    href: "/okullarimiz#anaokulu",
+    href: "/okullarimiz/anaokulu",
     image: "/hero/hero-mobile-2.jpg",
     alt: "Anaşehir Koleji kampüsü ve oyun alanları",
     /** CSS object-position — frame the playground in the lower half. */

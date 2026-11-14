@@ -32,7 +32,7 @@ export const campuses: Campus[] = [
   },
   {
     id: "ankana-kids",
-    name: "Ankana Kids",
+    name: "Etimesgut Anaşehir Anaokulu",
     levels: "Kreş · Anaokulu · Etüt Merkezi",
     address: "İstasyon Mahallesi Türk Kızılayı Caddesi No:17, Etimesgut/Ankara",
     phones: [{ display: "0312 243 03 03", tel: "03122430303" }],

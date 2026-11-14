@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
-import { BtnLine } from "@/components/Buttons";
+import { BtnLine, BtnPrimary } from "@/components/Buttons";
 import { PageHero, Section } from "@/components/PageHero";
-import { NeedsData, NeedsDataTag } from "@/components/NeedsData";
 import { ProgramCards } from "@/components/ProgramCards";
 import { etutPoints, levelCards, okullarIntro } from "@/lib/okullarimiz";
 import { SchoolLevels } from "@/components/SchoolLevels";
 import { ContactCta } from "@/components/ContactCta";
 import { ortaokulDay } from "@/lib/copy";
+import { DailySchedule } from "@/components/DailySchedule";
+import { branchLessons, eveningStudy } from "@/lib/kampusYasami";
+import { BranchLessons } from "@/components/BranchLessons";
 import { programs } from "@/lib/programs";
 import { sections } from "@/lib/nav";
 
@@ -33,10 +35,15 @@ export default function OkullarimizPage() {
         <SchoolLevels />
       </Section>
 
-      <Section id="anaokulu" tone="ice" eyebrow="Anaokulu" title={levelCards[0].motto} lead={levelCards[0].text}>
-        <div className="grid gap-4 lg:grid-cols-[1fr_22rem]">
-          <NeedsData id="anaokulu-icerik" />
-          <NeedsData id="kampus-fotograflari" label="Okul öncesi — fotoğraf" ratio="aspect-[4/3]" compact />
+      {/* Anaokulu has its own page now; this chapter is the short entry point */}
+      <Section id="anaokulu" tone="ice" title="Anaokulu" lead={levelCards[0].text}>
+        <div className="flex flex-wrap items-center gap-x-8 gap-y-3 text-sm text-muted">
+          <span><strong className="text-ink">3, 4 ve 5 Yaş</strong> grupları</span>
+          <span><strong className="text-ink">16–18</strong> öğrencilik sınıflar</span>
+          <span><strong className="text-ink">5 yaşta</strong> İngilizce + Almanca</span>
+        </div>
+        <div className="mt-6">
+          <BtnPrimary href="/okullarimiz/anaokulu">Anaokulu Sayfası</BtnPrimary>
         </div>
       </Section>
 
@@ -48,35 +55,26 @@ export default function OkullarimizPage() {
       <Section id="ortaokul" tone="ice" eyebrow="Ortaokul" title={programs.fifthGrade.title} lead={programs.fifthGrade.lead}>
         <ProgramCards points={programs.fifthGrade.points} />
 
-        <div className="mt-10 grid gap-8 lg:grid-cols-[1fr_18rem]">
-          <ol className="relative space-y-0 pl-2">
-            <span className="absolute top-3 bottom-3 left-[1.15rem] w-0.5 bg-red" />
-            {ortaokulDay.steps.map((s) => (
-              <li key={s.title} className="relative flex gap-4 pb-6">
-                <span className="relative z-10 mt-1 h-4 w-4 shrink-0 rounded-full bg-red ring-4 ring-canvas" />
-                <div className="flex-1 rounded-[14px] bg-panel p-4 shadow-sm">
-                  <p className="display text-sm font-semibold text-red">
-                    {s.time ?? (s.needs && <NeedsDataTag id={s.needs} />)}
-                  </p>
-                  <h3 className="mt-1 font-semibold">{s.title}</h3>
-                  <p className="mt-1 text-sm text-muted">{s.text}</p>
-                </div>
-              </li>
-            ))}
-          </ol>
-          <div className="space-y-4">
-            <div className="rounded-[14px] bg-blush p-5 text-sm leading-relaxed text-muted">{ortaokulDay.meals}</div>
+        <div className="mt-12">
+          <h3 className="display text-2xl font-bold text-ink">{branchLessons.title}</h3>
+          <div className="mt-4">
+            <BranchLessons />
           </div>
         </div>
 
         <div className="mt-8 grid gap-4 sm:grid-cols-3">
           <BtnLine href="/egitim-modeli#yabanci-diller">Yabancı dil programı</BtnLine>
-          <BtnLine href="#etut-merkezi">Etüt merkezi</BtnLine>
+          <BtnLine href="#etut-merkezi">Akşam etütleri</BtnLine>
           <BtnLine href="/kampus-yasami">Kampüs yaşamı</BtnLine>
         </div>
       </Section>
 
-      <Section id="etut-merkezi" tone="paper" title="Anaşehir Etüt Merkezi" lead="Derslerin bitiminden sonra isteğe bağlı, ücretli etüt programı.">
+      {/* Günlük ders akışı + servis saatleri (client brief) */}
+      <Section id="gunluk-akis" tone="blush" title="Günlük Ders Akışı ve Servis Saatleri">
+        <DailySchedule meals={ortaokulDay.meals} />
+      </Section>
+
+      <Section id="etut-merkezi" tone="paper" title={eveningStudy.title} lead={eveningStudy.text}>
         <ProgramCards points={etutPoints} />
       </Section>
 

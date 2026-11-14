@@ -31,7 +31,6 @@ export const site = {
     { name: "Ekid+ Giriş", href: "https://www.ekidplus.com/" },
     { name: "Oxford Giriş", href: "https://englishhub.oup.com/" },
     { name: "Royal House London Giriş", href: "https://play-read.com/login" },
-    { name: "Ankara Eğitim Platformu", href: "https://ankaraegitimplatformu.org" },
   ],
   /** Anaşehir Radyo is paused (client, Nov 2026): /radyo redirects and every
    * link to it is hidden while this is false. */

@@ -75,6 +75,10 @@ export function BurslulukForm({ noticeBlocks }: { noticeBlocks: Block[] }) {
             <input required name="sinif" className={field} />
           </label>
           <label className="grid min-w-0 gap-1 text-sm sm:col-span-2">
+            Eğitim gördüğü okul *
+            <input required name="okul" className={field} />
+          </label>
+          <label className="grid min-w-0 gap-1 text-sm sm:col-span-2">
             Sınav seansı *
             <select required name="seans" defaultValue="" className={field}>
               <option value="" disabled>
