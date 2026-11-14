@@ -54,7 +54,7 @@ export function CampaignPopup() {
         role="dialog"
         aria-modal="true"
         aria-labelledby="bursluluk-popup-title"
-        className="tone-dark relative w-full max-w-md overflow-hidden rounded-[18px] shadow-[0_24px_60px_rgba(8,16,32,0.45)]"
+        className="tone-dark relative w-full max-w-md text-white overflow-hidden rounded-[18px] shadow-[0_24px_60px_rgba(8,16,32,0.45)]"
         style={{ background: "#0b2144" }}
       >
         {/* Student photo, cut diagonally at the bottom — same look as the hero slide */}
@@ -84,8 +84,8 @@ export function CampaignPopup() {
           <X className="h-5 w-5" aria-hidden />
         </button>
 
-        <div className="relative px-6 pt-2 pb-6 sm:px-8 sm:pb-8">
-          <h2 id="bursluluk-popup-title" className="display text-[2.5rem] leading-[0.95] font-extrabold tracking-tight uppercase sm:text-5xl">
+        <div className="relative px-6 pt-1 pb-6 sm:px-8 sm:pb-7">
+          <h2 id="bursluluk-popup-title" className="display text-[2.5rem] leading-[0.95] font-extrabold text-white tracking-tight uppercase sm:text-5xl">
             Bursluluk
             <br />
             Sınavı
@@ -93,7 +93,7 @@ export function CampaignPopup() {
 
           <div className="mt-5 flex flex-wrap items-stretch gap-x-2 gap-y-3">
             {day ? (
-              <span className="display -skew-x-[10deg] bg-red px-5 py-2 text-3xl leading-none font-extrabold uppercase shadow-[0_14px_30px_-12px_rgba(227,6,19,0.7)]">
+              <span className="display -skew-x-[10deg] bg-red px-5 py-2 text-3xl leading-none font-extrabold text-white uppercase shadow-[0_14px_30px_-12px_rgba(227,6,19,0.7)]">
                 <span className="inline-block skew-x-[10deg]">
                   {day} {month}
                 </span>
