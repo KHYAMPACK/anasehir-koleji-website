@@ -260,11 +260,15 @@ Servislerde görevli personel ve iletişim imkânları bulunmaktadır. Mevcut si
 
 Güzergâh, öğrenci teslim süreçleri, servis saatleri ve ulaşım koşulları ilgili servis birimi tarafından planlanır.
 
+Normal eğitim programı sonunda servislerimiz saat 16.45'te, akşam etüt programına katılan öğrencilerimiz için ise saat 18.25'te hareket etmektedir.
+
 Servis hizmetiyle ilgili güncel güzergâh ve güvenlik uygulamalarını kayıt görüşmesinde öğrenebilirsiniz.
 
 ### 29. Çocuğum okulda rahatsızlanırsa veya beklenmedik bir durum yaşanırsa ne olur?
 
 Öğrencilerimizin sağlık ve güvenliğiyle ilgili durumlarda okul yönetimi ve ilgili görevliler tarafından olayın niteliğine uygun işlem yapılması esastır.
+
+Öğrencilerimizin okul saatleri içerisinde sağlıkla ilgili bir sorun yaşaması durumunda, durumun niteliğine göre Aile Sağlığı Merkezinde görev yapan hekimlerin değerlendirme ve müdahalesinden yararlanıyoruz.
 
 Gerekli durumlarda veliyle iletişime geçilir; acil sağlık müdahalesi gerektiren durumlarda ilgili acil yardım hizmetlerine başvurulur.
 

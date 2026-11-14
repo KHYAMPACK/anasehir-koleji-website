@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { ArrowDown, HeartPulse, MapPin, Siren, Stethoscope } from "lucide-react";
 import {
   ArrowUpRight,
   BookOpen,
@@ -32,6 +33,7 @@ import {
   socialResponsibility,
 } from "@/lib/kampusYasami";
 import { sections } from "@/lib/nav";
+import { saglikCard, saglikHizmetleri } from "@/lib/saglik";
 import { showDataFlags } from "@/lib/needsData";
 import { programs } from "@/lib/programs";
 import { site } from "@/lib/site";
@@ -174,7 +176,22 @@ export default function KampusYasamiPage() {
                 );
               })}
             </ul>
-            <NeedsData id="saglik-bilgileri" className="mt-3" />
+            <a
+              href="#saglik-hizmetleri"
+              className="group mt-3 flex items-start gap-4 rounded-[16px] border border-red/20 bg-blush p-4 no-underline transition-colors hover:border-red/40"
+            >
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-red text-white">
+                <HeartPulse className="h-5 w-5" strokeWidth={1.8} aria-hidden />
+              </span>
+              <span className="min-w-0">
+                <span className="display block text-base font-semibold text-ink">{saglikCard.title}</span>
+                <span className="mt-1 block text-sm leading-relaxed text-muted">{saglikCard.text}</span>
+                <span className="mt-2 inline-flex items-center gap-1 text-sm font-semibold text-red">
+                  Sağlık Hizmetleri
+                  <ArrowDown className="h-3.5 w-3.5 transition-transform group-hover:translate-y-0.5" strokeWidth={2.2} aria-hidden />
+                </span>
+              </span>
+            </a>
           </div>
         </div>
         {(showDataFlags || facilities.some((f) => f.photo)) && (
@@ -195,6 +212,41 @@ export default function KampusYasamiPage() {
             ))}
           </ul>
         )}
+      </Section>
+
+      {/* ── Sağlık Hizmetleri (client copy, lib/saglik.ts) ─── */}
+      <Section id="saglik-hizmetleri" tone="ice">
+        <div className="grid items-start gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-14">
+          <div>
+            <span className="flex h-14 w-14 items-center justify-center rounded-[16px] bg-red text-white">
+              <HeartPulse className="h-7 w-7" strokeWidth={1.7} aria-hidden />
+            </span>
+            <h2 className="display mt-5 text-3xl font-semibold tracking-tight sm:text-4xl">{saglikHizmetleri.title}</h2>
+            <p className="mt-4 text-[1.05rem] leading-[1.65] text-muted">{saglikHizmetleri.intro}</p>
+            <p className="display mt-6 flex items-start gap-3 rounded-[16px] border-l-4 border-red bg-panel p-5 text-lg leading-snug font-semibold text-ink shadow-sm">
+              <MapPin className="mt-1 h-5 w-5 shrink-0 text-red" strokeWidth={2} aria-hidden />
+              {saglikHizmetleri.highlight}
+            </p>
+          </div>
+          <div className="grid gap-4">
+            {saglikHizmetleri.steps.map((t, i) => {
+              const Icon = i === 0 ? Stethoscope : Siren;
+              return (
+                <div key={t} className="flex items-start gap-4 rounded-[18px] bg-panel p-5 shadow-sm sm:p-6">
+                  <span
+                    className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-full ${i === 0 ? "bg-blue-soft text-blue" : "bg-red/10 text-red"}`}
+                  >
+                    <Icon className="h-5 w-5" strokeWidth={1.9} aria-hidden />
+                  </span>
+                  <p className="text-[1rem] leading-[1.65] text-muted">{t}</p>
+                </div>
+              );
+            })}
+            <p className="tone-navy rounded-[18px] bg-ink p-5 text-[1rem] leading-[1.6] font-semibold text-white sm:p-6">
+              {saglikHizmetleri.closing}
+            </p>
+          </div>
+        </div>
       </Section>
 
       {/* ── Uygulamalı Branş Dersleri (client revision, Nov 2026) ── */}

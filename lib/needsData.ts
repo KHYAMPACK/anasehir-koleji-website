@@ -54,11 +54,6 @@ export const needsData = {
     ask: "Laboratuvar, spor salonu, yemekhane, konferans salonu, yüzme havuzu, halı saha, bahçe, görsel atölye, müzik sınıfı, Lego sınıfı, Anaşehir Radyo ve okul öncesi alanlarının güncel fotoğrafları.",
     href: "/kampus-yasami#kampus",
   },
-  "saglik-bilgileri": {
-    label: "Sağlık birimi bilgileri",
-    ask: "Revir, sağlık personeli ve sağlık uygulamaları bilgisi.",
-    href: "/kampus-yasami#guvenlik-saglik",
-  },
   "akademik-takip-ekranlari": {
     label: "Akademik takip sistemi ekranları",
     ask: "Akademik takip sisteminden anonimleştirilmiş gerçek ekran görüntüleri (öğrenci adı/fotoğrafı olmadan) — Akademik Başarı sayfasının üst bölümündeki grafik paneli için.",
