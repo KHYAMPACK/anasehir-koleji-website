@@ -54,7 +54,7 @@ export function CampaignPopup() {
         role="dialog"
         aria-modal="true"
         aria-labelledby="bursluluk-popup-title"
-        className="tone-dark relative w-full max-w-md text-white overflow-hidden rounded-[18px] shadow-[0_24px_60px_rgba(8,16,32,0.45)]"
+        className="tone-dark relative w-full max-w-md text-white overflow-hidden rounded-[18px] ring-2 ring-white/25 outline-6 outline-white/10 shadow-[0_24px_60px_rgba(8,16,32,0.45)]"
         style={{ background: "#0b2144" }}
       >
         {/* Student photo, cut diagonally at the bottom — same look as the hero slide */}
@@ -86,6 +86,7 @@ export function CampaignPopup() {
 
         <div className="relative px-6 pt-1 pb-6 sm:px-8 sm:pb-7">
           <h2 id="bursluluk-popup-title" className="display text-[2.5rem] leading-[0.95] font-extrabold text-white tracking-tight uppercase sm:text-5xl">
+            <span className="mb-2 block text-base font-bold tracking-[0.16em] text-blue sm:text-lg">Anaşehir Koleji</span>
             Bursluluk
             <br />
             Sınavı
