@@ -13,7 +13,7 @@ export const site = {
   /** WhatsApp line (international format, no +) — the admissions mobile. */
   whatsapp: "905074080278",
   hoursWeekday: "07:30–18:30",
-  hoursSaturday: "10:30–17:00",
+  hoursSaturday: "10:00–17:30",
   founded: 2005,
   /** Cumulative since 2005 ("geçmişten bugüne"), not current enrolment. */
   students: "2500+",

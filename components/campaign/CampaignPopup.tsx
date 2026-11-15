@@ -9,7 +9,6 @@ import { bursluluk, examDateLabel } from "@/lib/campaign";
 import { useDismissed } from "@/lib/useDismissed";
 import { useCampaignPhase } from "@/lib/useCampaignPhase";
 import { useConsent } from "@/lib/consent";
-import { NeedsDataTag } from "../NeedsData";
 
 const DELAY_MS = 4000;
 
@@ -93,14 +92,12 @@ export function CampaignPopup() {
           </h2>
 
           <div className="mt-5 flex flex-wrap items-stretch gap-x-2 gap-y-3">
-            {day ? (
+            {day && (
               <span className="display -skew-x-[10deg] bg-red px-5 py-2 text-3xl leading-none font-extrabold text-white uppercase shadow-[0_14px_30px_-12px_rgba(227,6,19,0.7)]">
                 <span className="inline-block skew-x-[10deg]">
                   {day} {month}
                 </span>
               </span>
-            ) : (
-              <NeedsDataTag id="bursluluk-detaylari" />
             )}
             <span className="display flex items-center -skew-x-[10deg] bg-blue px-4 py-2 text-base font-extrabold text-[#0b2144] uppercase">
               <span className="inline-block skew-x-[10deg]">{bursluluk.grades.join(" · ")}. Sınıflar</span>

@@ -29,6 +29,8 @@ export function ContactCta({ image = "/hero/hero-2.jpg" }: { image?: string }) {
               </a>
               <span className="text-white/40"> · </span>
               Hafta içi {site.hoursWeekday}
+              <span className="text-white/40"> · </span>
+              Cumartesi {site.hoursSaturday}
             </p>
           </div>
         </div>

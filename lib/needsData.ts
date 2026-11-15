@@ -26,12 +26,12 @@ export type NeedsDataEntry = {
 export const needsData = {
   "cozum-ortaklari": {
     label: "Çözüm ortakları: eksik logolar ve onay",
-    ask: "İsim ve kategori onayı (görsel yapay zekâyla üretildiği için). WeDo Robotics web adresi. SEBIT, K12net, Eradil ve Royal House London için daha büyük/SVG logo.",
+    ask: "İsim ve kategori onayı (görsel yapay zekâyla üretildiği için). “WeDo Robotics” ayrı bir firma mı, yoksa LEGO Education WeDo setleri mi? (Bu adla bir firma bulamadık.) Firmaysa web adresi. K12net, Eradil ve Royal House London için daha büyük/SVG logo (sitelerinde yalnızca küçük sürüm var; SEBIT güncellendi).",
     href: "/hakkimizda#is-birliklerimiz",
   },
   "kurumsal-is-birlikleri": {
-    label: "Kurumsal iş birliği: eksik logolar",
-    ask: "Etimesgut Kaymakamlığı ve ASELSAN için daha büyük logo; WhatsApp ile gelen 5 kurum logosunun (Aile, İçişleri, MSB, Jandarma, Kızılay) varsa yüksek çözünürlüklü/SVG hâli.",
+    label: "Kurumsal iş birliği: Etimesgut Kaymakamlığı logosu",
+    ask: "Etimesgut Kaymakamlığı için daha büyük logo. ASELSAN, Aile, İçişleri, MSB, Jandarma ve Kızılay logoları resmî kaynaklardan yüksek çözünürlükte güncellendi.",
     href: "/hakkimizda#is-birliklerimiz",
   },
   "agm-uygulamada": {
@@ -39,14 +39,9 @@ export const needsData = {
     ask: "Metinler geldi; fotoğraflar bekleniyor: (1) Bilim ve Bahar Şenliği proje sunumu/öğrenci etkinliği, (2) SEBİT SDU Türkiye geneli tam puan başarısı veya akademik başarı töreni (izinli), (3) spor etkinliği veya yarışma başarısı, (4) INGED İngilizce Drama Yarışması veya okul sahne etkinliği.",
     href: "/egitim-modeli#agm-uygulamada",
   },
-  "egitim-modeli-sss": {
-    label: "Eğitim Modeli SSS cevapları",
-    ask: "'AGM 360° nedir?', 'Future Skills hangi alanları kapsar?', 'PDR desteği nasıl sunulur?' sorularının cevapları.",
-    href: "/egitim-modeli#agm-360",
-  },
   "kademe-fotograflari": {
     label: "Kademe fotoğrafları",
-    ask: "Anaokulu, İlkokul ve Ortaokul için her kademeye özgü gerçek fotoğraf (yatay, 16:10 veya 4:3). Şu an genel kampüs fotoğrafları kullanılıyor.",
+    ask: "İlkokul ve Ortaokul için kademeye özgü gerçek fotoğraf (yatay, 16:10 veya 4:3). Anaokulu için Bağlıca Anaokulu fotoğrafı geldi ve sitede.",
     href: "/okullarimiz",
   },
   "kampus-fotograflari": {
@@ -54,14 +49,9 @@ export const needsData = {
     ask: "Laboratuvar, spor salonu, yemekhane, konferans salonu, yüzme havuzu, halı saha, bahçe, görsel atölye, müzik sınıfı, Lego sınıfı, Anaşehir Radyo ve okul öncesi alanlarının güncel fotoğrafları.",
     href: "/kampus-yasami#kampus",
   },
-  "akademik-takip-ekranlari": {
-    label: "Akademik takip sistemi ekranları",
-    ask: "Akademik takip sisteminden anonimleştirilmiş gerçek ekran görüntüleri (öğrenci adı/fotoğrafı olmadan) — Akademik Başarı sayfasının üst bölümündeki grafik paneli için.",
-    href: "/akademik-basari",
-  },
   "gelisim-dongusu-onay": {
-    label: "Gelişim döngüsü: 2 açıklama onay bekliyor",
-    ask: "Uygula ve Ölç adımları için bizim yazdığımız taslak cümlelerin onayı veya okulun kendi cümleleri. Diğer 4 adım okulun Akademik Sistem metinlerini kullanıyor.",
+    label: "Gelişim döngüsü: 1 açıklama onay bekliyor",
+    ask: "Uygula adımı için bizim yazdığımız taslak cümlenin onayı (\"Planlanan dersleri ve öğrenme etkinliklerini sınıfta uyguluyoruz.\") veya okulun kendi cümlesi. Diğer 5 adım okulun kendi metinlerini kullanıyor.",
     href: "/akademik-basari#gelisim-dongusu",
   },
   "lgs-sonuclari": {
@@ -70,8 +60,8 @@ export const needsData = {
     href: "/akademik-basari#sonuclarimiz",
   },
   "ogrenci-basarilari": {
-    label: "Öğrenci başarıları",
-    ask: "Akademik, sanatsal ve sportif ödüller — yıl, öğrenci/takım, yarışma, derece, fotoğraf.",
+    label: "Öğrenci başarıları: sanatsal başarılar",
+    ask: "Akademik (SDU Türkiye 1.'si) ve sportif başarı görselleri geldi ve sitede. Sanatsal başarılar ve yeni başarı görselleri geldikçe gönderin.",
     href: "/akademik-basari#ogrenci-basarilari",
   },
   mezunlar: {
@@ -89,11 +79,6 @@ export const needsData = {
     ask: "Yaklaşan etkinlikler — ad, tarih, yer, görsel.",
     href: "/kampus-yasami#anasehirde-yasam",
   },
-  "akademik-takvim": {
-    label: "Akademik takvim",
-    ask: "Bu yılın dönem başlangıç/bitiş tarihleri, tatiller ve sınav haftaları.",
-    href: "/kampus-yasami#anasehirde-yasam",
-  },
   "toren-gezi-fotograflari": {
     label: "Tören ve gezi fotoğrafları",
     ask: "Geçmiş yıllardan tören ve gezi fotoğrafları (hangi etkinlik, hangi yıl).",
@@ -106,7 +91,7 @@ export const needsData = {
   },
   "sosyal-medya": {
     label: "Sosyal medya hesapları",
-    ask: "Instagram, Facebook ve YouTube dışındaki tüm hesapların adresleri (TikTok, X, LinkedIn vb.) ve mevcut adreslerin onayı.",
+    ask: "Instagram, Facebook ve YouTube dışında hesap var mı (TikTok, X, LinkedIn vb.)? Aramada bulamadık; varsa adresleri.",
     href: "/#sosyal-medya",
   },
   "instagram-akisi": {
@@ -114,30 +99,10 @@ export const needsData = {
     ask: "Instagram gönderilerinin sitede gösterilmesi için hesap erişimi (Meta onayı) veya seçilecek gönderiler.",
     href: "/#sosyal-medya",
   },
-  "bursluluk-detaylari": {
-    label: "Bursluluk sınavı bilgileri",
-    ask: "Sınav tarihi, saati, yeri, hangi sınıflar katılabilir, burs oranları ve başvuru son tarihi.",
-    href: "/bursluluk",
-  },
-  "ziyaretci-aydinlatma-metni": {
-    label: "Web Sitesi Ziyaretçileri Aydınlatma Metni",
-    ask: "KVKK sayfasındaki listede yer alan ancak metni gönderilmeyen belge.",
-    href: "/kvkk",
-  },
-  "kvkk-pdf": {
-    label: "KVKK belgelerinin PDF dosyaları",
-    ask: "İmzalı/onaylı PDF'ler varsa gönderin; şu an PDF bağlantısı sayfanın yazdırılabilir hâlini açıyor.",
-    href: "/kvkk",
-  },
-  "bursluluk-gorsel": {
-    label: "Bursluluk kampanya görseli",
-    ask: "Bursluluk sınavı için afiş/kampanya görseli (yatay ve dikey).",
-    href: "/bursluluk",
-  },
-  "bursluluk-sss": {
-    label: "Bursluluk sınavı SSS",
-    ask: "Velilerin sık sorduğu sorular ve cevapları (sınav içeriği, sonuç açıklama, burs koşulları).",
-    href: "/bursluluk#sss",
+  "burs-oranlari": {
+    label: "Bursluluk: burs oranları",
+    ask: "Burs oranlarının sitede yayınlanıp yayınlanmayacağına okul yönetimi karar verecek. Yayınlanacaksa sınav başarısına göre verilecek oranlar.",
+    href: "/bursluluk#basvuru",
   },
 } as const satisfies Record<string, NeedsDataEntry>;
 

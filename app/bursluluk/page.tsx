@@ -3,12 +3,11 @@ import Image from "next/image";
 import { CalendarDays, Clock, Hourglass } from "lucide-react";
 import { BtnLine, BtnPrimary } from "@/components/Buttons";
 import { BurslulukForm } from "@/components/BurslulukForm";
+import { BurslulukSss } from "@/components/campaign/BurslulukSss";
 import { Countdown } from "@/components/campaign/Countdown";
-import { NeedsData } from "@/components/NeedsData";
 import { Section } from "@/components/PageHero";
 import { bursluluk, deadlineLabel, examDateLabel } from "@/lib/campaign";
 import { parseLegal, readLegal } from "@/lib/legal";
-import { showDataFlags } from "@/lib/needsData";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -25,7 +24,6 @@ function splitDate(label: string | null) {
 
 export default function BurslulukPage() {
   const date = splitDate(examDateLabel());
-  const missing = bursluluk.details.filter((d) => !d.value);
 
   return (
     <>
@@ -60,11 +58,8 @@ export default function BurslulukPage() {
             </div>
           </div>
 
-          {/* Poster slot: real campaign visual when supplied, school photo until then */}
-          {showDataFlags ? (
-            <NeedsData id="bursluluk-gorsel" ratio="aspect-[4/3]" />
-          ) : (
-            <div className="relative">
+          {/* Poster slot: school photo + deadline badge */}
+          <div className="relative">
               <div className="relative aspect-[4/3] overflow-hidden rounded-[24px] ring-1 ring-white/15">
                 <Image src="/hero/hero-2.jpg" alt="Anaşehir Koleji öğrencileri" fill priority sizes="(max-width: 1024px) 100vw, 45vw" className="object-cover" />
               </div>
@@ -78,7 +73,6 @@ export default function BurslulukPage() {
                 </span>
               </div>
             </div>
-          )}
         </div>
       </section>
 
@@ -100,7 +94,9 @@ export default function BurslulukPage() {
                 </span>
                 <span>
                   <span className="display mt-6 block text-4xl font-extrabold text-ink">{s.time}</span>
-                  <span className="mt-1 block text-sm font-semibold text-muted">{s.label}</span>
+                  <span className="mt-1 block text-sm font-semibold text-muted">
+                    {s.label} · {s.grades}
+                  </span>
                 </span>
               </div>
             ))}
@@ -115,7 +111,6 @@ export default function BurslulukPage() {
             </div>
           </div>
         </div>
-        {showDataFlags && missing.length > 0 && <NeedsData id="bursluluk-detaylari" className="mt-4" />}
       </Section>
 
       {/* ── Başvuru: summary rail + form ─────────────────────── */}
@@ -140,11 +135,15 @@ export default function BurslulukPage() {
         </div>
       </Section>
 
-      {showDataFlags && (
-        <Section id="sss" tone="ice" title="Sık Sorulan Sorular">
-          <NeedsData id="bursluluk-sss" />
-        </Section>
-      )}
+      {/* ── Bursluluk SSS (client text, content/bursluluk-sss.md) ─ */}
+      <Section
+        id="sss"
+        tone="ice"
+        title="Sıkça Sorulan Sorular"
+        lead="Anaşehir Koleji Bursluluk Sınavı hakkında başvuru koşullarından sınav içeriğine, değerlendirme sisteminden burs olanaklarına kadar merak ettiğiniz soruların yanıtlarını bu bölümde bulabilirsiniz."
+      >
+        <BurslulukSss />
+      </Section>
     </>
   );
 }

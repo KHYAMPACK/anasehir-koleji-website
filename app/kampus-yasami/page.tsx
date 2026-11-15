@@ -93,7 +93,7 @@ export default function KampusYasamiPage() {
             </div>
           </div>
           <div className="relative aspect-[4/3] overflow-hidden rounded-[22px] ring-1 ring-white/15">
-            <Image src="/hero/hero-1.jpg" alt="Anaşehir Koleji kampüsü" fill priority sizes="(max-width: 1024px) 100vw, 45vw" className="object-cover" />
+            <Image src="/kampus/bina.jpg" alt="Anaşehir Koleji binası" fill priority sizes="(max-width: 1024px) 100vw, 45vw" className="object-cover" />
           </div>
         </div>
       </section>
@@ -117,7 +117,7 @@ export default function KampusYasamiPage() {
       <Section tone="ice">
         <div className="grid grid-cols-2 gap-4 lg:grid-cols-[2fr_1fr_1fr_1fr]">
           <Link href="#kampus" className="group relative col-span-2 h-56 overflow-hidden rounded-[18px] sm:h-64 lg:col-span-1 lg:h-72">
-            <Image src="/hero/hero-mobile-2.jpg" alt="" fill sizes="(max-width: 1024px) 100vw, 40vw" className="object-cover transition-transform duration-500 group-hover:scale-[1.04]" />
+            <Image src="/kampus/bina.jpg" alt="" fill sizes="(max-width: 1024px) 100vw, 40vw" className="object-cover transition-transform duration-500 group-hover:scale-[1.04]" />
             <span className="absolute inset-x-0 bottom-0 bg-ink/90 py-3.5 text-center text-sm font-bold tracking-[0.12em] text-white uppercase">Kampüs</span>
           </Link>
           {mosaic.map((m, i) => (

@@ -83,13 +83,13 @@ export default function AnaokuluPage() {
             <div className="absolute -inset-3 rotate-2 rounded-[30px] bg-gradient-to-br from-red to-red/70" aria-hidden />
             <div className="relative aspect-[4/3] overflow-hidden rounded-[26px] ring-4 ring-white">
               <Image
-                src="/hero/hero-mobile-2.jpg"
-                alt="Anaşehir Koleji kampüsü ve oyun alanları"
+                src="/kampus/baglica-anaokulu.jpg"
+                alt="Bağlıca Anaşehir Anaokulu binası ve oyun alanı"
                 fill
                 priority
                 sizes="(max-width: 1024px) 100vw, 45vw"
                 className="object-cover"
-                style={{ objectPosition: "50% 72%" }}
+                style={{ objectPosition: "45% 60%" }}
               />
             </div>
           </div>

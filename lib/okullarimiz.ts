@@ -56,10 +56,10 @@ export const levelCards = [
     text: "Çocuklarımızın doğal merakını, oyun temelli öğrenme deneyimleriyle destekliyoruz. Güven duygusunu, sosyal becerileri ve keşfetme isteğini birlikte geliştiriyoruz.",
     cta: "Anaokulunu Keşfedin",
     href: "/okullarimiz/anaokulu",
-    image: "/hero/hero-mobile-2.jpg",
-    alt: "Anaşehir Koleji kampüsü ve oyun alanları",
-    /** CSS object-position — frame the playground in the lower half. */
-    position: "50% 72%",
+    image: "/kampus/baglica-anaokulu.jpg",
+    alt: "Bağlıca Anaşehir Anaokulu binası ve oyun alanı",
+    /** CSS object-position — keep the sign and the playground in frame. */
+    position: "45% 60%",
   },
   {
     slug: "ilkokul",

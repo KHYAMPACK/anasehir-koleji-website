@@ -2,13 +2,14 @@
  * Uygulamalı Branş Dersleri — client revision (Nov 2026, /eksikler item 11):
  * the old "Etkinlik Dersi / Kulüp Dersi" model, its activity hour, the
  * "25 branş arasından tercih" and "kulüp yerleştirmesi" wording are gone.
- * These four are part of the weekly timetable; no separate hour is shown.
+ * These are part of the weekly timetable; no separate hour is shown.
+ * List revised by the client (Nov 2026): seven branches.
  * Copy is the client's, verbatim.
  */
 export const branchLessons = {
   title: "Uygulamalı Branş Dersleri",
   text: "Öğrencilerimizin sosyal, sanatsal ve fiziksel gelişimlerini destekleyen branşlarımızı ayrı bir kulüp uygulaması olarak değil, haftalık ders programına entegre edilmiş dersler olarak sunuyoruz.",
-  items: ["Dans", "Spor", "Görsel Sanatlar", "Drama"],
+  items: ["Dans", "Drama", "Görsel Sanatlar", "Müzik", "Beden Eğitimi ve Spor", "Lego Education", "Sahne Sanatları"],
 } as const;
 
 /** Akşam Etütleri / Ödev Saati — client copy, verbatim. */

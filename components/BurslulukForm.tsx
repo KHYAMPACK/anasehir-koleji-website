@@ -86,7 +86,7 @@ export function BurslulukForm({ noticeBlocks }: { noticeBlocks: Block[] }) {
               </option>
               {bursluluk.sessions.map((s) => (
                 <option key={s.label} value={s.time}>
-                  {s.label} — {s.time}
+                  {s.label} — {s.time} ({s.grades})
                 </option>
               ))}
             </select>

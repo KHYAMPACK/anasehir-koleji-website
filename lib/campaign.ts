@@ -29,17 +29,21 @@ export const bursluluk = {
   /** Grades that can sit the exam (client banner, Nov 2026). */
   grades: [4, 5, 6, 7],
   sessions: [
-    { label: "1. Seans", time: "10.00" },
-    { label: "2. Seans", time: "14.00" },
+    { label: "1. Seans", time: "10.00", grades: "4 ve 5. sınıflar" },
+    { label: "2. Seans", time: "14.00", grades: "6 ve 7. sınıflar" },
   ],
   /** Exam facts — null = not supplied yet (hidden while data flags are off). */
   details: [
-    { label: "Sınav tarihi", value: "16 Ocak 2027" },
-    { label: "1. Seans", value: "10.00" },
-    { label: "2. Seans", value: "14.00" },
+    // Client bursluluk SSS (Nov 2026).
+    { label: "Sınav tarihi", value: "16 Ocak 2027 Cumartesi" },
+    { label: "1. Seans", value: "10.00 · 4 ve 5. sınıflar" },
+    { label: "2. Seans", value: "14.00 · 6 ve 7. sınıflar" },
     { label: "Son başvuru", value: "15 Ocak 2027" },
-    { label: "Sınav yeri", value: null },
-    { label: "Katılabilecek sınıflar", value: "4, 5, 6 ve 7. sınıflar" },
+    { label: "Sınav yeri", value: "Bağlıca Kampüsü" },
+    { label: "Başvuru ve katılım", value: "Ücretsiz" },
+    { label: "Sonuç açıklama", value: "25 Ocak 2027 Pazartesi" },
+    { label: "Sonuç görüşmeleri", value: "Yalnızca randevulu, yüz yüze" },
+    { label: "İtiraz süresi", value: "Sonuçların ilanından itibaren 3 iş günü" },
     { label: "Burs oranları", value: null },
   ] as { label: string; value: string | null }[],
 };

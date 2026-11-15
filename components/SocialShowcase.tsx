@@ -40,7 +40,7 @@ const mosaic = [
   { src: "/hero/hero-3.jpg", alt: "Anaşehir Koleji kampüs yaşamı", cls: "" },
   { src: "/hero/hero-mobile-1.jpg", alt: "Anaşehir Koleji öğrencileri", cls: "" },
   { src: "/hero/hero-1.jpg", alt: "Anaşehir Koleji kampüsü", cls: "" },
-  { src: "/hero/hero-mobile-2.jpg", alt: "Anaşehir Koleji okul binası", cls: "" },
+  { src: "/kampus/bina.jpg", alt: "Anaşehir Koleji okul binası", cls: "" },
 ];
 
 export function SocialShowcase() {

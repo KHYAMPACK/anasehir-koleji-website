@@ -117,14 +117,15 @@ function BurslulukSlide({ priority }: { priority: boolean }) {
 
 /* ── Slide: campus hero (client reference) ───────────────────────────────── */
 function CampusSlide({ priority, isMobile, campaignOpen }: { priority: boolean; isMobile: boolean; campaignOpen: boolean }) {
+  // Client's photo of the building (Nov 2026); on phones it is cropped to the entrance.
   const img = isMobile
-    ? { src: "/hero/hero-mobile-2.jpg", alt: "Anaşehir Koleji kampüsü — kuş bakışı" }
-    : { src: "/hero/hero-1.jpg", alt: "Anaşehir Koleji kampüsü — kuş bakışı" };
+    ? { src: "/kampus/bina.jpg", alt: "Anaşehir Koleji binası", position: "34% 50%" }
+    : { src: "/kampus/bina.jpg", alt: "Anaşehir Koleji binası", position: "50% 50%" };
   return (
     <div className="relative flex h-full items-end overflow-hidden sm:items-center" style={{ background: NAVY }}>
       {/* Photo sits in the right ~3/4 on large screens so the building clears the text */}
       <div className="absolute inset-0 lg:left-[22%]">
-        <Image key={img.src} src={img.src} alt={img.alt} fill priority={priority} sizes="(max-width: 1024px) 100vw, 78vw" className="object-cover" />
+        <Image key={img.position} src={img.src} alt={img.alt} fill priority={priority} sizes="(max-width: 1024px) 100vw, 78vw" className="object-cover" style={{ objectPosition: img.position }} />
       </div>
       <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(11,33,68,1)_0%,rgba(11,33,68,0.95)_24%,rgba(11,33,68,0.55)_45%,rgba(11,33,68,0)_68%)] max-sm:hidden" />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0b2144] via-[#0b2144]/70 to-[#0b2144]/10 sm:from-[#0b2144]/60 sm:via-transparent sm:to-transparent" />

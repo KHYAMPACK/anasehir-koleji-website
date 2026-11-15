@@ -8,7 +8,7 @@ export const aboutGallery = [
   { src: "/hero/hero-1.jpg", alt: "Anaşehir Koleji kampüsü" },
   { src: "/hero/hero-2.jpg", alt: "Anaşehir Koleji öğrencileri" },
   { src: "/hero/hero-3.jpg", alt: "Anaşehir Koleji kampüs yaşamı" },
-  { src: "/hero/hero-mobile-2.jpg", alt: "Anaşehir Koleji okul binası" },
+  { src: "/kampus/bina.jpg", alt: "Anaşehir Koleji okul binası" },
 ] as const;
 
 export const journey = {

@@ -86,7 +86,7 @@ export default function KayitIletisimPage() {
                     <Clock className="h-5 w-5 text-blue" strokeWidth={1.8} aria-hidden />
                     {x.time}
                   </span>
-                  <span className="mt-0.5 block text-sm text-muted">{x.label}</span>
+                  <span className="mt-0.5 block text-sm text-muted">{x.label} · {x.grades}</span>
                 </li>
               ))}
             </ul>

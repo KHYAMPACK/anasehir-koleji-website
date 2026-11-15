@@ -240,7 +240,7 @@ export default function AnasehiriKesfedinPage() {
         </div>
       </Section>
 
-      <ContactCta image="/hero/hero-1.jpg" />
+      <ContactCta image="/kampus/bina.jpg" />
     </>
   );
 }

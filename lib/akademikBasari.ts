@@ -26,13 +26,14 @@ export const akademikYaklasim = {
 /**
  * Gelişim döngüsü steps + the line shown when each step is active.
  * Planla / Analiz Et / Destekle / Yeniden Ölç reuse the client's own
- * Akademik Sistem sentences. Uygula and Ölç had no client text: their "draft" lines
- * were written plainly by us and await approval (see /eksikler).
+ * Akademik Sistem sentences; Ölç uses the client's Ölçme ve Değerlendirme text.
+ * Uygula has no client text: its "draft" line was written plainly by us and
+ * awaits approval (see /eksikler).
  */
 export const gelisimDongusu = [
   { step: "Planla", text: "Her dersin kazanımlarını ve öğrenme hedeflerini belirliyoruz." },
   { step: "Uygula", text: "Planlanan dersleri ve öğrenme etkinliklerini sınıfta uyguluyoruz.", draft: true },
-  { step: "Ölç", text: "Kazanımları düzenli sınav ve değerlendirmelerle ölçüyoruz.", draft: true },
+  { step: "Ölç", text: "Derslerde hedeflenen bilgi ve becerilerin ne ölçüde kazanıldığını belirlemek amacıyla konu ve kazanım odaklı değerlendirmelerden yararlanıyoruz." },
   { step: "Analiz Et", text: "Öğrenme düzeyini ve gelişime açık kazanımları değerlendiriyoruz." },
   { step: "Destekle", text: "Öğrencinin ihtiyacına göre akademik destek çalışmaları planlıyoruz." },
   { step: "Yeniden Ölç", text: "Yapılan çalışmaların öğrenmeye katkısını takip ediyoruz." },

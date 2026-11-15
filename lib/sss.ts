@@ -32,9 +32,10 @@ const slugify = (s: string) =>
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-|-$/g, "");
 
-export function readSss(): SssCategory[] {
+/** Reads content/sss.md by default; also content/bursluluk-sss.md. */
+export function readSss(file = "sss.md"): SssCategory[] {
   const md = fs
-    .readFileSync(path.join(process.cwd(), "content", "sss.md"), "utf8")
+    .readFileSync(path.join(process.cwd(), "content", file), "utf8")
     .replace(/\r\n/g, "\n")
     .replace(/<!--[\s\S]*?-->/g, "");
 

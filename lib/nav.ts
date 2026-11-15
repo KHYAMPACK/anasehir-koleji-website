@@ -50,10 +50,11 @@ const allSections: NavSection[] = [
     href: "/akademik-basari",
     items: [
       { name: "Akademik Gelişim Döngüsü", href: "/akademik-basari#gelisim-dongusu" },
+      { name: "Akademik Takip Sistemi", href: "/akademik-basari#akademik-takip" },
       { name: "Akademik Sistem", href: "/akademik-basari#akademik-sistem" },
       { name: "LGS Yolculuğu", href: "/akademik-basari#lgs-sistemi" },
       { name: "Sonuçlarımız", href: "/akademik-basari#sonuclarimiz", pending: true },
-      { name: "Öğrenci Başarıları", href: "/akademik-basari#ogrenci-basarilari", pending: true },
+      { name: "Öğrenci Başarıları", href: "/akademik-basari#ogrenci-basarilari" },
       { name: "Mezunlarımız", href: "/akademik-basari#mezunlarimiz", pending: true },
     ],
   },
@@ -91,11 +92,11 @@ export const sections: NavSection[] = allSections
 
 /** Kept outside the mega menu — linked from the footer instead. */
 /** Footer "Hızlı Erişim" — client's list and order (Nov 2026). News, events and
- * photos are one link to the Instagram feed chapter; Akademik Takvim stays hidden
- * until its content arrives; the radio link follows site.radioActive. */
+ * photos are one link to the Instagram feed chapter; Akademik Takvim has its own
+ * page; the radio link follows site.radioActive. */
 const allUtilityLinks: NavItem[] = [
   { name: "Haberler, Etkinlikler & Fotoğraflar", href: "/kampus-yasami#anasehirde-yasam" },
-  { name: "Akademik Takvim", href: "/kampus-yasami#anasehirde-yasam", pending: true },
+  { name: "Akademik Takvim", href: "/akademik-takvim" },
   { name: "Anaşehir Radyo", href: "/radyo" },
   { name: "Sık sorulan sorular", href: "/sss" },
   { name: "KVKK", href: "/kvkk" },

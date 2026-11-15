@@ -1,21 +1,27 @@
-import { Drama, Dumbbell, Music2, Palette, type LucideIcon } from "lucide-react";
+import { Blocks, Drama, Dumbbell, Footprints, Music2, Palette, Theater, type LucideIcon } from "lucide-react";
 import { branchLessons } from "@/lib/kampusYasami";
 
 const icons: Record<string, LucideIcon> = {
-  Dans: Music2,
-  Spor: Dumbbell,
-  "Görsel Sanatlar": Palette,
+  Dans: Footprints,
   Drama: Drama,
+  "Görsel Sanatlar": Palette,
+  Müzik: Music2,
+  "Beden Eğitimi ve Spor": Dumbbell,
+  "Lego Education": Blocks,
+  "Sahne Sanatları": Theater,
 };
 const colors: Record<string, [string, string]> = {
   Dans: ["#8f55d6", "#55279a"],
-  Spor: ["#e5232d", "#a10f17"],
-  "Görsel Sanatlar": ["#f7892a", "#cf540d"],
   Drama: ["#1fb0c4", "#0d6e83"],
+  "Görsel Sanatlar": ["#f7892a", "#cf540d"],
+  Müzik: ["#2453ad", "#0b2b6b"],
+  "Beden Eğitimi ve Spor": ["#e5232d", "#a10f17"],
+  "Lego Education": ["#f2b705", "#c27c00"],
+  "Sahne Sanatları": ["#d6337a", "#8f1450"],
 };
 
 /**
- * The four "Uygulamalı Branş Dersleri" as icon cards (client revision, Nov
+ * The "Uygulamalı Branş Dersleri" as icon cards (client revision, Nov
  * 2026). Shown on Kampüs Yaşamı, Okullarımız and the homepage band.
  * `dark` = on a navy section.
  */
@@ -25,14 +31,14 @@ export function BranchLessons({ dark = false, withIntro = true }: { dark?: boole
       {withIntro && (
         <p className={`max-w-[62ch] text-[1.02rem] leading-relaxed ${dark ? "text-white/75" : "text-muted"}`}>{branchLessons.text}</p>
       )}
-      <ul className={`grid grid-cols-2 gap-3 sm:grid-cols-4 ${withIntro ? "mt-7" : ""}`}>
+      <ul className={`flex flex-wrap justify-center gap-3 ${withIntro ? "mt-7" : ""}`}>
         {branchLessons.items.map((name) => {
           const Icon = icons[name] ?? Palette;
           const [from, to] = colors[name] ?? ["#2453ad", "#0b2b6b"];
           return (
             <li
               key={name}
-              className={`group flex flex-col items-start gap-4 rounded-[18px] p-5 transition-transform duration-300 hover:-translate-y-1 sm:p-6 ${
+              className={`group flex w-[calc(50%-0.375rem)] flex-col items-start gap-4 rounded-[18px] p-5 sm:w-[calc(25%-0.5625rem)] transition-transform duration-300 hover:-translate-y-1 sm:p-6 ${
                 dark ? "bg-white/[0.07] ring-1 ring-white/12" : "bg-panel shadow-sm ring-1 ring-line/60"
               }`}
             >

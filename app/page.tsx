@@ -17,6 +17,7 @@ import { historyShort, journey } from "@/lib/anasehir";
 import { institutionalPartners, memberships, solutionPartnerGroups } from "@/lib/partners";
 import { PartnerGrid } from "@/components/PartnerLogos";
 import { SocialShowcase } from "@/components/SocialShowcase";
+import { BasariTeaser } from "@/components/BasariTeaser";
 
 export default function HomePage() {
   return (
@@ -92,6 +93,8 @@ export default function HomePage() {
         </div>
         <DevelopmentCycle />
       </Section>
+
+      <BasariTeaser />
 
       <Section tone="paper">
         <div className="grid items-center gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:gap-14">

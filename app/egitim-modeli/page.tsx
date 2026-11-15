@@ -4,12 +4,10 @@ import Image from "next/image";
 import { BtnLine, BtnPrimary } from "@/components/Buttons";
 import { AgmExplorer } from "@/components/AgmExplorer";
 import { agmIcons } from "@/components/agmIcons";
-import { NeedsData } from "@/components/NeedsData";
 import { Section } from "@/components/PageHero";
 import { agm360, agmAreas } from "@/lib/agm360";
 import { akademikTakip, pdr } from "@/lib/egitimModeli";
 import { sections } from "@/lib/nav";
-import { showDataFlags } from "@/lib/needsData";
 import { programs } from "@/lib/programs";
 import { surdurulebilir } from "@/lib/surdurulebilir";
 import { agmUygulamada } from "@/lib/agmUygulamada";
@@ -25,6 +23,13 @@ import {
 import { ApproachTabs } from "@/components/olcme/ApproachTabs";
 import { LevelTabs } from "@/components/olcme/LevelTabs";
 import { site } from "@/lib/site";
+import { LegalDocument } from "@/components/legal/LegalDocument";
+import { readSss } from "@/lib/sss";
+
+/** AGM 360°, Future Skills and PDR answers from the client's SSS. */
+const sssItems = readSss()
+  .flatMap((c) => c.items)
+  .filter((it) => [2, 14, 19].includes(it.n));
 
 /** Icons for the Sürdürülebilir Yaşam areas (replacing the brief's emojis). */
 const sustainIcons = {
@@ -458,19 +463,29 @@ export default function EgitimModeliPage() {
         </ul>
       </Section>
 
-      {/* 09 · SSS — answers not supplied yet */}
-      {showDataFlags && (
-        <Section id="sss" tone="ice" title="Sık Sorulan Sorular">
-          <div className="grid max-w-3xl gap-3">
-            {["AGM 360° nedir?", "Future Skills hangi alanları kapsar?", "PDR desteği nasıl sunulur?"].map((q) => (
-              <details key={q} className="rounded-[14px] bg-panel px-5 py-4 shadow-sm">
-                <summary className="display cursor-pointer font-semibold">{q}</summary>
-                <NeedsData id="egitim-modeli-sss" compact className="mt-3" />
+      {/* 09 · SSS — the client's own answers from content/sss.md (questions 2, 14, 19) */}
+      <Section id="sss" tone="ice" title="Sıkça Sorulan Sorular">
+        <ul className="grid max-w-3xl gap-3">
+          {sssItems.map((it) => (
+            <li key={it.id}>
+              <details className="group rounded-[14px] bg-panel shadow-sm">
+                <summary className="flex cursor-pointer list-none items-start justify-between gap-4 px-5 py-4 [&::-webkit-details-marker]:hidden">
+                  <span className="display font-semibold text-ink">{it.question}</span>
+                  <span className="mt-0.5 text-xl leading-none text-muted transition-transform group-open:rotate-45" aria-hidden>
+                    +
+                  </span>
+                </summary>
+                <div className="px-5 pb-5 [&_.legal-doc]:max-w-none">
+                  <LegalDocument blocks={it.blocks} skipTitle={false} />
+                </div>
               </details>
-            ))}
-          </div>
-        </Section>
-      )}
+            </li>
+          ))}
+        </ul>
+        <div className="mt-6">
+          <BtnLine href="/sss">Tüm soruları görün</BtnLine>
+        </div>
+      </Section>
 
       {/* 10 · Closing CTA */}
       <section className="tone-navy relative overflow-hidden py-[clamp(3rem,6vw,5rem)]">

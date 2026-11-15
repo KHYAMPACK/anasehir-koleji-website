@@ -4,7 +4,7 @@ import { branchLessons } from "@/lib/kampusYasami";
 
 /**
  * Homepage Kampüs Yaşamı band. Client revision (Nov 2026): the old
- * 25-branch / elective model is gone — the band shows the four
+ * 25-branch / elective model is gone — the band shows the
  * "Uygulamalı Branş Dersleri" that are part of the weekly timetable.
  * Plain headings, no slogans.
  */

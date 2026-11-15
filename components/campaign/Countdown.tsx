@@ -3,8 +3,6 @@
 import { useSyncExternalStore } from "react";
 import { bursluluk } from "@/lib/campaign";
 import { useCampaignPhase } from "@/lib/useCampaignPhase";
-import { showDataFlags } from "@/lib/needsData";
-import { NeedsDataTag } from "../NeedsData";
 
 function subscribe(cb: () => void) {
   const t = setInterval(cb, 1000);
@@ -28,15 +26,7 @@ export function Countdown() {
   );
 
   if (phase === "over") return null;
-  if (!bursluluk.examDate) {
-    if (!showDataFlags) return null;
-    return (
-      <div className="flex flex-wrap items-center gap-3">
-        <span className="text-sm text-white/70">Sınava kalan süre</span>
-        <NeedsDataTag id="bursluluk-detaylari" />
-      </div>
-    );
-  }
+  if (!bursluluk.examDate) return null;
 
   const target = Math.floor(new Date(bursluluk.examDate).getTime() / 1000);
   const left = now === null ? null : Math.max(0, target - now);
