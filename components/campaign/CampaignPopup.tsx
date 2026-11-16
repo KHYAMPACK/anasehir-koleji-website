@@ -8,24 +8,24 @@ import { usePathname } from "next/navigation";
 import { bursluluk, examDateLabel } from "@/lib/campaign";
 import { useDismissed } from "@/lib/useDismissed";
 import { useCampaignPhase } from "@/lib/useCampaignPhase";
-import { useConsent } from "@/lib/consent";
 
-const DELAY_MS = 4000;
+const DELAY_MS = 1200;
 
 /**
- * First-visit popup: appears once per visitor after a short delay, never on
- * the /bursluluk page itself. Closing it (×, backdrop, Esc or the CTA)
- * stores the dismissal so it doesn't come back.
+ * Bursluluk popup: appears ~1 s after landing, once per browser session,
+ * never on the /bursluluk page itself. It no longer waits for the cookie
+ * choice (client: it came too late or not at all) — it sets no cookies and
+ * the cookie banner sits above it (z-70). Closing it (×, backdrop, Esc or
+ * the CTA) hides it for the rest of the session; a new visit shows it again.
  */
 export function CampaignPopup() {
   const pathname = usePathname();
-  const [dismissed, dismiss] = useDismissed("bursluluk-popup");
+  const [dismissed, dismiss] = useDismissed("bursluluk-popup", { session: true });
   const [due, setDue] = useState(false);
   const closeRef = useRef<HTMLButtonElement>(null);
 
   const phase = useCampaignPhase();
-  const consentDecided = useConsent() != null;
-  const enabled = phase === "open" && consentDecided && bursluluk.showPopup && pathname !== bursluluk.href;
+  const enabled = phase === "open" && bursluluk.showPopup && pathname !== bursluluk.href;
   const open = enabled && due && !dismissed;
 
   useEffect(() => {
@@ -47,7 +47,7 @@ export function CampaignPopup() {
   const [day, ...rest] = (examDateLabel() ?? "").split(" ");
   const month = rest[0] ?? "";
   return (
-    <div className="fixed inset-0 z-[60] flex items-end justify-center p-4 sm:items-center">
+    <div className="fixed inset-0 z-[60] flex items-center justify-center p-4">
       <div className="absolute inset-0 bg-ink/60 backdrop-blur-[2px]" onClick={dismiss} aria-hidden />
       <div
         role="dialog"

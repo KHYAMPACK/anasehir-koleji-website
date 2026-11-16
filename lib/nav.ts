@@ -63,6 +63,7 @@ const allSections: NavSection[] = [
     href: "/kampus-yasami",
     items: [
       { name: "Anaşehir'de Yaşam", href: "/kampus-yasami#anasehirde-yasam" },
+      { name: "Törenlerimiz", href: "/kampus-yasami#torenlerimiz" },
       { name: "Kampüsümüz", href: "/kampus-yasami#kampus" },
       { name: "Branş Dersleri", href: "/kampus-yasami#brans-dersleri" },
       { name: "Spor", href: "/kampus-yasami#spor" },

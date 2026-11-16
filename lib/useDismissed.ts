@@ -8,10 +8,13 @@ import { useSyncExternalStore } from "react";
 const EVENT = "anasehir:dismiss";
 const memory = new Set<string>(); // fallback when storage is blocked
 
-function read(key: string) {
+/** session: true → the dismissal lasts for this browser session only (sessionStorage). */
+const store = (session: boolean) => (session ? window.sessionStorage : window.localStorage);
+
+function read(key: string, session: boolean) {
   if (memory.has(key)) return true;
   try {
-    return window.localStorage.getItem(key) === "1";
+    return store(session).getItem(key) === "1";
   } catch {
     return false;
   }
@@ -26,16 +29,16 @@ function subscribe(cb: () => void) {
   };
 }
 
-export function useDismissed(key: string) {
+export function useDismissed(key: string, { session = false }: { session?: boolean } = {}) {
   const dismissed = useSyncExternalStore(
     subscribe,
-    () => read(key),
+    () => read(key, session),
     () => false,
   );
   function dismiss() {
     memory.add(key);
     try {
-      window.localStorage.setItem(key, "1");
+      store(session).setItem(key, "1");
     } catch {
       /* storage blocked — the in-memory flag covers this page view */
     }

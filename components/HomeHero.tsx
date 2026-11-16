@@ -16,10 +16,14 @@ import { site, telHref } from "@/lib/site";
  *      code from the client's banner, with real school photos instead of the
  *      AI-generated student and only confirmed facts.
  *   2. Campus hero — aerial photo under a navy fade, per the client reference.
- * Crossfade, auto-advance every 4.5 s, pauses on hover/focus, no auto-play
- * under reduced motion.
+ * Crossfade, auto-advance every 6 s (client: banners should move on their
+ * own — so no pause on mouse hover, which kept it still whenever the cursor
+ * sat on the full-screen hero). Pauses only while a keyboard user is focused
+ * inside it; no auto-play under reduced motion.
+ * Bursluluk slide type and spacing scale with viewport height so the
+ * Başvur button is visible without scrolling on short laptop screens.
  */
-const INTERVAL_MS = 4500;
+const INTERVAL_MS = 6000;
 const MOBILE_QUERY = "(max-width: 639px)";
 const subscribe = (cb: () => void) => {
   const mq = window.matchMedia(MOBILE_QUERY);
@@ -52,11 +56,11 @@ function BurslulukSlide({ priority }: { priority: boolean }) {
       <span className="absolute inset-y-0 left-[38%] hidden w-3 -skew-x-[12deg] bg-red sm:block lg:left-[40.2%]" aria-hidden />
       <span className="absolute inset-y-0 left-[39.6%] hidden w-1.5 -skew-x-[12deg] bg-blue sm:block lg:left-[41.8%]" aria-hidden />
 
-      <div className="tone-dark relative z-10 mx-auto w-full max-w-[1280px] px-4 pt-28 pb-16 sm:px-6 sm:py-16 lg:px-12">
+      <div className="tone-dark relative z-10 mx-auto w-full max-w-[1280px] px-4 pt-28 pb-16 sm:px-6 sm:py-[clamp(1.5rem,6vh,4rem)] lg:px-12">
         <div className="sm:ml-auto sm:w-[54%] lg:w-[50%]">
           {/* 21. yıl · Bağlıca'nın ilk özel okulu */}
           <div className="flex items-center gap-4">
-            <span className="flex h-16 w-16 shrink-0 flex-col items-center justify-center rounded-full ring-2 ring-red/80 sm:h-20 sm:w-20">
+            <span className="flex h-16 w-16 shrink-0 flex-col items-center justify-center rounded-full ring-2 ring-red/80 sm:h-[clamp(3.5rem,9vh,5rem)] sm:w-[clamp(3.5rem,9vh,5rem)]">
               <span className="display text-2xl leading-none font-extrabold italic sm:text-3xl">{yearsSinceFounding}.</span>
               <span className="text-[0.65rem] font-bold tracking-[0.2em] uppercase">Yıl</span>
             </span>
@@ -64,16 +68,16 @@ function BurslulukSlide({ priority }: { priority: boolean }) {
             <span className="display text-sm leading-tight font-bold tracking-wide uppercase sm:text-base">{site.tagline}</span>
           </div>
 
-          <h2 className="display mt-6 text-[2.6rem] leading-[0.95] font-extrabold tracking-tight uppercase sm:text-6xl lg:text-[4.6rem]">
+          <h2 className="display mt-6 text-[2.6rem] leading-[0.95] font-extrabold tracking-tight uppercase sm:mt-[clamp(0.75rem,3vh,1.5rem)] sm:text-[clamp(2.6rem,8.5vh,3.75rem)] lg:text-[clamp(3rem,9vh,4.6rem)]">
             Bursluluk
             <br />
             Sınavı
           </h2>
-          <span className="mt-4 block h-1.5 w-40 rounded-full bg-red" aria-hidden />
+          <span className="mt-4 block h-1.5 w-40 rounded-full bg-red sm:mt-[clamp(0.5rem,2vh,1rem)]" aria-hidden />
 
           {/* Date band */}
-          <div className="mt-6 flex items-stretch">
-            <span className="display -skew-x-[10deg] bg-red px-6 py-2.5 text-4xl leading-none font-extrabold uppercase shadow-[0_14px_30px_-12px_rgba(227,6,19,0.7)] sm:px-8 sm:text-6xl">
+          <div className="mt-6 flex items-stretch sm:mt-[clamp(0.75rem,3vh,1.5rem)]">
+            <span className="display -skew-x-[10deg] bg-red px-6 py-2.5 text-4xl leading-none font-extrabold uppercase shadow-[0_14px_30px_-12px_rgba(227,6,19,0.7)] sm:px-8 sm:text-[clamp(2.4rem,7vh,3.75rem)]">
               <span className="inline-block skew-x-[10deg]">
                 {day} {month}
               </span>
@@ -82,7 +86,7 @@ function BurslulukSlide({ priority }: { priority: boolean }) {
           </div>
 
           {/* Sessions + grades */}
-          <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-4">
+          <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-4 sm:mt-[clamp(0.75rem,3vh,1.5rem)]">
             <span className="flex items-center gap-3">
               <CalendarClock className="h-9 w-9 text-white/90" strokeWidth={1.5} aria-hidden />
               <span className="h-10 w-px bg-white/30" aria-hidden />
@@ -99,7 +103,7 @@ function BurslulukSlide({ priority }: { priority: boolean }) {
           </div>
 
           {/* Actions */}
-          <div className="mt-8 flex flex-wrap items-center gap-3">
+          <div className="mt-8 flex flex-wrap items-center gap-3 sm:mt-[clamp(1rem,4vh,2rem)]">
             <BtnPrimary href={bursluluk.href} size="lg">Bursluluk Sınavına Başvur</BtnPrimary>
             <a
               href={telHref(site.phoneTel)}
@@ -130,7 +134,7 @@ function CampusSlide({ priority, isMobile, campaignOpen }: { priority: boolean; 
       <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(11,33,68,1)_0%,rgba(11,33,68,0.95)_24%,rgba(11,33,68,0.55)_45%,rgba(11,33,68,0)_68%)] max-sm:hidden" />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0b2144] via-[#0b2144]/70 to-[#0b2144]/10 sm:from-[#0b2144]/60 sm:via-transparent sm:to-transparent" />
 
-      <div className="tone-dark relative z-10 mx-auto w-full max-w-[1280px] px-4 pt-28 pb-16 sm:px-6 sm:py-16 lg:px-12">
+      <div className="tone-dark relative z-10 mx-auto w-full max-w-[1280px] px-4 pt-28 pb-16 sm:px-6 sm:py-[clamp(1.5rem,6vh,4rem)] lg:px-12">
         <div className="flex items-center gap-4">
           <p className="text-xs font-bold tracking-[0.22em] text-blue uppercase sm:text-sm">Anaşehir Koleji | 2005’ten beri</p>
           <span className="hidden h-px w-20 bg-blue/60 sm:block" aria-hidden />
@@ -205,9 +209,7 @@ export function HomeHero() {
   return (
     <section
       className="relative isolate grid min-h-[calc(100svh-var(--header))] overflow-hidden text-white"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
-      onFocus={() => setPaused(true)}
+      onFocus={(e) => e.target.matches(":focus-visible") && setPaused(true)}
       onBlur={() => setPaused(false)}
       aria-roledescription="carousel"
       aria-label="Öne çıkanlar"

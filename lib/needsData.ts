@@ -26,12 +26,7 @@ export type NeedsDataEntry = {
 export const needsData = {
   "cozum-ortaklari": {
     label: "Çözüm ortakları: eksik logolar ve onay",
-    ask: "İsim ve kategori onayı (görsel yapay zekâyla üretildiği için). “WeDo Robotics” ayrı bir firma mı, yoksa LEGO Education WeDo setleri mi? (Bu adla bir firma bulamadık.) Firmaysa web adresi. K12net, Eradil ve Royal House London için daha büyük/SVG logo (sitelerinde yalnızca küçük sürüm var; SEBIT güncellendi).",
-    href: "/hakkimizda#is-birliklerimiz",
-  },
-  "kurumsal-is-birlikleri": {
-    label: "Kurumsal iş birliği: Etimesgut Kaymakamlığı logosu",
-    ask: "Etimesgut Kaymakamlığı için daha büyük logo. ASELSAN, Aile, İçişleri, MSB, Jandarma ve Kızılay logoları resmî kaynaklardan yüksek çözünürlükte güncellendi.",
+    ask: "İsim ve kategori onayı (görsel yapay zekâyla üretildiği için). Eradil ve Royal House London için daha büyük/SVG logo (sitelerinde yalnızca küçük sürüm var; SEBIT ve K12net güncellendi).",
     href: "/hakkimizda#is-birliklerimiz",
   },
   "agm-uygulamada": {
@@ -48,11 +43,6 @@ export const needsData = {
     label: "Kampüs alanı fotoğrafları",
     ask: "Laboratuvar, spor salonu, yemekhane, konferans salonu, yüzme havuzu, halı saha, bahçe, görsel atölye, müzik sınıfı, Lego sınıfı, Anaşehir Radyo ve okul öncesi alanlarının güncel fotoğrafları.",
     href: "/kampus-yasami#kampus",
-  },
-  "gelisim-dongusu-onay": {
-    label: "Gelişim döngüsü: 1 açıklama onay bekliyor",
-    ask: "Uygula adımı için bizim yazdığımız taslak cümlenin onayı (\"Planlanan dersleri ve öğrenme etkinliklerini sınıfta uyguluyoruz.\") veya okulun kendi cümlesi. Diğer 5 adım okulun kendi metinlerini kullanıyor.",
-    href: "/akademik-basari#gelisim-dongusu",
   },
   "lgs-sonuclari": {
     label: "Yıllara göre LGS sonuçları",
@@ -81,8 +71,8 @@ export const needsData = {
   },
   "toren-gezi-fotograflari": {
     label: "Tören ve gezi fotoğrafları",
-    ask: "Geçmiş yıllardan tören ve gezi fotoğrafları (hangi etkinlik, hangi yıl).",
-    href: "/kampus-yasami#anasehirde-yasam",
+    ask: "29 Ekim ve 10 Kasım 2026 fotoğrafları geldi ve sitede. Diğer tören ve gezi fotoğrafları (hangi etkinlik, hangi yıl) geldikçe gönderin.",
+    href: "/kampus-yasami#torenlerimiz",
   },
   "galeri-fotograflari": {
     label: "Galeri fotoğraf/videoları",

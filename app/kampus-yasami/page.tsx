@@ -19,6 +19,8 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { BranchLessons } from "@/components/BranchLessons";
+import { EventAlbums } from "@/components/EventAlbums";
+import { albums } from "@/lib/torenler";
 import { BtnLine, BtnPrimary } from "@/components/Buttons";
 import { InstagramFeed } from "@/components/InstagramFeed";
 import { NeedsData } from "@/components/NeedsData";
@@ -111,6 +113,11 @@ export default function KampusYasamiPage() {
       {/* ── Anaşehir'de Yaşam: Instagram feed (placeholder until connected) ── */}
       <Section id="anasehirde-yasam" tone="paper" title="Anaşehir'de Yaşam">
         <InstagramFeed />
+      </Section>
+
+      {/* ── Törenlerimiz: photo albums (client photos, lib/torenler.ts) ── */}
+      <Section id="torenlerimiz" tone="ice" title="Törenlerimiz">
+        <EventAlbums albums={albums} />
       </Section>
 
       {/* ── Mosaic (1 large + 3 small, 16px gap) + 4 cards ──── */}

@@ -201,7 +201,6 @@ export default function AnasehiriKesfedinPage() {
             </h3>
             <p className="mt-1 text-sm text-muted">{institutionalPartners.length} kurum</p>
           </div>
-          <NeedsData id="kurumsal-is-birlikleri" compact className="!flex-row !items-center !gap-3 !p-2.5 !pr-4" />
         </div>
         <PartnerGrid partners={institutionalPartners} />
 

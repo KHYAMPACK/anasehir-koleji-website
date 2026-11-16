@@ -33,13 +33,13 @@ export function partnerHref(p: Partner) {
  * (AI-made, so names still need the client's confirmation). Web addresses
  * and logos were looked up on each brand's own official site (Nov 2026).
  * LEGO Education and WeDo Robotics logos came from the client (WhatsApp, Nov 2026);
- * WeDo has no confirmed web address yet.
+ * WeDo Robotics is a separate company: wedorobotics.com.tr (client, Nov 2026).
  */
 export const solutionPartnerGroups: PartnerGroup[] = [
   {
     title: "Eğitim Teknolojileri ve Dijital Çözümler",
     icon: "laptop",
-    partners: [{ name: "SEBIT", logo: "/partners/sebit.png", domain: "sebit.com.tr" }, { name: "SEBIT VCLOUD", logo: "/partners/sebit-vcloud.png", domain: "sebitvcloud.com" }, { name: "K12net", logo: "/partners/k12net.png", domain: "k12net.com" }],
+    partners: [{ name: "SEBIT", logo: "/partners/sebit.png", domain: "sebit.com.tr" }, { name: "SEBIT VCLOUD", logo: "/partners/sebit-vcloud.png", domain: "sebitvcloud.com" }, { name: "K12net", logo: "/partners/k12net.svg", domain: "k12net.com" }],
   },
   {
     title: "Akademik Yayınlar ve Dil Eğitimi",
@@ -54,7 +54,7 @@ export const solutionPartnerGroups: PartnerGroup[] = [
   {
     title: "STEM ve Robotik Eğitim",
     icon: "bot",
-    partners: [{ name: "WeDo Robotics", logo: "/partners/wedo-robotics.png", dark: true, tileBg: "#0741ad" }],
+    partners: [{ name: "WeDo Robotics", logo: "/partners/wedo-robotics.png", domain: "wedorobotics.com.tr", dark: true, tileBg: "#0741ad" }],
   },
   {
     title: "Tasarım ve Yaratıcılık",
@@ -76,7 +76,7 @@ export const institutionalPartners: Partner[] = [
   { name: "Hâkimler ve Savcılar Kurulu (HSK)", domain: "hsk.gov.tr", logo: "/partners/hsk.png" },
   { name: "Millî İstihbarat Teşkilatı (MİT)", domain: "mit.gov.tr", logo: "/partners/mit.png" },
   { name: "Jandarma Genel Komutanlığı", domain: "jandarma.gov.tr", logo: "/partners/jandarma.png" },
-  { name: "T.C. Etimesgut Kaymakamlığı", domain: "etimesgut.gov.tr", logo: "/partners/etimesgut-kaymakamligi.png" },
+  { name: "T.C. Etimesgut Kaymakamlığı", domain: "etimesgut.gov.tr", logo: "/partners/etimesgut-kaymakamligi.jpg" },
   { name: "Sincan Belediyesi", domain: "sincan.bel.tr", logo: "/partners/sincan-belediyesi.svg" },
   { name: "Ankara İl Emniyet Müdürlüğü", domain: "ankara.pol.tr", logo: "/partners/ankara-emniyet.png" },
   { name: "Etimesgut İlçe Emniyet Müdürlüğü", domain: "ankara.pol.tr", logo: "/partners/ankara-emniyet.png" },
