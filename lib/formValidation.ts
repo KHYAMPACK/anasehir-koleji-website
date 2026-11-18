@@ -92,7 +92,23 @@ export const fieldFallback: FieldErrors = {
   mezuniyet: "Mezuniyet bilgisini kontrol edin.",
   onYazi: "Ön yazı çok uzun olabilir; kısaltıp tekrar deneyin.",
   cv: "Özgeçmiş dosyasını kontrol edin (PDF veya Word, en fazla 4 MB).",
+  kademe: "Kademe seçimini kontrol edin.",
+  kampus: "Kampüs seçimini kontrol edin.",
   aydinlatmaOkundu: AYDINLATMA,
 };
 
 export const FORM_ERROR_SUMMARY = "Başvuru gönderilmedi. Lütfen kırmızıyla işaretli alanları düzeltin.";
+
+export const KADEMELER = ["Anaokulu", "İlkokul", "Ortaokul"];
+export const KAMPUSLER = ["Anaşehir Koleji", "Bağlıca Anaşehir Anaokulu", "Etimesgut Anaşehir Anaokulu"];
+
+/** "Bize Ulaşın" (kayıt görüşmesi / geri arama) form on /kayit-iletisim. */
+export function validateIletisim(d: Record<string, unknown>): FieldErrors {
+  const e: FieldErrors = {};
+  checkName(e, "adSoyad", text(d.adSoyad), "Ad soyad");
+  checkPhone(e, text(d.telefon));
+  if (!KADEMELER.includes(text(d.kademe))) e.kademe = "İlgilendiğiniz kademeyi seçin.";
+  if (!KAMPUSLER.includes(text(d.kampus))) e.kampus = "Kampüs seçin.";
+  if (d.aydinlatmaOkundu !== true && d.aydinlatmaOkundu !== "true") e.aydinlatmaOkundu = AYDINLATMA;
+  return e;
+}

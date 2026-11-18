@@ -18,7 +18,7 @@ export const formErrors = {
 export const invalidResponse = (fields: FieldErrors) =>
   Response.json({ error: formErrors.invalid, fields }, { status: 400 });
 
-export async function sendToPanel(form: "bursluluk" | "ik", body: BodyInit, json: boolean, fieldNames: string[]) {
+export async function sendToPanel(form: "bursluluk" | "ik" | "iletisim", body: BodyInit, json: boolean, fieldNames: string[]) {
   const key = process.env.PANEL_API_KEY;
   if (!key) {
     console.error("[panel] PANEL_API_KEY is not set");
