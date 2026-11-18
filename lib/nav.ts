@@ -80,6 +80,8 @@ const allSections: NavSection[] = [
       { name: "Bize Ulaşın", href: "/kayit-iletisim#bize-ulasin" },
     ],
   },
+  /* Client (Nov 2026): İK tab right of Kayıt & İletişim → iş başvuru formu. No sub-menu. */
+  { name: "İK", href: "/insan-kaynaklari", items: [] },
 ];
 
 /**
@@ -89,7 +91,7 @@ const allSections: NavSection[] = [
  */
 export const sections: NavSection[] = allSections
   .map((s) => ({ ...s, items: s.items.filter((i) => showDataFlags || !i.pending) }))
-  .filter((s) => s.items.length > 0);
+  .filter((s) => s.items.length > 0 || allSections.find((a) => a.name === s.name)!.items.length === 0);
 
 /** Kept outside the mega menu — linked from the footer instead. */
 /** Footer "Hızlı Erişim" — client's list and order (Nov 2026). News, events and
@@ -102,6 +104,7 @@ const allUtilityLinks: NavItem[] = [
   { name: "Sık sorulan sorular", href: "/sss" },
   { name: "KVKK", href: "/kvkk" },
   { name: "Gizlilik", href: "/gizlilik" },
+  { name: "İK", href: "/insan-kaynaklari" },
 ];
 
 export const utilityLinks: NavItem[] = allUtilityLinks.filter(

@@ -94,6 +94,11 @@ export const needsData = {
     ask: "Instagram gönderilerinin sitede gösterilmesi için hesap erişimi (Meta onayı) veya seçilecek gönderiler.",
     href: "/#sosyal-medya",
   },
+  "ik-basvurulari": {
+    label: "İK: iş başvuru formu",
+    ask: "Başvurular panel.ekizyazilim.com’a düşüyor. Pozisyon listesinin onayı (Öğretmen, İdari Personel, Destek Personeli, Diğer). KVKK: şimdilik iletişim ve kayıt görüşmesi aydınlatma metni bağlı; iş başvuruları için ayrı bir Çalışan Adayı Aydınlatma Metni önerilir.",
+    href: "/insan-kaynaklari",
+  },
   "burs-oranlari": {
     label: "Bursluluk: burs oranları",
     ask: "Burs oranlarının sitede yayınlanıp yayınlanmayacağına okul yönetimi karar verecek. Yayınlanacaksa sınav başarısına göre verilecek oranlar.",

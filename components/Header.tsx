@@ -12,7 +12,10 @@ import { bursluluk } from "@/lib/campaign";
 import { useCampaignPhase } from "@/lib/useCampaignPhase";
 
 const burslulukCta = { href: bursluluk.href, label: "Bursluluk Başvurusu" };
-const defaultCta = { href: "/kayit-iletisim#kampus-turu", label: "Kampüs Turu Planla" };
+const defaultCta = {
+  href: "/kayit-iletisim#kampus-turu",
+  label: "Kampüs Turu Planla",
+};
 
 export function Header() {
   const cta = useCampaignPhase() === "open" ? burslulukCta : defaultCta;
@@ -34,7 +37,8 @@ export function Header() {
           aria-label="Ana"
           onMouseLeave={() => setOpenSection(null)}
           onBlur={(e) => {
-            if (!e.currentTarget.contains(e.relatedTarget as Node | null)) setOpenSection(null);
+            if (!e.currentTarget.contains(e.relatedTarget as Node | null))
+              setOpenSection(null);
           }}
         >
           {sections.map((s) => (
@@ -57,7 +61,9 @@ export function Header() {
                   className="-ml-1 hidden rounded px-1 py-1 text-muted hover:text-blue 2xl:inline-flex"
                   aria-expanded={openSection === s.name}
                   aria-label={`${s.name} alt menüsünü aç`}
-                  onClick={() => setOpenSection((v) => (v === s.name ? null : s.name))}
+                  onClick={() =>
+                    setOpenSection((v) => (v === s.name ? null : s.name))
+                  }
                 >
                   <ChevronDown
                     className={`h-3.5 w-3.5 transition-transform ${openSection === s.name ? "rotate-180" : ""}`}
@@ -127,15 +133,19 @@ export function Header() {
                   >
                     {s.name}
                   </Link>
-                  <button
-                    type="button"
-                    className="px-2 py-2.5 text-xs text-muted"
-                    aria-expanded={openMobile === s.name}
-                    aria-label={`${s.name} alt menüsünü aç`}
-                    onClick={() => setOpenMobile((v) => (v === s.name ? null : s.name))}
-                  >
-                    {openMobile === s.name ? "▴" : "▾"}
-                  </button>
+                  {s.items.length > 0 && (
+                    <button
+                      type="button"
+                      className="px-2 py-2.5 text-xs text-muted"
+                      aria-expanded={openMobile === s.name}
+                      aria-label={`${s.name} alt menüsünü aç`}
+                      onClick={() =>
+                        setOpenMobile((v) => (v === s.name ? null : s.name))
+                      }
+                    >
+                      {openMobile === s.name ? "▴" : "▾"}
+                    </button>
+                  )}
                 </div>
                 {openMobile === s.name && (
                   <div className="flex flex-col gap-1 pb-3 pl-2">
@@ -162,7 +172,10 @@ export function Header() {
               <Link href="/sss" onClick={() => setOpen(false)}>
                 Sık sorulanlar
               </Link>
-              <a href={telHref(site.phoneTel)} className="font-semibold text-blue">
+              <a
+                href={telHref(site.phoneTel)}
+                className="font-semibold text-blue"
+              >
                 Ara {site.phoneDisplay}
               </a>
               <SocialLinks />

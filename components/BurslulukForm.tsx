@@ -8,13 +8,16 @@ import { ReadToAccept } from "./legal/ReadToAccept";
 import { useCampaignPhase } from "@/lib/useCampaignPhase";
 
 /**
- * Bursluluk sınavı başvuru formu — UI only for now. Submitting does NOT
- * send or store anything yet; the backend (where applications go) is still
- * to be decided. The "aydınlatma metnini okudum" box is required and can only
+ * Bursluluk sınavı başvuru formu. Posts to /api/basvuru/bursluluk, which
+ * forwards to the Ekiz panel (panel.ekizyazilim.com) server-side. The "aydınlatma metnini okudum" box is required and can only
  * be ticked after the text has been read (ReadToAccept).
  */
+const GENERIC_ERROR = "Başvurunuz şu anda gönderilemedi. Lütfen biraz sonra tekrar deneyin veya bizi arayın.";
+
 export function BurslulukForm({ noticeBlocks }: { noticeBlocks: Block[] }) {
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const phase = useCampaignPhase();
 
   if (phase !== "open") {
@@ -49,20 +52,35 @@ export function BurslulukForm({ noticeBlocks }: { noticeBlocks: Block[] }) {
       </div>
 
       {submitted ? (
-        <div className="rounded-[12px] border-2 border-dashed border-[#e0b800] bg-[#fff8d6] p-5">
-          <p className="display font-semibold">Başvuru sistemi henüz bağlı değil</p>
-          <p className="mt-1 text-sm text-muted">
-            Bu ekran önizlemedir; başvurular henüz kaydedilmiyor.
-          </p>
+        <div className="rounded-[12px] border-l-4 border-blue bg-blue-soft p-5" role="status">
+          <p className="display font-semibold">Başvurunuz alındı.</p>
+          <p className="mt-1 text-sm text-muted">Teşekkür ederiz. Başvurunuzla ilgili sizinle iletişime geçeceğiz.</p>
           <button type="button" onClick={() => setSubmitted(false)} className="mt-3 text-sm font-semibold text-blue">
-            Forma geri dön
+            Yeni başvuru
           </button>
         </div>
       ) : (
         <form
-          onSubmit={(e) => {
+          onSubmit={async (e) => {
             e.preventDefault();
-            setSubmitted(true);
+            if (sending) return;
+            setSending(true);
+            setError(null);
+            const fd = new FormData(e.currentTarget);
+            const body = Object.fromEntries([...fd.entries()].filter(([, v]) => typeof v === "string"));
+            try {
+              const res = await fetch("/api/basvuru/bursluluk", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ ...body, aydinlatmaOkundu: fd.has("aydinlatmaOkundu") }),
+              });
+              if (res.status === 201) setSubmitted(true);
+              else setError(((await res.json().catch(() => null)) as { error?: string } | null)?.error ?? GENERIC_ERROR);
+            } catch {
+              setError(GENERIC_ERROR);
+            } finally {
+              setSending(false);
+            }
           }}
           className="grid gap-3 sm:grid-cols-2 sm:gap-4"
         >
@@ -72,7 +90,16 @@ export function BurslulukForm({ noticeBlocks }: { noticeBlocks: Block[] }) {
           </label>
           <label className="grid min-w-0 gap-1 text-sm">
             Şu an okuduğu sınıf *
-            <input required name="sinif" className={field} />
+            <select required name="sinif" defaultValue="" className={field}>
+              <option value="" disabled>
+                Sınıf seçin
+              </option>
+              {bursluluk.grades.map((g) => (
+                <option key={g} value={g}>
+                  {g}. sınıf
+                </option>
+              ))}
+            </select>
           </label>
           <label className="grid min-w-0 gap-1 text-sm sm:col-span-2">
             Eğitim gördüğü okul *
@@ -85,7 +112,7 @@ export function BurslulukForm({ noticeBlocks }: { noticeBlocks: Block[] }) {
                 Seans seçin
               </option>
               {bursluluk.sessions.map((s) => (
-                <option key={s.label} value={s.time}>
+                <option key={s.label} value={s.time.replace(".", ":")}>
                   {s.label} — {s.time} ({s.grades})
                 </option>
               ))}
@@ -110,11 +137,19 @@ export function BurslulukForm({ noticeBlocks }: { noticeBlocks: Block[] }) {
               docHref="/kvkk/bursluluk-sinavi"
             />
           </div>
+          {/* Honeypot: hidden from people, bots fill it in */}
+          <input type="text" name="web_sitesi" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden />
+          {error && (
+            <p role="alert" className="rounded-[12px] border-l-4 border-red bg-blush px-4 py-3 text-sm font-semibold text-ink sm:col-span-2">
+              {error}
+            </p>
+          )}
           <button
             type="submit"
-            className="rounded-full bg-red px-5 py-2.5 text-sm font-semibold text-white hover:bg-red-hover sm:col-span-2"
+            disabled={sending}
+            className="rounded-full bg-red px-5 py-2.5 text-sm font-semibold text-white hover:bg-red-hover disabled:cursor-wait disabled:opacity-60 sm:col-span-2"
           >
-            Başvur
+            {sending ? "Gönderiliyor…" : "Başvur"}
           </button>
         </form>
       )}
