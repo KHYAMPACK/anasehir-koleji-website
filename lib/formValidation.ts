@@ -72,8 +72,9 @@ export function validateIk(d: Record<string, unknown>, cv: unknown): FieldErrors
  * visitor gets that field's message instead of a generic failure.
  */
 export function fieldFromPanelError(message: string, fields: string[]): string | null {
-  const m = message.toLowerCase();
-  return fields.find((f) => m.includes(f.toLowerCase())) ?? null;
+  // Panel format: "<field> <message>", e.g. "telefon geçersiz", "cv en fazla 4 MB olabilir".
+  const first = message.trim().split(/\s+/)[0] ?? "";
+  return fields.find((f) => f === first) ?? null;
 }
 
 export const fieldFallback: FieldErrors = {

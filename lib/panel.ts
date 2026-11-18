@@ -45,7 +45,8 @@ export async function sendToPanel(form: "bursluluk" | "ik", body: BodyInit, json
       const field = fieldFromPanelError(msg, fieldNames);
       return field
         ? invalidResponse({ [field]: fieldFallback[field] })
-        : Response.json({ error: "Başvuru gönderilmedi. Lütfen bilgilerinizi kontrol edip tekrar deneyin." }, { status: 400 });
+        : // No field name ("geçersiz JSON", "geçersiz istek"): a bug on our side, not the visitor's.
+          Response.json({ error: formErrors.server }, { status: 502 });
     }
     if (res.status === 413) return invalidResponse({ cv: formErrors.tooBig });
     return Response.json({ error: formErrors.server }, { status: 502 });
