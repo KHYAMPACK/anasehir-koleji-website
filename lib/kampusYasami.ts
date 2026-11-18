@@ -3,13 +3,13 @@
  * the old "Etkinlik Dersi / Kulüp Dersi" model, its activity hour, the
  * "25 branş arasından tercih" and "kulüp yerleştirmesi" wording are gone.
  * These are part of the weekly timetable; no separate hour is shown.
- * List revised by the client (Nov 2026): seven branches, then Yüzme added.
+ * List revised by the client (Nov 2026): seven branches, then Yüzme and Satranç added.
  * Copy is the client's, verbatim.
  */
 export const branchLessons = {
   title: "Uygulamalı Branş Dersleri",
   text: "Öğrencilerimizin sosyal, sanatsal ve fiziksel gelişimlerini destekleyen branşlarımızı ayrı bir kulüp uygulaması olarak değil, haftalık ders programına entegre edilmiş dersler olarak sunuyoruz.",
-  items: ["Dans", "Drama", "Görsel Sanatlar", "Müzik", "Beden Eğitimi ve Spor", "Lego Education", "Sahne Sanatları", "Yüzme"],
+  items: ["Dans", "Drama", "Görsel Sanatlar", "Müzik", "Beden Eğitimi ve Spor", "Lego Education", "Sahne Sanatları", "Yüzme", "Satranç"],
 } as const;
 
 /** Akşam Etütleri / Ödev Saati — client copy, verbatim. */

@@ -1,4 +1,4 @@
-import { Blocks, Drama, Dumbbell, Footprints, Music2, Palette, Theater, Waves, type LucideIcon } from "lucide-react";
+import { Blocks, ChessKnight, Drama, Dumbbell, Footprints, Music2, Palette, Theater, Waves, type LucideIcon } from "lucide-react";
 import { branchLessons } from "@/lib/kampusYasami";
 
 const icons: Record<string, LucideIcon> = {
@@ -10,6 +10,7 @@ const icons: Record<string, LucideIcon> = {
   "Lego Education": Blocks,
   "Sahne Sanatları": Theater,
   Yüzme: Waves,
+  Satranç: ChessKnight,
 };
 const colors: Record<string, [string, string]> = {
   Dans: ["#8f55d6", "#55279a"],
@@ -20,6 +21,7 @@ const colors: Record<string, [string, string]> = {
   "Lego Education": ["#f2b705", "#c27c00"],
   "Sahne Sanatları": ["#d6337a", "#8f1450"],
   Yüzme: ["#0e8fd6", "#075a91"],
+  Satranç: ["#3a4a66", "#141d2e"],
 };
 
 /**
