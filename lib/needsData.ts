@@ -39,6 +39,11 @@ export const needsData = {
     ask: "İlkokul ve Ortaokul için kademeye özgü gerçek fotoğraf (yatay, 16:10 veya 4:3). Anaokulu için Bağlıca Anaokulu fotoğrafı geldi ve sitede.",
     href: "/okullarimiz",
   },
+  "anaokulu-2-yas": {
+    label: "Anaokulu: Yüzme dersi metni",
+    ask: "Anaokulu branş derslerine eklenen Yüzme kartı için kısa açıklama (diğer branş kartlarındaki gibi tek cümle).",
+    href: "/okullarimiz/anaokulu#brans-egitimi",
+  },
   "kampus-fotograflari": {
     label: "Kampüs alanı fotoğrafları",
     ask: "Laboratuvar, spor salonu, yemekhane, konferans salonu, yüzme havuzu, halı saha, bahçe, görsel atölye, müzik sınıfı, Lego sınıfı, Anaşehir Radyo ve okul öncesi alanlarının güncel fotoğrafları.",

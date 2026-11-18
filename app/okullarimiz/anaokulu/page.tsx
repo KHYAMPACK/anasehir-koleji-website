@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight, Blocks, Drama, Footprints, Languages, Music, Palette, PersonStanding, UsersRound } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Blocks, Drama, Footprints, Languages, Music, Palette, PersonStanding, UsersRound, Waves } from "lucide-react";
 import { BtnLine, BtnPrimary } from "@/components/Buttons";
 import { ContactCta } from "@/components/ContactCta";
 import { Section } from "@/components/PageHero";
@@ -24,7 +24,7 @@ import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Anaokulu",
-  description: "Anaşehir Koleji Anaokulu — 3, 4 ve 5 yaş grupları, branş dersleri, yabancı dil ve günlük akış.",
+  description: "Anaşehir Koleji Anaokulu — 2, 3, 4 ve 5 yaş grupları, branş dersleri, yabancı dil ve günlük akış.",
 };
 
 const bransIcons: Record<BransIcon, typeof Languages> = {
@@ -35,6 +35,7 @@ const bransIcons: Record<BransIcon, typeof Languages> = {
   sport: Footprints,
   palette: Palette,
   music: Music,
+  swim: Waves,
 };
 
 /** Alternating accents for the branch cards (site palette only). */
@@ -128,7 +129,7 @@ export default function AnaokuluPage() {
         </div>
       </Section>
 
-      {/* Branş eğitimi — 7 cards (4+3) + 5-yaş language strip */}
+      {/* Branş eğitimi — 8 cards (4+4) + 5-yaş language strip */}
       <section id="brans-egitimi" className="tone-paper relative scroll-mt-[calc(var(--header)+3rem)] overflow-clip py-[clamp(3rem,6vw,5rem)]">
         <div className="relative mx-auto max-w-[1180px] px-4 sm:px-6 lg:px-10">
           <div className="mx-auto max-w-[62ch] text-center">
@@ -136,7 +137,7 @@ export default function AnaokuluPage() {
             <p className="mt-4 text-[1.02rem] leading-[1.65] text-muted">{bransSection.lead}</p>
           </div>
 
-          {/* flex-wrap + fixed widths: desktop 4+3 with the second row centred */}
+          {/* flex-wrap + fixed widths: desktop 4+4 */}
           <ul className="mt-10 flex flex-wrap justify-center gap-4">
             {bransSection.cards.map((c, i) => {
               const Icon = bransIcons[c.icon];
@@ -154,7 +155,7 @@ export default function AnaokuluPage() {
                   </span>
                   <h3 className="display mt-5 text-lg font-semibold tracking-tight text-ink">{c.title}</h3>
                   <span className="mt-2 h-0.5 w-8 rounded-full" style={{ background: accent }} aria-hidden />
-                  <p className="mt-3 text-sm leading-relaxed text-muted">{c.text}</p>
+                  {c.text && <p className="mt-3 text-sm leading-relaxed text-muted">{c.text}</p>}
                 </li>
               );
             })}
@@ -201,7 +202,7 @@ export default function AnaokuluPage() {
         <AgeTabs />
       </Section>
 
-      {/* 16–18 kişilik sınıflar */}
+      {/* 12–14 kişilik sınıflar */}
       <section className="tone-navy relative overflow-hidden py-[clamp(3rem,6vw,4.5rem)]">
         <div className="pointer-events-none absolute inset-0 opacity-15 grid-paper" />
         <div className="relative mx-auto grid max-w-[1180px] items-center gap-8 px-4 sm:px-6 lg:grid-cols-[auto_minmax(0,1fr)] lg:gap-14 lg:px-10">
@@ -209,7 +210,7 @@ export default function AnaokuluPage() {
             <span className="flex h-16 w-16 items-center justify-center rounded-full bg-red text-white">
               <UsersRound className="h-8 w-8" strokeWidth={1.6} aria-hidden />
             </span>
-            <p className="display text-6xl leading-none font-semibold text-white sm:text-7xl">16–18</p>
+            <p className="display text-6xl leading-none font-semibold text-white sm:text-7xl">12–14</p>
           </div>
           <div>
             <h2 className="display text-2xl font-semibold tracking-tight text-white sm:text-3xl">{sinifMevcudu.title}</h2>

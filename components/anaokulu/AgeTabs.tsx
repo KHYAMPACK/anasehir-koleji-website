@@ -3,14 +3,14 @@
 import { useState } from "react";
 import { yasGruplari } from "@/lib/anaokulu";
 
-/** Yaş Gruplarımız: 3 / 4 / 5 yaş tabs, each with the client's text. */
+/** Yaş Gruplarımız: 2 / 3 / 4 / 5 yaş tabs, each with the client's text. */
 export function AgeTabs() {
   const [active, setActive] = useState(0);
   const g = yasGruplari[active];
 
   return (
     <div>
-      <div role="tablist" aria-label="Yaş grupları" className="grid grid-cols-3 gap-2 rounded-[18px] bg-panel p-2 shadow-sm ring-1 ring-line/50">
+      <div role="tablist" aria-label="Yaş grupları" className="grid grid-cols-2 gap-2 sm:grid-cols-4 rounded-[18px] bg-panel p-2 shadow-sm ring-1 ring-line/50">
         {yasGruplari.map((y, i) => {
           const on = i === active;
           return (

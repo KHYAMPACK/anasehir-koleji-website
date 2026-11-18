@@ -15,43 +15,44 @@ export const anaokuluIntro: Para[] = [
   { text: "Anaşehir Koleji Anaokulunda çocuklarımızın ilk eğitim deneyimlerini güven, sevgi, merak ve keşif üzerine inşa ediyoruz." },
   { text: "Her çocuğun kendine özgü bir öğrenme hızı, farklı ilgi alanları ve keşfedilmeyi bekleyen potansiyeli olduğuna inanıyoruz." },
   { text: "AGM 360° Anaşehir Gelişim Modeli kapsamında oyun temelli öğrenmeyi; yabancı dil eğitimi, LEGO Education, dans, drama, spor ve hareket, görsel sanatlar, müzik ve ritim, bilimsel keşif ve sosyal-duygusal gelişimle bütünleştiriyoruz." },
-  { text: "3, 4 ve 5 yaş gruplarımıza yönelik eğitim programımızı çocuklarımızın yaş ve gelişim özelliklerine göre farklılaştırıyoruz." },
+  { text: "2, 3, 4 ve 5 yaş gruplarımıza yönelik eğitim programımızı çocuklarımızın yaş ve gelişim özelliklerine göre farklılaştırıyoruz." },
   { text: "Hedefimiz yalnızca çocuklarımızı ilkokula hazırlamak değil; öğrenmeyi seven, kendini ifade edebilen, yaratıcı düşünebilen, özgüveni gelişen ve farklı alanlarda yeteneklerini keşfeden bireyler olarak gelişimlerini desteklemektir." },
 ];
 
 /** From the "Yakından Tanıyın" block. */
 export const anaokuluFacts = [
-  { label: "Yaş Grupları", value: "3, 4 ve 5 Yaş" },
-  { label: "Sınıf Mevcutları", value: "16–18 Öğrenci" },
-  { label: "Yabancı Dil", value: "3 ve 4 Yaş İngilizce | 5 Yaş İngilizce ve Almanca" },
-  { label: "Branş Dersleri", value: "LEGO Education, Dans, Drama, Spor ve Hareket, Görsel Sanatlar, Müzik ve Ritim" },
+  { label: "Yaş Grupları", value: "2, 3, 4 ve 5 Yaş" },
+  { label: "Sınıf Mevcutları", value: "12–14 Öğrenci" },
+  { label: "Yabancı Dil", value: "2, 3 ve 4 Yaş İngilizce | 5 Yaş İngilizce ve Almanca" },
+  { label: "Branş Dersleri", value: "LEGO Education, Dans, Drama, Spor ve Hareket, Görsel Sanatlar, Müzik ve Ritim, Yüzme" },
 ] as const;
 
 /* ── Branş eğitimi (separate brief) ─────────────────────────── */
 
-export type BransIcon = "languages" | "blocks" | "dance" | "drama" | "sport" | "palette" | "music";
+export type BransIcon = "languages" | "blocks" | "dance" | "drama" | "sport" | "palette" | "music" | "swim";
 
 export const bransSection = {
-  title: "3 Yaştan İtibaren Zenginleştirilmiş Branş Eğitimi",
-  lead: "Anaşehir Koleji Anaokulunda 3, 4 ve 5 yaş gruplarımızın tamamında uyguladığımız branş dersleriyle çocuklarımızın bilişsel, sosyal, fiziksel ve sanatsal gelişimlerini bütüncül bir yaklaşımla destekliyoruz.",
+  title: "2 Yaştan İtibaren Zenginleştirilmiş Branş Eğitimi",
+  lead: "Anaşehir Koleji Anaokulunda 2, 3, 4 ve 5 yaş gruplarımızın tamamında uyguladığımız branş dersleriyle çocuklarımızın bilişsel, sosyal, fiziksel ve sanatsal gelişimlerini bütüncül bir yaklaşımla destekliyoruz.",
   cards: [
-    { icon: "languages", title: "İngilizce Eğitimi", text: "3 yaşta başlayan İngilizce eğitimimizle dil farkındalığını, dinleme ve temel iletişim becerilerini oyun temelli etkinliklerle destekliyoruz." },
+    { icon: "languages", title: "İngilizce Eğitimi", text: "2 yaşta başlayan İngilizce eğitimimizle dil farkındalığını, dinleme ve temel iletişim becerilerini oyun temelli etkinliklerle destekliyoruz." },
     { icon: "blocks", title: "LEGO Education", text: "Tasarım, yaratıcılık, problem çözme, iş birliği ve ince motor becerilerini deneyimleyerek geliştiriyoruz." },
     { icon: "dance", title: "Dans Dersi", text: "Ritim, koordinasyon, beden farkındalığı ve yaratıcı hareket becerilerini destekliyoruz." },
     { icon: "drama", title: "Drama Dersi", text: "Yaratıcı düşünme, özgüven, iletişim ve sosyal etkileşim becerilerini geliştiriyoruz." },
     { icon: "sport", title: "Spor ve Hareket Dersi", text: "Denge, koordinasyon, temel motor becerileri ve hareket yoluyla öğrenmeyi destekliyoruz." },
     { icon: "palette", title: "Görsel Sanatlar Dersi", text: "Renk, şekil, doku ve farklı malzemelerle çocuklarımızın yaratıcılığını ve sanatsal ifade becerilerini geliştiriyoruz." },
     { icon: "music", title: "Müzik ve Ritim Dersi", text: "İşitsel dikkat, ritim duygusu, dinleme ve müzikal ifade becerilerini destekliyoruz." },
+    { icon: "swim", title: "Yüzme", text: "" },
   ] as { icon: BransIcon; title: string; text: string }[],
   languages: {
     title: "5 Yaşta İngilizce + Almanca",
     paragraphs: [
-      "Anaşehir Koleji'nde İngilizce eğitimi 3 yaşta başlar, 4 yaşta devam eder. 5 yaş grubumuzda ise İngilizce programımıza Almanca dersleri eklenir.",
+      "Anaşehir Koleji'nde İngilizce eğitimi 2 yaşta başlar, 3 ve 4 yaşta devam eder. 5 yaş grubumuzda ise İngilizce programımıza Almanca dersleri eklenir.",
       "Çocuklarımızın iki farklı yabancı dille erken yaşta tanışmalarını, oyun ve iletişim temelli öğrenme deneyimleriyle destekliyoruz.",
     ],
   },
   closing:
-    "Anaşehir Koleji'nde öğrenme, 3 yaştan itibaren farklı disiplinlerle zenginleşir. Her çocuğun ilgi alanlarını keşfetmesini ve potansiyelini geliştirmesini destekliyoruz.",
+    "Anaşehir Koleji'nde öğrenme, 2 yaştan itibaren farklı disiplinlerle zenginleşir. Her çocuğun ilgi alanlarını keşfetmesini ve potansiyelini geliştirmesini destekliyoruz.",
 };
 
 /* ── Yaş grupları ───────────────────────────────────────────── */
@@ -60,12 +61,23 @@ export const yasGruplariTitle = "Yaş Gruplarımız";
 
 export const yasGruplari: { age: string; subtitle: string; paragraphs: Para[] }[] = [
   {
+    age: "2 Yaş",
+    subtitle: "Güvenli İlk Adımlar ve Duyusal Keşifler",
+    paragraphs: [
+      { text: "2 yaş grubumuzda çocuklarımızın aile ortamından okul yaşamına güvenle geçiş yapmalarını, öğretmenleriyle güçlü bağlar kurmalarını ve ilk sosyal deneyimlerini olumlu bir ortamda kazanmalarını önemsiyoruz." },
+      { text: "Oyun temelli öğrenme, duyusal keşifler, hareket etkinlikleri ve günlük yaşam deneyimleriyle çocuklarımızın bilişsel, dil, motor ve sosyal-duygusal gelişimlerini destekliyoruz." },
+      { text: "Bu yaş grubunda önceliğimiz, çocuklarımızın kendilerini güvende ve değerli hissetmeleri, gelişimlerini kendi hızlarında sürdürmeleri ve öğrenmeye yönelik doğal meraklarını keşfetmeleridir." },
+      { text: "Yaşlarına uygun müzik ve ritim çalışmaları, hikâyeler, hareket oyunları, sanat ve duyusal etkinliklerle çocuklarımızın kendilerini ifade etmelerine, çevrelerini tanımalarına ve bağımsızlık becerilerinin temellerini oluşturmalarına fırsat sunuyoruz." },
+      { text: "Günlük yaşam becerilerine yönelik uygulamalarla öz bakım, iletişim, paylaşma ve birlikte hareket etme alışkanlıklarının gelişimini destekliyoruz." },
+    ],
+  },
+  {
     age: "3 Yaş",
     subtitle: "Güvenli Uyum ve İlk Keşifler",
     paragraphs: [
       { text: "3 yaş grubumuzda çocuklarımızın okul yaşamına güvenle uyum sağlamalarını, öğretmenleriyle güçlü bağlar kurmalarını ve ilk arkadaşlık deneyimlerini kazanmalarını önemsiyoruz." },
       { text: "Oyun temelli öğrenme, duyusal etkinlikler, hikâyeler ve keşif çalışmalarıyla çocuklarımızın bilişsel, dil, motor ve sosyal-duygusal gelişimlerini destekliyoruz." },
-      { text: "İngilizce eğitimi 3 yaş itibarıyla başlar. Şarkılar, oyunlar, görseller ve günlük iletişim etkinlikleriyle çocuklarımızın yabancı dille doğal bir ortamda tanışmalarını sağlıyoruz.", strong: true },
+      { text: "İngilizce eğitimi 3 yaş grubunda da devam eder. Şarkılar, oyunlar, görseller ve günlük iletişim etkinlikleriyle çocuklarımızın yabancı dille doğal bir ortamda tanışmalarını sağlıyoruz.", strong: true },
       { text: "LEGO Education derslerinde yaşlarına uygun yapı oluşturma, renk ve şekil tanıma, eşleştirme ve el-göz koordinasyonu becerilerini destekliyoruz." },
       { text: "Dans ve drama derslerinde ritim, taklit, hayal gücü ve kendini ifade etme becerilerine alan açıyoruz." },
       { text: "Spor ve Hareket Dersi ile temel motor becerileri, denge, koordinasyon ve beden farkındalığını geliştiriyoruz." },
@@ -110,9 +122,9 @@ export const yasGruplari: { age: string; subtitle: string; paragraphs: Para[] }[
 /* ── Sınıf mevcudu ──────────────────────────────────────────── */
 
 export const sinifMevcudu = {
-  title: "16–18 Kişilik Sınıflar",
+  title: "12–14 Kişilik Sınıflar",
   paragraphs: [
-    "Anaokulumuzda 3, 4 ve 5 yaş gruplarımızın sınıf mevcutlarını 16–18 öğrenci aralığında planlıyoruz.",
+    "Anaokulumuzda 2, 3, 4 ve 5 yaş gruplarımızın sınıf mevcutlarını 12–14 öğrenci aralığında planlıyoruz.",
     "Sınıf yapımızı oluştururken öğretmen-öğrenci etkileşimini, çocuklarımızın bireysel ihtiyaçlarını ve aktif öğrenme fırsatlarını önemsiyoruz.",
     "Hedefimiz, her çocuğun kendini rahatça ifade edebildiği, öğretmeni tarafından yakından tanındığı ve gelişiminin dikkatle takip edildiği bir öğrenme ortamı sunmaktır.",
   ],
@@ -131,9 +143,9 @@ export const egitimProgrami: { icon: ProgramIcon; title: string; subtitle?: stri
   {
     icon: "languages",
     title: "Erken Yaşta Yabancı Dil Eğitimi",
-    subtitle: "3 Yaşta İngilizce, 5 Yaşta İngilizce ve Almanca",
+    subtitle: "2 Yaşta İngilizce, 5 Yaşta İngilizce ve Almanca",
     paragraphs: [
-      "Anaşehir Koleji'nde İngilizce eğitimi 3 yaş itibarıyla başlar ve 4 yaş grubunda devam eder.",
+      "Anaşehir Koleji'nde İngilizce eğitimi 2 yaş itibarıyla başlar; 3 ve 4 yaş gruplarında devam eder.",
       "5 yaş grubumuzda ise İngilizceye Almanca dersleri eklenir.",
       "Yabancı dil eğitimini oyun, müzik, drama, hikâye ve günlük yaşam etkinlikleriyle bütünleştirerek çocuklarımızın yeni dillere karşı merak ve özgüven geliştirmelerini destekliyoruz.",
     ],
@@ -142,7 +154,7 @@ export const egitimProgrami: { icon: ProgramIcon; title: string; subtitle?: stri
     icon: "blocks",
     title: "LEGO Education",
     paragraphs: [
-      "3, 4 ve 5 yaş gruplarımızda uyguladığımız LEGO Education dersleriyle çocuklarımızın yaratıcılıklarını, ince motor becerilerini, problem çözme yetkinliklerini ve iş birliği alışkanlıklarını destekliyoruz.",
+      "2, 3, 4 ve 5 yaş gruplarımızda uyguladığımız LEGO Education dersleriyle çocuklarımızın yaratıcılıklarını, ince motor becerilerini, problem çözme yetkinliklerini ve iş birliği alışkanlıklarını destekliyoruz.",
       "Her yaş grubunda etkinliklerin zorluk düzeyini gelişim özelliklerine göre farklılaştırarak çocuklarımızın deneyerek, tasarlayarak ve üreterek öğrenmelerine fırsat sunuyoruz.",
     ],
   },
@@ -150,7 +162,7 @@ export const egitimProgrami: { icon: ProgramIcon; title: string; subtitle?: stri
     icon: "dance",
     title: "Dans Dersi",
     paragraphs: [
-      "3, 4 ve 5 yaş gruplarımızda yer alan dans dersleriyle çocuklarımızın ritim duygularını, koordinasyonlarını, beden farkındalıklarını ve yaratıcı hareket becerilerini destekliyoruz.",
+      "2, 3, 4 ve 5 yaş gruplarımızda yer alan dans dersleriyle çocuklarımızın ritim duygularını, koordinasyonlarını, beden farkındalıklarını ve yaratıcı hareket becerilerini destekliyoruz.",
       "Müzik ve hareketi bir araya getiren etkinliklerle özgüvenlerini, grup uyumlarını ve kendilerini beden diliyle ifade etme becerilerini geliştirmeyi amaçlıyoruz.",
     ],
   },
@@ -166,7 +178,7 @@ export const egitimProgrami: { icon: ProgramIcon; title: string; subtitle?: stri
     icon: "sport",
     title: "Spor ve Hareket Dersi",
     paragraphs: [
-      "3, 4 ve 5 yaş gruplarımızda uyguladığımız Spor ve Hareket Dersi ile çocuklarımızın temel motor becerilerini, denge, koordinasyon, beden farkındalığı ve fiziksel özgüvenlerini destekliyoruz.",
+      "2, 3, 4 ve 5 yaş gruplarımızda uyguladığımız Spor ve Hareket Dersi ile çocuklarımızın temel motor becerilerini, denge, koordinasyon, beden farkındalığı ve fiziksel özgüvenlerini destekliyoruz.",
       "Yaşa uygun hareket parkurları, eğitsel oyunlar, koordinasyon çalışmaları ve grup etkinlikleriyle hareket etmeyi günlük yaşamın doğal ve keyifli bir parçası hâline getiriyoruz.",
       "Çocuklarımızın fiziksel becerilerini geliştirirken paylaşma, sıra bekleme, kurallara uyma ve birlikte hareket etme alışkanlıklarına da katkı sağlıyoruz.",
     ],
@@ -175,7 +187,7 @@ export const egitimProgrami: { icon: ProgramIcon; title: string; subtitle?: stri
     icon: "palette",
     title: "Görsel Sanatlar Dersi",
     paragraphs: [
-      "3, 4 ve 5 yaş gruplarımızda yer alan Görsel Sanatlar Dersi ile çocuklarımızın estetik duyarlılıklarını, hayal güçlerini ve yaratıcı düşünme becerilerini destekliyoruz.",
+      "2, 3, 4 ve 5 yaş gruplarımızda yer alan Görsel Sanatlar Dersi ile çocuklarımızın estetik duyarlılıklarını, hayal güçlerini ve yaratıcı düşünme becerilerini destekliyoruz.",
       "Boyama, çizim, kolaj, farklı malzemelerle tasarım ve üç boyutlu çalışmalar aracılığıyla çocuklarımızın renk, şekil, doku ve görsel ifade becerilerini geliştiriyoruz.",
       "Sanat çalışmalarında tek tip sonuçlar elde etmek yerine her çocuğun kendine özgü fikirlerini ve üretim sürecini önemsiyoruz.",
     ],
@@ -184,7 +196,7 @@ export const egitimProgrami: { icon: ProgramIcon; title: string; subtitle?: stri
     icon: "music",
     title: "Müzik ve Ritim Dersi",
     paragraphs: [
-      "3, 4 ve 5 yaş gruplarımızda uyguladığımız Müzik ve Ritim Dersi ile çocuklarımızın işitsel dikkatlerini, ritim duygularını, dinleme becerilerini ve müzikal farkındalıklarını destekliyoruz.",
+      "2, 3, 4 ve 5 yaş gruplarımızda uyguladığımız Müzik ve Ritim Dersi ile çocuklarımızın işitsel dikkatlerini, ritim duygularını, dinleme becerilerini ve müzikal farkındalıklarını destekliyoruz.",
       "Şarkılar, ritim oyunları, beden perküsyonu ve yaşa uygun müzik araçlarıyla çocuklarımızın müziği yaşayarak keşfetmelerine fırsat sunuyoruz.",
       "Müzik çalışmalarını yalnızca sanatsal gelişim değil; dikkat, hafıza, koordinasyon, iletişim ve grup uyumunu destekleyen bir öğrenme alanı olarak değerlendiriyoruz.",
     ],
@@ -231,7 +243,7 @@ export const birGun = {
     { title: "Güne Merhaba ve Serbest Oyun", text: "Çocuklarımız güne öğretmenleri ve arkadaşlarıyla güvenli bir başlangıç yapar." },
     { title: "Paylaşım Çemberi", text: "Duygularımızı, düşüncelerimizi ve günlük deneyimlerimizi paylaşırız." },
     { title: "Oyun Temelli Öğrenme Etkinlikleri", text: "Dil, erken matematik, bilim ve düşünme becerilerini destekleyen çalışmalar gerçekleştiririz." },
-    { title: "Yabancı Dil Dersleri", text: "3 ve 4 yaşta İngilizce; 5 yaşta İngilizce ve Almanca dersleriyle yabancı dil öğrenimini yaşa uygun etkinliklerle destekleriz." },
+    { title: "Yabancı Dil Dersleri", text: "2, 3 ve 4 yaşta İngilizce; 5 yaşta İngilizce ve Almanca dersleriyle yabancı dil öğrenimini yaşa uygun etkinliklerle destekleriz." },
     { title: "LEGO Education ve Drama", text: "Tasarım, problem çözme, hayal gücü ve yaratıcı ifade becerilerine yönelik çalışmalar gerçekleştiririz." },
     { title: "Dans, Spor ve Hareket", text: "Ritim, koordinasyon, beden farkındalığı ve temel hareket becerilerini yaşa uygun etkinliklerle destekleriz." },
     { title: "Görsel Sanatlar", text: "Çizim, boyama, farklı malzemelerle tasarım ve yaratıcı üretim etkinlikleri gerçekleştiririz." },
@@ -258,7 +270,7 @@ export const anaokuluAgm = {
   title: "AGM 360° ile Anaokulundan Başlayan Gelişim",
   paragraphs: [
     "AGM 360° Anaşehir Gelişim Modeli, okul öncesi dönemde çocuklarımızın gelişim özelliklerine uygun öğrenme deneyimleriyle hayat bulur.",
-    "3 yaşta başlayan İngilizce eğitimi, 5 yaşta İngilizce ve Almancayla genişleyen yabancı dil programı; tüm yaş gruplarımızda uygulanan LEGO Education, dans, drama, spor ve hareket, görsel sanatlar ile müzik ve ritim dersleri, bütüncül eğitim yaklaşımımızın önemli bileşenleridir.",
+    "2 yaşta başlayan İngilizce eğitimi, 5 yaşta İngilizce ve Almancayla genişleyen yabancı dil programı; tüm yaş gruplarımızda uygulanan LEGO Education, dans, drama, spor ve hareket, görsel sanatlar ile müzik ve ritim dersleri, bütüncül eğitim yaklaşımımızın önemli bileşenleridir.",
     "Akademik hazırlık, sosyal-duygusal gelişim, yaratıcı düşünme, fiziksel gelişim, sanat ve doğa bilinci birbirini tamamlayan alanlar olarak ele alınır.",
   ],
 } as const;

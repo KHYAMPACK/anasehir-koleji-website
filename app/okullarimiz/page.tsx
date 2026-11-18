@@ -38,8 +38,8 @@ export default function OkullarimizPage() {
       {/* Anaokulu has its own page now; this chapter is the short entry point */}
       <Section id="anaokulu" tone="ice" title="Anaokulu" lead={levelCards[0].text}>
         <div className="flex flex-wrap items-center gap-x-8 gap-y-3 text-sm text-muted">
-          <span><strong className="text-ink">3, 4 ve 5 Yaş</strong> grupları</span>
-          <span><strong className="text-ink">16–18</strong> öğrencilik sınıflar</span>
+          <span><strong className="text-ink">2, 3, 4 ve 5 Yaş</strong> grupları</span>
+          <span><strong className="text-ink">12–14</strong> öğrencilik sınıflar</span>
           <span><strong className="text-ink">5 yaşta</strong> İngilizce + Almanca</span>
         </div>
         <div className="mt-6">
