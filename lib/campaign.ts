@@ -28,16 +28,17 @@ export const bursluluk = {
   examEnd: "2027-01-16T23:59:59+03:00",
   /** Grades that can sit the exam (client banner, Nov 2026). */
   grades: [4, 5, 6, 7],
+  /** Both sessions are open to every grade 4–7 (client, Nov 2026); pick either. */
   sessions: [
-    { label: "1. Seans", time: "10.00", grades: "4 ve 5. sınıflar" },
-    { label: "2. Seans", time: "14.00", grades: "6 ve 7. sınıflar" },
+    { label: "1. Seans", time: "10.00", grades: "4, 5, 6 ve 7. sınıflar" },
+    { label: "2. Seans", time: "14.00", grades: "4, 5, 6 ve 7. sınıflar" },
   ],
   /** Exam facts — null = not supplied yet (hidden while data flags are off). */
   details: [
     // Client bursluluk SSS (Nov 2026).
     { label: "Sınav tarihi", value: "16 Ocak 2027 Cumartesi" },
-    { label: "1. Seans", value: "10.00 · 4 ve 5. sınıflar" },
-    { label: "2. Seans", value: "14.00 · 6 ve 7. sınıflar" },
+    { label: "1. Seans", value: "10.00 · 4, 5, 6 ve 7. sınıflar" },
+    { label: "2. Seans", value: "14.00 · 4, 5, 6 ve 7. sınıflar" },
     { label: "Son başvuru", value: "15 Ocak 2027" },
     { label: "Sınav yeri", value: "Bağlıca Kampüsü" },
     { label: "Başvuru ve katılım", value: "Ücretsiz" },

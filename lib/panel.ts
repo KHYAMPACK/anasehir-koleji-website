@@ -3,19 +3,22 @@
  * Server-only: imported by the /api/basvuru/* route handlers, never by client
  * code, so PANEL_API_KEY (Vercel env) never reaches the browser.
  */
-const PANEL_URL = "https://panel.ekizyazilim.com/api/forms";
+import { fieldFallback, fieldFromPanelError, FORM_ERROR_SUMMARY, type FieldErrors } from "./formValidation";
 
-export const CV_MAX_BYTES = 4 * 1024 * 1024;
-export const CV_EXTENSIONS = [".pdf", ".doc", ".docx"];
+const PANEL_URL = "https://panel.ekizyazilim.com/api/forms";
 
 /** Friendly Turkish messages; the panel's raw error is never shown. */
 export const formErrors = {
-  invalid: "Lütfen formdaki bilgileri kontrol edip tekrar deneyin.",
+  invalid: FORM_ERROR_SUMMARY,
   tooBig: "Dosya çok büyük. Özgeçmiş en fazla 4 MB olabilir.",
   server: "Başvurunuz şu anda gönderilemedi. Lütfen biraz sonra tekrar deneyin veya bizi arayın.",
 } as const;
 
-export async function sendToPanel(form: "bursluluk" | "ik", body: BodyInit, json: boolean) {
+/** 400 with the summary plus one message per wrong field. */
+export const invalidResponse = (fields: FieldErrors) =>
+  Response.json({ error: formErrors.invalid, fields }, { status: 400 });
+
+export async function sendToPanel(form: "bursluluk" | "ik", body: BodyInit, json: boolean, fieldNames: string[]) {
   const key = process.env.PANEL_API_KEY;
   if (!key) {
     console.error("[panel] PANEL_API_KEY is not set");
@@ -34,8 +37,17 @@ export async function sendToPanel(form: "bursluluk" | "ik", body: BodyInit, json
     }
     const detail = await res.text().catch(() => "");
     console.error(`[panel] ${form} → ${res.status} ${detail.slice(0, 300)}`);
-    if (res.status === 400) return Response.json({ error: formErrors.invalid }, { status: 400 });
-    if (res.status === 413) return Response.json({ error: formErrors.tooBig }, { status: 413 });
+    if (res.status === 400) {
+      let msg = detail;
+      try {
+        msg = (JSON.parse(detail) as { error?: string }).error ?? detail;
+      } catch {}
+      const field = fieldFromPanelError(msg, fieldNames);
+      return field
+        ? invalidResponse({ [field]: fieldFallback[field] })
+        : Response.json({ error: "Başvuru gönderilmedi. Lütfen bilgilerinizi kontrol edip tekrar deneyin." }, { status: 400 });
+    }
+    if (res.status === 413) return invalidResponse({ cv: formErrors.tooBig });
     return Response.json({ error: formErrors.server }, { status: 502 });
   } catch (err) {
     console.error(`[panel] ${form} request failed`, err);

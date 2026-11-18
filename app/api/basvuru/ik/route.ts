@@ -1,4 +1,7 @@
-import { CV_EXTENSIONS, CV_MAX_BYTES, formErrors, HONEYPOT, sendToPanel } from "@/lib/panel";
+import { phoneDigits, validateIk } from "@/lib/formValidation";
+import { HONEYPOT, invalidResponse, sendToPanel } from "@/lib/panel";
+
+const TEXT_FIELDS = ["adSoyad", "telefon", "eposta", "pozisyon", "brans", "deneyim", "mezuniyet", "onYazi"];
 
 /** İK iş başvurusu → panel (multipart, with the CV file). */
 export async function POST(request: Request) {
@@ -6,25 +9,22 @@ export async function POST(request: Request) {
   try {
     data = await request.formData();
   } catch {
-    return Response.json({ error: formErrors.invalid }, { status: 400 });
+    return invalidResponse({});
   }
   if (data.get(HONEYPOT)) return Response.json({ id: null }, { status: 201 });
 
+  const fields = Object.fromEntries([...data.entries()].filter(([, v]) => typeof v === "string"));
   const cv = data.get("cv");
-  if (!(cv instanceof File) || cv.size === 0) return Response.json({ error: formErrors.invalid }, { status: 400 });
-  if (cv.size > CV_MAX_BYTES) return Response.json({ error: formErrors.tooBig }, { status: 413 });
-  if (!CV_EXTENSIONS.some((ext) => cv.name.toLowerCase().endsWith(ext))) {
-    return Response.json({ error: formErrors.invalid }, { status: 400 });
-  }
-  if (data.get("aydinlatmaOkundu") !== "true") return Response.json({ error: formErrors.invalid }, { status: 400 });
+  const errors = validateIk(fields, cv instanceof File ? cv : null);
+  if (Object.keys(errors).length || !(cv instanceof File)) return invalidResponse(errors);
 
   const out = new FormData();
-  for (const k of ["adSoyad", "telefon", "eposta", "pozisyon", "brans", "deneyim", "mezuniyet", "onYazi"]) {
+  for (const k of TEXT_FIELDS) {
     const v = data.get(k);
-    if (typeof v === "string" && v.trim()) out.set(k, v.trim());
+    if (typeof v === "string" && v.trim()) out.set(k, k === "telefon" ? phoneDigits(v) : v.trim());
   }
   out.set("aydinlatmaOkundu", "true");
   out.set("aydinlatmaOkunduAt", new Date().toISOString());
   out.set("cv", cv, cv.name);
-  return sendToPanel("ik", out, false);
+  return sendToPanel("ik", out, false, [...TEXT_FIELDS, "cv", "aydinlatmaOkundu"]);
 }

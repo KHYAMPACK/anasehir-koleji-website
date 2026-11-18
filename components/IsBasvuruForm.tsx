@@ -3,25 +3,27 @@
 import { useState } from "react";
 import type { Block } from "@/lib/legal";
 import { isBasvuruNotice } from "@/lib/ik";
+import { FORM_ERROR_SUMMARY, IK_POSITIONS, validateIk } from "@/lib/formValidation";
+import { FieldError, fieldProps, readErrorResponse, useFieldErrors } from "./FormErrors";
 import { ReadToAccept } from "./legal/ReadToAccept";
 
 /**
  * İK — iş başvuru formu. Posts multipart (with the CV) to /api/basvuru/ik,
  * which forwards to the Ekiz panel (panel.ekizyazilim.com) server-side.
- * CV limit 4 MB (Vercel request body limit ≈ 4.5 MB).
+ * CV limit 4 MB (Vercel request body limit ≈ 4.5 MB). Every field is checked
+ * in the browser first, so the visitor sees which one is wrong.
  * KVKK: the client asked to reuse the site's existing aydınlatma metni
  * (Nov 2026); a dedicated çalışan adayı metni is on /eksikler.
  */
-const CV_MAX_BYTES = 4 * 1024 * 1024;
 const GENERIC_ERROR = "Başvurunuz şu anda gönderilemedi. Lütfen biraz sonra tekrar deneyin veya bizi arayın.";
-
-const positions = ["Öğretmen", "İdari Personel", "Destek Personeli", "Diğer"];
 
 export function IsBasvuruForm({ noticeBlocks }: { noticeBlocks: Block[] }) {
   const [submitted, setSubmitted] = useState(false);
   const [sending, setSending] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const { errors, show, clear, reset } = useFieldErrors();
   const field = "w-full min-w-0 rounded-xl border border-line bg-canvas px-3 py-2.5 text-ink";
+  const fp = (name: string) => fieldProps(name, errors, field);
 
   if (submitted) {
     return (
@@ -37,22 +39,35 @@ export function IsBasvuruForm({ noticeBlocks }: { noticeBlocks: Block[] }) {
 
   return (
     <form
+      noValidate
+      onChange={(e) => {
+        const t = e.target as unknown as { name?: string };
+        if (t.name) clear(t.name);
+      }}
       onSubmit={async (e) => {
         e.preventDefault();
         if (sending) return;
+        const form = e.currentTarget;
         setError(null);
-        const fd = new FormData(e.currentTarget);
-        const cv = fd.get("cv");
-        if (cv instanceof File && cv.size > CV_MAX_BYTES) {
-          setError("Dosya çok büyük. Özgeçmiş en fazla 4 MB olabilir.");
+        const fd = new FormData(form);
+        fd.set("aydinlatmaOkundu", fd.has("aydinlatmaOkundu") ? "true" : "false");
+        const values = Object.fromEntries([...fd.entries()].filter(([, v]) => typeof v === "string"));
+        const local = validateIk(values, fd.get("cv"));
+        if (Object.keys(local).length) {
+          setError(FORM_ERROR_SUMMARY);
+          show(form, local);
           return;
         }
-        fd.set("aydinlatmaOkundu", fd.has("aydinlatmaOkundu") ? "true" : "false");
+        reset();
         setSending(true);
         try {
           const res = await fetch("/api/basvuru/ik", { method: "POST", body: fd });
           if (res.status === 201) setSubmitted(true);
-          else setError(((await res.json().catch(() => null)) as { error?: string } | null)?.error ?? GENERIC_ERROR);
+          else {
+            const { message, fields } = await readErrorResponse(res, GENERIC_ERROR);
+            setError(message);
+            show(form, fields);
+          }
         } catch {
           setError(GENERIC_ERROR);
         } finally {
@@ -63,62 +78,74 @@ export function IsBasvuruForm({ noticeBlocks }: { noticeBlocks: Block[] }) {
     >
       <label className="grid min-w-0 gap-1 text-sm">
         Ad soyad *
-        <input required name="adSoyad" autoComplete="name" className={field} />
+        <input required autoComplete="name" {...fp("adSoyad")} />
+        <FieldError name="adSoyad" errors={errors} />
       </label>
       <label className="grid min-w-0 gap-1 text-sm">
         Telefon *
-        <input required name="telefon" type="tel" autoComplete="tel" className={field} />
+        <input required type="tel" autoComplete="tel" placeholder="0532 123 45 67" {...fp("telefon")} />
+        <FieldError name="telefon" errors={errors} />
       </label>
       <label className="grid min-w-0 gap-1 text-sm">
         E-posta *
-        <input required name="eposta" type="email" autoComplete="email" className={field} />
+        <input required type="email" autoComplete="email" {...fp("eposta")} />
+        <FieldError name="eposta" errors={errors} />
       </label>
       <label className="grid min-w-0 gap-1 text-sm">
         Başvurulan pozisyon *
-        <select required name="pozisyon" defaultValue="" className={field}>
+        <select required defaultValue="" {...fp("pozisyon")}>
           <option value="" disabled>
             Pozisyon seçin
           </option>
-          {positions.map((p) => (
+          {IK_POSITIONS.map((p) => (
             <option key={p}>{p}</option>
           ))}
         </select>
+        <FieldError name="pozisyon" errors={errors} />
       </label>
       <label className="grid min-w-0 gap-1 text-sm">
         Branş / alan
-        <input name="brans" placeholder="Örn. Matematik, İngilizce, Muhasebe" className={field} />
+        <input placeholder="Örn. Matematik, İngilizce, Muhasebe" {...fp("brans")} />
+        <FieldError name="brans" errors={errors} />
       </label>
       <label className="grid min-w-0 gap-1 text-sm">
         Mesleki deneyim
-        <select name="deneyim" defaultValue="" className={field}>
+        <select defaultValue="" {...fp("deneyim")}>
           <option value="">Seçin</option>
           <option>Deneyimsiz</option>
           <option>1–3 yıl</option>
           <option>4–10 yıl</option>
           <option>10 yıldan fazla</option>
         </select>
+        <FieldError name="deneyim" errors={errors} />
       </label>
       <label className="grid min-w-0 gap-1 text-sm sm:col-span-2">
         Mezun olunan okul ve bölüm *
-        <input required name="mezuniyet" className={field} />
+        <input required {...fp("mezuniyet")} />
+        <FieldError name="mezuniyet" errors={errors} />
       </label>
       <label className="grid min-w-0 gap-1 text-sm sm:col-span-2">
         Özgeçmiş (CV) *
         <input
           required
-          name="cv"
           type="file"
           accept=".pdf,.doc,.docx"
-          className={`${field} file:mr-3 file:rounded-full file:border-0 file:bg-blue-soft file:px-3 file:py-1 file:text-sm file:font-semibold file:text-ink`}
+          {...fieldProps(
+            "cv",
+            errors,
+            `${field} file:mr-3 file:rounded-full file:border-0 file:bg-blue-soft file:px-3 file:py-1 file:text-sm file:font-semibold file:text-ink`,
+          )}
         />
-        <span className="text-xs text-muted">PDF veya Word, en fazla 4 MB.</span>
+        {errors.cv ? <FieldError name="cv" errors={errors} /> : <span className="text-xs text-muted">PDF veya Word, en fazla 4 MB.</span>}
       </label>
       <label className="grid min-w-0 gap-1 text-sm sm:col-span-2">
         Ön yazı
-        <textarea name="onYazi" rows={4} className={field} />
+        <textarea rows={4} {...fp("onYazi")} />
+        <FieldError name="onYazi" errors={errors} />
       </label>
-      <div className="sm:col-span-2">
+      <div className="grid gap-1 sm:col-span-2">
         <ReadToAccept blocks={noticeBlocks} docTitle={isBasvuruNotice.title} docHref={isBasvuruNotice.href} />
+        <FieldError name="aydinlatmaOkundu" errors={errors} />
       </div>
       {/* Honeypot: hidden from people, bots fill it in */}
       <input type="text" name="web_sitesi" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden />

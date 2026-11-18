@@ -10,10 +10,7 @@
 
 Anaşehir Koleji 2027 Bursluluk Sınavı, **16 Ocak 2027 Cumartesi günü** gerçekleştirilecektir.
 
-Sınavlarımız iki ayrı seansta uygulanacaktır:
-
-- **10.00:** 4 ve 5. sınıf öğrencileri
-- **14.00:** 6 ve 7. sınıf öğrencileri
+Sınavlarımız **10.00** ve **14.00** olmak üzere iki ayrı seansta uygulanacaktır. Her iki seans da 4, 5, 6 ve 7. sınıf öğrencilerine açıktır; başvuru sırasında size uygun seansı seçebilirsiniz.
 
 Öğrencilerimizin sınav organizasyonuna ilişkin duyuruları takip etmelerini ve belirtilen saatlerde hazır bulunmalarını rica ederiz.
 
