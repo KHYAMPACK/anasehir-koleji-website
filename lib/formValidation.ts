@@ -100,6 +100,12 @@ export const fieldFallback: FieldErrors = {
 export const FORM_ERROR_SUMMARY = "Başvuru gönderilmedi. Lütfen kırmızıyla işaretli alanları düzeltin.";
 
 export const KADEMELER = ["Anaokulu", "İlkokul", "Ortaokul"];
+/** Class / age choices per kademe (client, Nov 2026). */
+export const SINIFLAR: Record<string, string[]> = {
+  Anaokulu: ["2 yaş", "3 yaş", "4 yaş", "5 yaş"],
+  İlkokul: ["1. Sınıf", "2. Sınıf", "3. Sınıf", "4. Sınıf"],
+  Ortaokul: ["5. Sınıf", "6. Sınıf", "7. Sınıf", "8. Sınıf"],
+};
 export const KAMPUSLER = ["Anaşehir Koleji", "Bağlıca Anaşehir Anaokulu", "Etimesgut Anaşehir Anaokulu"];
 
 /** "Bize Ulaşın" (kayıt görüşmesi / geri arama) form on /kayit-iletisim. */
@@ -108,6 +114,7 @@ export function validateIletisim(d: Record<string, unknown>): FieldErrors {
   checkName(e, "adSoyad", text(d.adSoyad), "Ad soyad");
   checkPhone(e, text(d.telefon));
   if (!KADEMELER.includes(text(d.kademe))) e.kademe = "İlgilendiğiniz kademeyi seçin.";
+  else if (!SINIFLAR[text(d.kademe)].includes(text(d.sinif))) e.sinif = "Sınıf veya yaş grubunu seçin.";
   if (!KAMPUSLER.includes(text(d.kampus))) e.kampus = "Kampüs seçin.";
   if (d.aydinlatmaOkundu !== true && d.aydinlatmaOkundu !== "true") e.aydinlatmaOkundu = AYDINLATMA;
   return e;

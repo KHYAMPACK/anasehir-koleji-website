@@ -1,7 +1,7 @@
 import { phoneDigits, validateIletisim } from "@/lib/formValidation";
 import { HONEYPOT, invalidResponse, sendToPanel } from "@/lib/panel";
 
-const FIELDS = ["adSoyad", "telefon", "kademe", "kampus", "aydinlatmaOkundu"];
+const FIELDS = ["adSoyad", "telefon", "kademe", "sinif", "kampus", "aydinlatmaOkundu"];
 
 /** "Bize Ulaşın" (/kayit-iletisim) → panel (JSON). */
 export async function POST(request: Request) {
@@ -21,6 +21,7 @@ export async function POST(request: Request) {
     adSoyad: str("adSoyad"),
     telefon: phoneDigits(str("telefon")),
     kademe: str("kademe"),
+    sinif: str("sinif"),
     kampus: str("kampus"),
     aydinlatmaOkundu: true,
     aydinlatmaOkunduAt: new Date().toISOString(),

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import type { Block } from "@/lib/legal";
-import { KADEMELER, KAMPUSLER, validateIletisim } from "@/lib/formValidation";
+import { KADEMELER, KAMPUSLER, SINIFLAR, validateIletisim } from "@/lib/formValidation";
 import { FieldError, fieldProps, readErrorResponse, useFieldErrors } from "./FormErrors";
 import { ReadToAccept } from "./legal/ReadToAccept";
 
@@ -18,6 +18,7 @@ export function LeadForm({ className = "", noticeBlocks }: { className?: string;
   const [sent, setSent] = useState(false);
   const [sending, setSending] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [kademe, setKademe] = useState("");
   const { errors, show, clear, reset } = useFieldErrors();
 
   const base = "w-full min-w-0 max-w-full rounded-xl border border-line bg-canvas px-3 py-2.5 text-ink";
@@ -31,7 +32,7 @@ export function LeadForm({ className = "", noticeBlocks }: { className?: string;
       >
         <p className="display text-xl font-semibold text-ink">Talebiniz alındı</p>
         <p className="mt-2 text-sm text-muted">Teşekkür ederiz. En kısa sürede sizi arayacağız.</p>
-        <button type="button" onClick={() => setSent(false)} className="mt-3 text-sm font-semibold text-blue">
+        <button type="button" onClick={() => { setSent(false); setKademe(""); }} className="mt-3 text-sm font-semibold text-blue">
           Yeni talep
         </button>
       </div>
@@ -95,7 +96,12 @@ export function LeadForm({ className = "", noticeBlocks }: { className?: string;
       </label>
       <label className="grid min-w-0 gap-1 text-sm text-ink">
         Kademe *
-        <select required defaultValue="" {...fp("kademe")}>
+        <select
+          required
+          value={kademe}
+          onChange={(e) => setKademe(e.target.value)}
+          {...fp("kademe")}
+        >
           <option value="" disabled>
             Kademe seçin
           </option>
@@ -104,6 +110,19 @@ export function LeadForm({ className = "", noticeBlocks }: { className?: string;
           ))}
         </select>
         <FieldError name="kademe" errors={errors} />
+      </label>
+      <label className="grid min-w-0 gap-1 text-sm text-ink">
+        Sınıf *
+        {/* key resets the choice when the kademe changes */}
+        <select key={kademe} required defaultValue="" disabled={!kademe} {...fp("sinif")}>
+          <option value="" disabled>
+            {kademe ? "Sınıf seçin" : "Önce kademe seçin"}
+          </option>
+          {(SINIFLAR[kademe] ?? []).map((k) => (
+            <option key={k}>{k}</option>
+          ))}
+        </select>
+        <FieldError name="sinif" errors={errors} />
       </label>
       <label className="grid min-w-0 gap-1 text-sm text-ink sm:col-span-2">
         Kampüs *
@@ -137,7 +156,7 @@ export function LeadForm({ className = "", noticeBlocks }: { className?: string;
         disabled={sending}
         className="rounded-full bg-red px-5 py-2.5 text-sm font-semibold text-white hover:bg-red-hover disabled:cursor-wait disabled:opacity-60 sm:col-span-2"
       >
-        {sending ? "Gönderiliyor…" : "Bizi arayın"}
+        {sending ? "Gönderiliyor…" : "Formu Gönder"}
       </button>
     </form>
   );
