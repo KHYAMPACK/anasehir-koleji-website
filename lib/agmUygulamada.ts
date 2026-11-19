@@ -38,7 +38,7 @@ export const agmUygulamada = {
     },
     {
       title: "Spor ve Bireysel Başarı",
-      text: "Yüzme ve bisiklet başta olmak üzere farklı spor dallarındaki çalışmalar ve öğrenci başarılarıyla fiziksel gelişimi, öz disiplini ve spor kültürünü destekliyoruz.",
+      text: "Öğrencilerimizin farklı spor dallarında yeteneklerini keşfetmelerini, fiziksel becerilerini geliştirmelerini ve bireysel potansiyellerini ortaya koymalarını destekliyoruz. Sportif çalışmalar ve elde edilen başarılarla öz disiplin, özgüven, takım ruhu ve fair play anlayışını güçlendiriyoruz.",
       icon: "bike",
       from: "#2196e6",
       to: "#0b5aab",

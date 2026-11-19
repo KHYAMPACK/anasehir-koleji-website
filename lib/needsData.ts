@@ -95,8 +95,8 @@ export const needsData = {
     href: "/#sosyal-medya",
   },
   "ik-basvurulari": {
-    label: "İK: iş başvuru formu",
-    ask: "Başvurular panel.ekizyazilim.com’a düşüyor. Pozisyon listesinin onayı (Öğretmen, İdari Personel, Destek Personeli, Diğer). KVKK: şimdilik iletişim ve kayıt görüşmesi aydınlatma metni bağlı; iş başvuruları için ayrı bir Çalışan Adayı Aydınlatma Metni önerilir.",
+    label: "İK sayfası: eksik metinler ve KVKK",
+    ask: "İK sayfası banner, dört değer kartı ve formla yayında; başvurular panel.ekizyazilim.com’a düşüyor. Bekleyen metinler: (1) Anaşehir’de Çalışmak — kurumsal yaklaşım metni, (2) Kariyer Alanlarımız — dört meslek grubunun adları ve kısa açıklamaları (formdaki pozisyon listesi de bunlara göre güncellenecek), (3) Başvuru Süreci — kısa bilgilendirme, (4) iletişim ve kapanış metni, (5) formda seçilecek branş / uzmanlık alanları listesi, (6) Çalışan Adayı Aydınlatma Metni (şimdilik İletişim ve Kayıt Görüşmesi metni bağlı), (7) başvuruların saklama süresi.",
     href: "/insan-kaynaklari",
   },
   "burs-oranlari": {
