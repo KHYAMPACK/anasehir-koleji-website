@@ -1,3 +1,6 @@
+/** Canonical origin: www.anasehirkoleji.com 308-redirects here. */
+export const siteUrl = "https://anasehirkoleji.com";
+
 export const site = {
   name: "Anaşehir Koleji",
   slogan: "Gelecek Burada Başlar!",

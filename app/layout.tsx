@@ -7,7 +7,7 @@ import { Footer } from "@/components/Footer";
 import { CookieBanner } from "@/components/legal/CookieBanner";
 import { Header } from "@/components/Header";
 import { WhatsAppFab } from "@/components/WhatsAppFab";
-import { site } from "@/lib/site";
+import { site, siteUrl } from "@/lib/site";
 import "./globals.css";
 
 const inter = Inter({
@@ -21,12 +21,21 @@ const figtree = Figtree({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: {
     default: `${site.name} · Etimesgut / Ankara`,
     template: `%s · ${site.name}`,
   },
   description:
     "Anaşehir Koleji — Etimesgut Bağlıca’da kreş, anaokulu, ilkokul ve ortaokul. Gelecek burada başlar.",
+  openGraph: {
+    type: "website",
+    locale: "tr_TR",
+    siteName: site.name,
+    url: "/",
+    images: [{ url: "/og.jpg", width: 1200, height: 630, alt: "Anaşehir Koleji okul binası" }],
+  },
+  twitter: { card: "summary_large_image", images: ["/og.jpg"] },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
