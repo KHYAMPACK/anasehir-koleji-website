@@ -86,7 +86,13 @@ export function Footer() {
             <CookiePreferencesLink />
             <Link href="/sss">SSS</Link>
             {/* Developer credit — approved by the school (Nov 2026) */}
-            <a href="https://ekizyazilim.com" className="hover:text-white">
+            <a
+              href="https://ekizyazilim.com"
+              title="Ekiz Yazılım — web sitesi ve yazılım"
+              className="inline-flex items-center gap-1.5 hover:text-white"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element -- tiny static SVG */}
+              <img src="/brand/ekiz-mark.svg" alt="" width={16} height={16} className="h-4 w-4" />
               Site: Ekiz Yazılım
             </a>
           </div>
