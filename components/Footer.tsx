@@ -80,11 +80,15 @@ export function Footer() {
       <div className="border-t border-white/10">
         <div className="mx-auto flex max-w-[1560px] flex-wrap items-center justify-between gap-3 px-4 py-4 text-xs text-[#8b96ad] sm:px-6 lg:px-10">
           <p>© {new Date().getFullYear()} Anaşehir Koleji · Etimesgut / Ankara</p>
-          <div className="flex gap-4">
+          <div className="flex flex-wrap gap-x-4 gap-y-2">
             <Link href="/kvkk">KVKK</Link>
             <Link href="/gizlilik">Gizlilik</Link>
             <CookiePreferencesLink />
             <Link href="/sss">SSS</Link>
+            {/* Developer credit — approved by the school (Nov 2026) */}
+            <a href="https://ekizyazilim.com" className="hover:text-white">
+              Site: Ekiz Yazılım
+            </a>
           </div>
         </div>
       </div>
