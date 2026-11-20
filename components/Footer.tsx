@@ -85,17 +85,20 @@ export function Footer() {
             <Link href="/gizlilik">Gizlilik</Link>
             <CookiePreferencesLink />
             <Link href="/sss">SSS</Link>
-            {/* Developer credit — approved by the school (Nov 2026) */}
-            <a
-              href="https://ekizyazilim.com"
-              title="Ekiz Yazılım — web sitesi ve yazılım"
-              className="inline-flex items-center gap-1.5 hover:text-white"
-            >
-              {/* eslint-disable-next-line @next/next/no-img-element -- tiny static SVG */}
-              <img src="/brand/ekiz-mark.svg" alt="" width={16} height={16} className="h-4 w-4" />
-              Site: Ekiz Yazılım
-            </a>
           </div>
+        </div>
+        {/* Developer credit, centred on its own line — approved by the school (Nov 2026) */}
+        <div className="flex justify-center px-4 pb-5 text-xs text-[#8b96ad]">
+          <a
+            href="https://ekizyazilim.com"
+            title="Ekiz Yazılım — web sitesi ve yazılım"
+            className="inline-flex items-center gap-1.5 rounded-md px-2 py-1 hover:text-white"
+          >
+            Powered by
+            {/* eslint-disable-next-line @next/next/no-img-element -- tiny static SVG */}
+            <img src="/brand/ekiz-mark.svg" alt="" width={18} height={18} className="h-[18px] w-[18px]" />
+            <span className="font-semibold">Ekiz Yazılım</span>
+          </a>
         </div>
       </div>
     </footer>
