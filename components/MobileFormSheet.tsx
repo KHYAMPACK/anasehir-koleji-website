@@ -9,8 +9,9 @@ const PHONE = "(max-width: 639px)";
 /**
  * Phone-only form popup. On a phone, any link to one of `ids` on this page
  * (e.g. "Hemen Başvur" → #basvuru), or landing here with that hash from
- * another page (e.g. /kayit-iletisim#on-kayit), opens a bottom sheet with a
- * short `info` block above the form instead of scrolling to the inline one.
+ * another page (e.g. /kayit-iletisim#on-kayit), opens a bottom sheet with the
+ * form first and a short `info` block under it, instead of scrolling to the
+ * inline one.
  * Tablets and desktops keep the normal anchor scroll; the inline form stays
  * on the page for visitors who scroll down to it themselves.
  */
@@ -112,8 +113,8 @@ export function MobileFormSheet({
           </button>
         </div>
         <div className="flex-1 overflow-y-auto overscroll-contain px-4 pt-4 pb-[max(1.25rem,env(safe-area-inset-bottom))]">
-          {info}
-          <div className="mt-4">{children}</div>
+          {children}
+          <div className="mt-4">{info}</div>
         </div>
       </div>
     </div>
