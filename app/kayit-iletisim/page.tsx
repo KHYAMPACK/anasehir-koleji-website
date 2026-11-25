@@ -3,6 +3,7 @@ import Image from "next/image";
 import { CalendarDays, Clock } from "lucide-react";
 import { BtnLine, BtnPrimary } from "@/components/Buttons";
 import { LeadForm } from "@/components/LeadForm";
+import { MobileFormSheet } from "@/components/MobileFormSheet";
 import { Section } from "@/components/PageHero";
 import { campuses, mapsSearchUrl } from "@/lib/campuses";
 import { parseLegal, readLegal } from "@/lib/legal";
@@ -212,6 +213,39 @@ export default function KayitIletisimPage() {
           <MapEmbed query={featured.mapsQuery} title="Anaşehir Koleji harita" className="h-80" />
         </div>
       </Section>
+
+      {/* Phone: links to the form (#on-kayit, #bize-ulasin, …) open it in a sheet */}
+      <MobileFormSheet
+        ids={["on-kayit", "bize-ulasin", "kampus-turu", "ucret-bilgilendirme"]}
+        title={gorusmeCard.primary}
+        info={
+          <div className="tone-navy rounded-[18px] p-5">
+            <p className="display text-lg font-bold text-white">{gorusmeCard.title}</p>
+            <p className="mt-2 text-sm text-white/80">
+              Kayıt görüşmesi, ücret bilgilendirme ve kampüs turu talepleri için formu doldurun; sizi arayıp uygun bir zaman planlayalım.
+            </p>
+            <ol className="mt-4 grid grid-cols-2 gap-x-3 gap-y-2">
+              {kayitSteps.map((step, i) => (
+                <li key={step} className="flex items-center gap-2">
+                  <span className="display text-xs font-bold text-blue">{String(i + 1).padStart(2, "0")}</span>
+                  <span className="display text-sm font-semibold text-white">{step}</span>
+                </li>
+              ))}
+            </ol>
+            <p className="mt-4 border-t border-white/10 pt-3 text-sm text-white/70">
+              Bilgi ve randevu:{" "}
+              <a href={telHref(site.admissionsPhoneTel)} className="font-semibold text-white">
+                {site.admissionsPhoneDisplay}
+              </a>
+              <span className="block text-xs text-white/50">
+                Hafta içi {site.hoursWeekday} · Cumartesi {site.hoursSaturday}
+              </span>
+            </p>
+          </div>
+        }
+      >
+        <LeadForm noticeBlocks={parseLegal(readLegal("iletisim-ve-kayit-gorusmesi.md"))} />
+      </MobileFormSheet>
 
       <section className="tone-navy relative overflow-hidden py-[clamp(3rem,6vw,4.5rem)] text-center">
         <div className="pointer-events-none absolute inset-0 opacity-20 grid-paper" />

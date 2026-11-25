@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { ArrowDown, Award, GraduationCap, Handshake, TrendingUp } from "lucide-react";
 import { IsBasvuruForm } from "@/components/IsBasvuruForm";
+import { MobileFormSheet } from "@/components/MobileFormSheet";
 import { Section } from "@/components/PageHero";
 import { ikForm, ikHero, ikValues, isBasvuruNotice, type IkValueIcon } from "@/lib/ik";
 import { parseLegal, readLegal } from "@/lib/legal";
@@ -86,6 +87,20 @@ export default function InsanKaynaklariPage() {
           <p className="mt-4 text-sm text-muted">{ikForm.note}</p>
         </div>
       </Section>
+
+      {/* Phone: the banner button opens the form in a sheet */}
+      <MobileFormSheet
+        ids={["is-basvuru-formu"]}
+        title={ikForm.title}
+        info={
+          <div className="tone-navy rounded-[18px] p-5">
+            <p className="text-sm text-white/80">{ikForm.intro}</p>
+            <p className="mt-3 border-t border-white/10 pt-3 text-xs font-semibold text-white/60">{ikForm.note}</p>
+          </div>
+        }
+      >
+        <IsBasvuruForm noticeBlocks={parseLegal(readLegal(isBasvuruNotice.file))} />
+      </MobileFormSheet>
     </>
   );
 }

@@ -5,6 +5,7 @@ import { BtnLine, BtnPrimary } from "@/components/Buttons";
 import { BurslulukForm } from "@/components/BurslulukForm";
 import { BurslulukSss } from "@/components/campaign/BurslulukSss";
 import { Countdown } from "@/components/campaign/Countdown";
+import { MobileFormSheet } from "@/components/MobileFormSheet";
 import { Section } from "@/components/PageHero";
 import { bursluluk, deadlineLabel, examDateLabel } from "@/lib/campaign";
 import { parseLegal, readLegal } from "@/lib/legal";
@@ -134,6 +135,32 @@ export default function BurslulukPage() {
           </div>
         </div>
       </Section>
+
+      {/* Phone: "Hemen Başvur" (and /bursluluk#basvuru links) open the form in a sheet */}
+      <MobileFormSheet
+        ids={["basvuru"]}
+        title={`${bursluluk.pageTitle} Başvurusu`}
+        info={
+          <div className="tone-navy rounded-[18px] p-5">
+            <p className="text-sm text-white/80">
+              {bursluluk.grades.join(", ")}. sınıf öğrencileri için ücretsiz bursluluk sınavı. Formu doldurun, başvurunuzla ilgili sizinle iletişime geçelim.
+            </p>
+            <ul className="mt-4 space-y-2.5 text-sm">
+              {bursluluk.details
+                .filter((d) => d.value)
+                .slice(0, 7)
+                .map((d) => (
+                  <li key={d.label} className="flex items-baseline justify-between gap-4 border-b border-white/10 pb-2.5 last:border-0 last:pb-0">
+                    <span className="text-white/60">{d.label}</span>
+                    <span className="display text-right font-semibold text-white">{d.value}</span>
+                  </li>
+                ))}
+            </ul>
+          </div>
+        }
+      >
+        <BurslulukForm noticeBlocks={parseLegal(readLegal("bursluluk-sinavi.md"))} />
+      </MobileFormSheet>
 
       {/* ── Bursluluk SSS (client text, content/bursluluk-sss.md) ─ */}
       <Section
