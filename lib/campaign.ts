@@ -47,6 +47,12 @@ export const bursluluk = {
     { label: "İtiraz süresi", value: "Sonuçların ilanından itibaren 3 iş günü" },
     { label: "Burs oranları", value: null },
   ] as { label: string; value: string | null }[],
+  /** Client's grade banners (WhatsApp, 28 Nov 2026) — homepage banner strip, each links to the form. */
+  banners: [
+    { src: "/banners/bursluluk-5-sinif.png", width: 1920, height: 640, alt: "Ortaokula geçiş: 5. sınıf — 4. sınıf öğrencilerine özel Bursluluk Sınavı, 16 Ocak 2027" },
+    { src: "/banners/bursluluk-6-7-sinif.png", width: 2172, height: 724, alt: "6. ve 7. sınıf: Gelecek adım adım şekillenir — Bursluluk Sınavı, 16 Ocak 2027" },
+    { src: "/banners/bursluluk-8-sinif.png", width: 2048, height: 768, alt: "8. sınıf, LGS 2028 — 7. sınıf öğrencilerine özel Bursluluk Sınavı, 16 Ocak 2027" },
+  ],
 };
 
 export type CampaignPhase = "open" | "closed" | "over";

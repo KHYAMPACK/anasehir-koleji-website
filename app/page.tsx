@@ -1,5 +1,6 @@
 import { Agm360Wheel } from "@/components/Agm360Wheel";
 import { HomeHero } from "@/components/HomeHero";
+import { BurslulukBanners } from "@/components/campaign/BurslulukBanners";
 import { DevelopmentCycle } from "@/components/akademik/DevelopmentCycle";
 import { akademikYaklasim } from "@/lib/akademikBasari";
 import { CampusLifeTeaser } from "@/components/CampusLifeTeaser";
@@ -23,6 +24,8 @@ export default function HomePage() {
   return (
     <>
       <HomeHero />
+
+      <BurslulukBanners />
 
       <SssTeaser />
 
